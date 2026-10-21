@@ -1,18 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Pokemon</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Game Animon - Pokemon HTML5 Canvas & Sequelize</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔴</text></svg>">
+    <link rel="stylesheet" href="./client/css/style.css">
+    <link rel="stylesheet" href="./client/css/menu.css">
 </head>
 <body>
-    <canvas>
+    <div class="game-wrapper">
+        <!-- Header Game -->
+        <header class="game-header">
+            <div class="game-title">
+                <span>🔴</span>
+                <span>Animon: Vương Quốc Sủng Vật</span>
+            </div>
+            <div class="game-actions">
+                <button class="btn-pill" id="btn-in-game-menu" title="Mở Menu chính (Phím ESC)">
+                    <span>📋</span> <span>Menu Chính</span>
+                </button>
+                <button class="btn-pill" id="btn-sound" title="Bật/Tắt âm thanh (Phím M)">
+                    <span id="sound-icon">🔊</span> <span id="sound-text">Âm thanh</span>
+                </button>
+                <button class="btn-pill" id="btn-debug" title="Xem hộp va chạm & vùng cỏ (Phím B)">
+                    <span>🛠️</span> <span>Xem Va Chạm</span>
+                </button>
+                <button class="btn-pill" id="btn-fullscreen" title="Toàn màn hình">
+                    <span>⛶</span>
+                </button>
+            </div>
+        </header>
 
-    </canvas>
-    <script src="./data/collisions.js"></script>
-    <script src="classes.js"></script>
-    <script src="main.js"></script>
+        <!-- Khung Game Canvas & Màn hình Menu -->
+        <main class="canvas-container" id="canvas-container">
+            <canvas width="1024" height="576"></canvas>
+
+            <!-- LỚP PHỦ MÀN HÌNH MENU CHÍNH -->
+            <div class="main-menu-overlay" id="main-menu-overlay">
+                <div class="menu-box">
+                    <div class="menu-logo">
+                        <h1>🔴 ANIMON</h1>
+                        <p>Vương Quốc Sủng Vật • HTML5 Canvas Engine</p>
+                    </div>
+
+                    <div class="menu-buttons">
+                        <button class="btn-menu primary" id="btn-menu-play">
+                            <span>🎮</span> <span>Chơi Ngay</span>
+                        </button>
+                        <button class="btn-menu" id="btn-menu-save">
+                            <span>💾</span> <span>Lưu & Tải Game</span>
+                        </button>
+                        <button class="btn-menu" id="btn-menu-settings">
+                            <span>⚙️</span> <span>Cài Đặt</span>
+                        </button>
+                        <button class="btn-menu" id="btn-menu-about">
+                            <span>📜</span> <span>Giới Thiệu</span>
+                        </button>
+                        <button class="btn-menu online" id="btn-menu-online">
+                            <span>🌐</span> <span>Chơi Online (Sắp ra mắt)</span>
+                        </button>
+                    </div>
+
+                    <div class="menu-footer-hint">
+                        Nhấn [Chơi Ngay] hoặc phím ESC để tiếp tục hành trình
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- BẢNG ĐIỀU KHIỂN & D-PAD -->
+        <footer class="controls-panel">
+            <div class="key-guide">
+                <div>Di chuyển: <span class="key-badge">W</span> <span class="key-badge">A</span> <span class="key-badge">S</span> <span class="key-badge">D</span> hoặc <span class="key-badge">▲</span> <span class="key-badge">◄</span> <span class="key-badge">▼</span> <span class="key-badge">►</span></div>
+                <div>Chạy nhanh: <span class="key-badge">Shift</span></div>
+                <div>Menu chính: <span class="key-badge">ESC</span></div>
+                <div>Dịch chuyển bản đồ: <span class="key-badge">Đi vào cửa / Cổng xanh</span></div>
+            </div>
+
+            <div class="virtual-dpad">
+                <button class="dpad-btn dpad-up" data-dir="up">▲</button>
+                <button class="dpad-btn dpad-left" data-dir="left">◄</button>
+                <div class="dpad-center"></div>
+                <button class="dpad-btn dpad-right" data-dir="right">►</button>
+                <button class="dpad-btn dpad-down" data-dir="down">▼</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- CỬA SỔ MODAL TIỆN ÍCH -->
+    <div class="modal-overlay" id="app-modal" style="display: none;">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h2 id="modal-title">Tiêu Đề</h2>
+                <button class="btn-close-modal" onclick="window.menuManager.closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                Nội dung
+            </div>
+        </div>
+    </div>
+
+    <!-- NẠP THƯ VIỆN & ENGINE SCRIPTS -->
+    <script src="./client/js/data/collisions.js"></script>
+    <script src="./client/js/data/battleZones.js"></script>
+    <script src="./client/js/data/monsters.js"></script>
+    <script src="./client/js/data/extracted_maps.js"></script>
+    <script src="./client/js/data/sprites_data.js"></script>
+    <script src="./client/js/data/maps.js"></script>
+    <script src="./client/js/engine/audio.js"></script>
+    <script src="./client/js/engine/sprite.js"></script>
+    <script src="./client/js/engine/j2meSprite.js"></script>
+    <script src="./client/js/engine/boundary.js"></script>
+    <script src="./client/js/engine/portal.js"></script>
+    <script src="./client/js/api/gameApi.js"></script>
+    <script src="./client/js/ui/battleSystem.js"></script>
+    <script src="./client/js/ui/menuManager.js"></script>
+    <script src="./client/js/main.js"></script>
+
+    <!-- Script tương tác giao diện phụ -->
+    <script>
+        const btnDebug = document.getElementById('btn-debug');
+        const btnSound = document.getElementById('btn-sound');
+        const soundIcon = document.getElementById('sound-icon');
+        const btnFullscreen = document.getElementById('btn-fullscreen');
+        const container = document.getElementById('canvas-container');
+
+        if (btnDebug) {
+            btnDebug.addEventListener('click', () => {
+                if (window.gameEngine) {
+                    const active = window.gameEngine.toggleDebug();
+                    btnDebug.classList.toggle('active', active);
+                }
+            });
+        }
+
+        if (btnSound) {
+            btnSound.addEventListener('click', () => {
+                if (window.soundEngine) {
+                    const isMuted = window.soundEngine.toggleMute();
+                    soundIcon.textContent = isMuted ? '🔇' : '🔊';
+                    btnSound.classList.toggle('active', !isMuted);
+                }
+            });
+        }
+
+        if (btnFullscreen) {
+            btnFullscreen.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    container.requestFullscreen().catch(err => console.warn(err));
+                } else {
+                    document.exitFullscreen();
+                }
+            });
+        }
+
+        // Hỗ trợ D-Pad ảo (Mouse & Touch)
+        const dpadButtons = document.querySelectorAll('.dpad-btn[data-dir]');
+        dpadButtons.forEach(btn => {
+            const dir = btn.getAttribute('data-dir');
+            const startPress = (e) => {
+                e.preventDefault();
+                btn.classList.add('pressed');
+                window.gameEngine?.triggerVirtualKey(dir, true);
+            };
+            const stopPress = (e) => {
+                e.preventDefault();
+                btn.classList.remove('pressed');
+                window.gameEngine?.triggerVirtualKey(dir, false);
+            };
+
+            btn.addEventListener('mousedown', startPress);
+            btn.addEventListener('mouseup', stopPress);
+            btn.addEventListener('mouseleave', stopPress);
+
+            btn.addEventListener('touchstart', startPress, { passive: false });
+            btn.addEventListener('touchend', stopPress, { passive: false });
+            btn.addEventListener('touchcancel', stopPress, { passive: false });
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,542 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #1e272e 0%, #0a0e12 100%);
+    color: #ecf0f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1060px;
+    width: 100%;
+    position: relative;
+}
+
+.game-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 4px;
+}
+
+.game-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #f1c40f;
+    text-shadow: 0 2px 8px rgba(241, 196, 15, 0.3);
+}
+
+.game-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-pill {
+    background: #2c3e50;
+    border: 1px solid #34495e;
+    color: #ecf0f1;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-pill:hover {
+    background: #34495e;
+    border-color: #f1c40f;
+    transform: translateY(-1px);
+}
+
+.btn-pill.active {
+    background: #27ae60;
+    border-color: #2ecc71;
+    color: #fff;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    max-width: 1024px;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 0 3px #2c3e50;
+    background-color: #000;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.controls-panel {
+    width: 100%;
+    margin-top: 14px;
+    background: rgba(26, 36, 47, 0.85);
+    border: 1px solid #2c3e50;
+    border-radius: 10px;
+    padding: 12px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    backdrop-filter: blur(8px);
+}
+
+.key-guide {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    color: #bdc3c7;
+}
+
+.key-badge {
+    background: #34495e;
+    color: #f39c12;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0 2px 0 #1a252f;
+    border: 1px solid #4a6278;
+}
+
+/* D-Pad cảm ứng / nhấp chuột */
+.virtual-dpad {
+    display: grid;
+    grid-template-columns: repeat(3, 40px);
+    grid-template-rows: repeat(3, 40px);
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dpad-btn {
+    background: #34495e;
+    border: 2px solid #4a6278;
+    color: #ecf0f1;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.1s ease;
+    box-shadow: 0 3px 0 #1a252f;
+}
+
+.dpad-btn:active, .dpad-btn.pressed {
+    background: #f39c12;
+    color: #000;
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #1a252f;
+}
+
+.dpad-up {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.dpad-left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.dpad-center {
+    grid-column: 2;
+    grid-row: 2;
+    background: #243342;
+    border-color: #243342;
+    border-radius: 50%;
+    cursor: default;
+    box-shadow: none;
+}
+
+.dpad-right {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.dpad-down {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+@media (max-width: 768px) {
+    .controls-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+    .game-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+
+
+/* --- MENU STYLES --- */
+/* ========================================================
+   GIAO DIỆN MÀN HÌNH MENU CHÍNH & CỬA SỔ MODAL (ANIMON)
+   ======================================================== */
+
+/* Lớp phủ Menu Toàn màn hình */
+.main-menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(30, 39, 46, 0.92) 0%, rgba(10, 14, 18, 0.98) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease;
+}
+
+.menu-box {
+    background: rgba(44, 62, 80, 0.85);
+    border: 3px solid #f1c40f;
+    border-radius: 16px;
+    padding: 32px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(241, 196, 15, 0.2);
+    max-width: 440px;
+    width: 90%;
+    animation: menuFloat 0.4s ease-out;
+}
+
+@keyframes menuFloat {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.menu-logo {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.menu-logo h1 {
+    font-size: 32px;
+    color: #f1c40f;
+    text-shadow: 0 3px 10px rgba(241, 196, 15, 0.4);
+    letter-spacing: 1px;
+}
+
+.menu-logo p {
+    font-size: 13px;
+    color: #bdc3c7;
+    margin-top: 4px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-menu {
+    background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+    border: 2px solid #4a6278;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0 #1a252f;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-menu:hover {
+    background: linear-gradient(180deg, #f39c12 0%, #e67e22 100%);
+    border-color: #f1c40f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #1a252f;
+}
+
+.btn-menu:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #1a252f;
+}
+
+.btn-menu.primary {
+    background: linear-gradient(180deg, #2ecc71 0%, #27ae60 100%);
+    border-color: #2ecc71;
+}
+
+.btn-menu.primary:hover {
+    background: linear-gradient(180deg, #27ae60 0%, #219150 100%);
+    border-color: #2ecc71;
+}
+
+.btn-menu.online {
+    background: linear-gradient(180deg, #9b59b6 0%, #8e44ad 100%);
+    border-color: #a569bd;
+}
+
+.menu-footer-hint {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 8px;
+}
+
+/* ========================================================
+   CỬA SỔ MODAL (LƯU GAME, CÀI ĐẶT, GIỚI THIỆU)
+   ======================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(6px);
+}
+
+.modal-window {
+    background: #1e272e;
+    border: 2px solid #34495e;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    animation: modalScale 0.25s ease-out;
+}
+
+@keyframes modalScale {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+    background: #2c3e50;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #34495e;
+}
+
+.modal-header h2 {
+    font-size: 17px;
+    color: #f1c40f;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-close-modal {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-close-modal:hover {
+    background: #c0392b;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d2dae2;
+}
+
+/* Slots Lưu & Tải game */
+.db-status-bar {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+.db-status-bar.connected {
+    background: rgba(46, 204, 113, 0.15);
+    border: 1px solid #2ecc71;
+    color: #2ecc71;
+}
+
+.db-status-bar.offline {
+    background: rgba(243, 156, 18, 0.15);
+    border: 1px solid #f39c12;
+    color: #f39c12;
+}
+
+.save-slots-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.save-slot-card {
+    background: #2f3640;
+    border: 1px solid #485460;
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.2s;
+}
+
+.save-slot-card:hover {
+    border-color: #f1c40f;
+}
+
+.slot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slot-badge {
+    background: #f1c40f;
+    color: #000;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.slot-time {
+    font-size: 11px;
+    color: #808e9b;
+}
+
+.slot-info strong {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.slot-info p {
+    font-size: 12px;
+    color: #bdc3c7;
+    margin-top: 2px;
+}
+
+.slot-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.btn-action {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+}
+
+.btn-load {
+    background: #3498db;
+    color: #fff;
+}
+
+.btn-load:hover {
+    background: #2980b9;
+}
+
+.btn-save {
+    background: #2ecc71;
+    color: #fff;
+}
+
+.btn-save:hover {
+    background: #27ae60;
+}
+
+/* Cài đặt */
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2f3640;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.setting-item label {
+    font-weight: 600;
+    color: #f1c40f;
+}
+
+.setting-item .btn-action.active {
+    background: #2ecc71;
+    color: #fff;
+}
+
+

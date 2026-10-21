@@ -1,0 +1,19 @@
+{
+  "1": {
+    "slot": 1,
+    "saveName": "Chuyến phiêu lưu Tân Thủ Thôn",
+    "mapId": "pelletTown",
+    "playerX": 488,
+    "playerY": 254,
+    "offsetX": -735,
+    "offsetY": -650,
+    "teamData": [],
+    "inventoryData": {
+      "pokeballs": 5,
+      "potions": 3,
+      "gold": 500
+    },
+    "playtime": 0,
+    "updatedAt": "2026-10-21T12:15:23.330Z"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "game_animon",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pokemon-style game project on HTML5 Canvas",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node --check server.js && node --check client/js/main.js",
+    "test": "node --check server.js && node --check client/js/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crycheese245/Game_Animon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6",
+    "sequelize": "^6.37.8"
+  }
+}

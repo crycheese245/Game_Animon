@@ -1,0 +1,14 @@
+﻿[
+    {
+        "path":  "\\Game_Animon\\tools\\j2me-extracted\\asset-manifest.json",
+        "size":  0,
+        "sha256":  {
+
+                   }
+    },
+    {
+        "path":  "\\Game_Animon\\tools\\j2me-extracted\\extract-and-manifest.cmd",
+        "size":  707,
+        "sha256":  "7A2427F0FFD80A52FC36C7555799734D15001FF88A92FD3DA4F7EA4B670EE84C"
+    }
+]
