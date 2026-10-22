@@ -66,9 +66,10 @@ body {
 }
 
 .game-title .title-text {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 13px;
-    letter-spacing: 0.5px;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
     color: #fbbf24;
     text-shadow: 2px 2px 0 #78350f, 0 0 10px rgba(251, 191, 36, 0.4);
 }
@@ -88,9 +89,9 @@ body {
     color: #f1f5f9;
     padding: 6px 14px;
     border-radius: 4px;
-    font-family: 'Silkscreen', monospace;
-    font-size: 11px;
-    font-weight: 700;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.1s ease;
     display: flex;
@@ -173,8 +174,9 @@ canvas {
 }
 
 .section-title-pixel {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 8px;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
     color: #94a3b8;
     margin-bottom: 8px;
     letter-spacing: 1.5px;
@@ -265,8 +267,9 @@ canvas {
 }
 
 .dpad-subtext {
-    font-family: 'Silkscreen', monospace;
-    font-size: 9px;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
     color: #64748b;
     margin-top: 6px;
     letter-spacing: 1px;
@@ -322,8 +325,9 @@ canvas {
 }
 
 .lcd-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 9px;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
     color: #38bdf8;
     letter-spacing: 0.5px;
     text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
@@ -354,9 +358,9 @@ canvas {
     color: #fbbf24;
     padding: 2px 7px;
     border-radius: 4px;
-    font-family: 'Silkscreen', monospace;
-    font-size: 11px;
-    font-weight: bold;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
     border: 1px solid #475569;
     border-bottom: 2px solid #000;
     box-shadow: 0 1px 0 #000;
@@ -400,7 +404,7 @@ canvas {
     padding: 6px 10px;
     border-radius: 6px;
     cursor: pointer;
-    font-family: 'Silkscreen', monospace;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
     transition: all 0.1s ease;
     box-shadow: 0 3px 0 #020617;
     border: 2px solid;
@@ -408,8 +412,9 @@ canvas {
 }
 
 .btn-console-action .act-key {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 11px;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
     width: 22px;
     height: 22px;
     border-radius: 50%;
@@ -483,8 +488,8 @@ canvas {
     border-top-color: #475569;
     border-left-color: #475569;
     color: #94a3b8;
-    font-family: 'Silkscreen', monospace;
-    font-size: 9px;
+    font-family: 'Pixelify Sans', 'Nunito', sans-serif;
+    font-size: 11px;
     font-weight: 700;
     padding: 5px 8px;
     border-radius: 12px;

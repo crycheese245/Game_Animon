@@ -490,6 +490,44 @@ function loadMap(mapId, targetPlayerPos, targetOffset) {
 
     moveAbles = [backgroundSprite, ...boundaries, ...battleZones, ...portals, ...currentNpcs];
     if (foregroundSprite) moveAbles.push(foregroundSprite);
+
+    // 6. Cơ chế chống kẹt nhân vật khi chuyển map (Anti-Stuck Safe Spawn Resolution)
+    const initialHitbox = getPlayerHitbox();
+    const isStuck = boundaries.some(b => rectangularCollision({ rectangle1: initialHitbox, rectangle2: b }));
+    if (isStuck) {
+        // Tìm vị trí thông thoáng gần nhất bằng cách quét xoắn ốc (trong phạm vi 1 - 10 ô)
+        const step = 12;
+        let resolved = false;
+        for (let rad = 1; rad <= 12 && !resolved; rad++) {
+            const dist = rad * step;
+            const testOffsets = [
+                { x: 0, y: dist }, { x: 0, y: -dist },
+                { x: dist, y: 0 }, { x: -dist, y: 0 },
+                { x: dist, y: dist }, { x: -dist, y: -dist },
+                { x: dist, y: -dist }, { x: -dist, y: dist }
+            ];
+            for (const off of testOffsets) {
+                const testHitbox = {
+                    position: { x: initialHitbox.position.x + off.x, y: initialHitbox.position.y + off.y },
+                    width: initialHitbox.width,
+                    height: initialHitbox.height
+                };
+                if (!boundaries.some(b => rectangularCollision({ rectangle1: testHitbox, rectangle2: b }))) {
+                    // Dịch chuyển camera/world ngược lại để đưa hitbox ra khỏi vật cản an toàn
+                    currentOffset.x -= off.x;
+                    currentOffset.y -= off.y;
+                    boundaries.forEach(b => { b.position.x -= off.x; b.position.y -= off.y; });
+                    battleZones.forEach(bz => { bz.position.x -= off.x; bz.position.y -= off.y; });
+                    portals.forEach(p => { p.position.x -= off.x; p.position.y -= off.y; });
+                    currentNpcs.forEach(n => { n.position.x -= off.x; n.position.y -= off.y; });
+                    if (backgroundSprite) { backgroundSprite.position.x -= off.x; backgroundSprite.position.y -= off.y; }
+                    if (foregroundSprite) { foregroundSprite.position.x -= off.x; foregroundSprite.position.y -= off.y; }
+                    resolved = true;
+                    break;
+                }
+            }
+        }
+    }
 }
 
 // Tạo hình ảnh nội thất nhà bằng Canvas procedural
@@ -633,6 +671,7 @@ function processMapTransition() {
             if (p) {
                 loadMap(p.targetMap, p.targetPlayerPos, p.targetOffset);
                 gameState.pendingMapChange = null;
+                gameState.portalCooldown = 40; // Tránh portal lặp ngược tức thì
             }
             gameState.transitionDirection = -1; // Fade in sáng lại
         }
@@ -951,12 +990,16 @@ function handlePlayerMovement() {
 
     const playerHitbox = getPlayerHitbox();
 
-    // Kiểm tra Cổng dịch chuyển (Portals)
-    for (let i = 0; i < portals.length; i++) {
-        const portal = portals[i];
-        if (rectangularCollision({ rectangle1: playerHitbox, rectangle2: portal })) {
-            triggerPortalTransition(portal);
-            return;
+    // Kiểm tra Cổng dịch chuyển (Portals) có tính đến cooldown sau khi vừa xuất hiện
+    if (gameState.portalCooldown > 0) {
+        gameState.portalCooldown--;
+    } else {
+        for (let i = 0; i < portals.length; i++) {
+            const portal = portals[i];
+            if (rectangularCollision({ rectangle1: playerHitbox, rectangle2: portal })) {
+                triggerPortalTransition(portal);
+                return;
+            }
         }
     }
 
@@ -1255,7 +1298,7 @@ window.menuManager.onNewGame = ({ gender, name, starterCode }) => {
     gameState.playtime = 0;
 
     applyPlayerGender(gender);
-    loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
+    loadMap('map_0', { x: 448, y: 224 }, { x: -8, y: -444 });
 
     const titlePrefix = (gender === 'female') ? 'Công chúa' : 'Hoàng tử';
     activeDialogue = {
@@ -1266,7 +1309,7 @@ window.menuManager.onNewGame = ({ gender, name, starterCode }) => {
 
 window.menuManager.onStartGame = () => {
     if (!backgroundSprite) {
-        loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
+        loadMap('map_0', { x: 448, y: 224 }, { x: -8, y: -444 });
     }
 };
 
@@ -1410,7 +1453,7 @@ window.addEventListener('keydown', (e) => {
             break;
         case 'r':
         case 'R':
-            loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
+            loadMap('map_0', { x: 448, y: 224 }, { x: -8, y: -444 });
             break;
     }
 });
@@ -1504,7 +1547,7 @@ window.gameEngine = {
 };
 
 // Khởi tạo map đầu tiên (Cung Điện Cầu Vồng Khởi Đầu J2ME)
-loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
+loadMap('map_0', { x: 448, y: 224 }, { x: -8, y: -444 });
 
 // Bắt đầu vòng lặp game
 animate();

@@ -214,50 +214,6 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'interior', baseColor = '#004e
             Array.from({ length: cols }, (_, c) => j2meMap.collisionGrid[r] ? (j2meMap.collisionGrid[r][c] || 0) : 0)
         );
 
-        // Bổ sung ranh giới tường thành, rừng thông và kiến trúc nhà cho map_0
-        if (mapKey === 'map_0') {
-            for (let r = 0; r < rows; r++) {
-                grid[r][0] = 1; grid[r][1] = 1; // Tường thành đá phía Tây
-                grid[r][cols - 2] = 1; grid[r][cols - 1] = 1; // Tường thành đá phía Đông
-            }
-            for (let c = 0; c < cols; c++) {
-                grid[0][c] = 1; grid[1][c] = 1; grid[2][c] = 1; // Dãy rừng thông ranh giới phía Bắc
-            }
-            // Hàng cây thông dọc đường đại lộ
-            for (let r = 3; r <= 23; r++) {
-                grid[r][2] = 1;
-                grid[r][6] = 1;
-                grid[r][7] = 1;
-            }
-            // Khối kiến trúc Nhà 1 (Cung điện nhỏ - mái cam)
-            for (let r = 8; r <= 12; r++) {
-                for (let c = 8; c <= 11; c++) {
-                    grid[r][c] = 1;
-                }
-            }
-            // Khối kiến trúc Nhà 2 (Đại điện đông)
-            for (let r = 9; r <= 13; r++) {
-                for (let c = 13; c <= 18; c++) {
-                    grid[r][c] = 1;
-                }
-            }
-            // Mở thông đại lộ chính (cols 3..5, rows 3..25)
-            for (let r = 3; r <= 25; r++) {
-                for (let c = 3; c <= 5; c++) grid[r][c] = 0;
-            }
-            // Mở thông sân trước nhà (cols 8..13, rows 14..16)
-            for (let r = 14; r <= 16; r++) {
-                for (let c = 8; c <= 13; c++) grid[r][c] = 0;
-            }
-            // Mở thông quảng trường phía Nam (cols 3..18, rows 24..27)
-            for (let r = 24; r <= 27; r++) {
-                for (let c = 3; c <= 18; c++) grid[r][c] = 0;
-            }
-            // Mở thông lối ra cổng Nam (cols 8..12, rows 28..31)
-            for (let r = 28; r < rows; r++) {
-                for (let c = 8; c <= 12; c++) grid[r][c] = 0;
-            }
-        }
 
         for (let r = 0; r < rows; r++) {
             for (let col = 0; col < cols; col++) {
@@ -402,11 +358,11 @@ const MAPS_CONFIG = {
         id: 'map_0',
         name: 'Cung Điện Cầu Vồng (Khởi Đầu)',
         theme: 'interior',
-        baseColor: '#004e98',
+        baseColor: '#2e7d32',
         pathColor: '#d90429',
         width: 1056,
         height: 1536,
-        initialOffset: { x: 16, y: -448 },
+        initialOffset: { x: -8, y: -444 },
         initialPlayerPos: { x: 448, y: 224 },
         wildPool: ['cauvong_pet_1', 'cauvong_pet_2', 'cauvong_pet_3'],
         encounterRate: 0.0,
@@ -415,11 +371,11 @@ const MAPS_CONFIG = {
                 name: 'Cổng Nam Ra Thành Phố Cầu Vồng',
                 worldX: 432,
                 worldY: 1440,
-                width: 96,
+                width: 144,
                 height: 96,
                 targetMap: 'map_1',
-                targetPlayerPos: { x: 448, y: 224 },
-                targetOffset: { x: -176, y: 0 }
+                targetPlayerPos: { x: 448, y: 140 },
+                targetOffset: { x: -152, y: 0 }
             }
         ]
     },
@@ -476,40 +432,40 @@ const MAPS_CONFIG = {
         pathColor: '#ecf0f1',
         width: 1344,
         height: 1536,
-        initialOffset: { x: -350, y: -800 },
-        initialPlayerPos: { x: 488, y: 440 },
+        initialOffset: { x: -152, y: -400 },
+        initialPlayerPos: { x: 448, y: 224 },
         wildPool: [], // Thành phố an toàn
         encounterRate: 0,
         portals: [
             {
-                name: 'Cổng Nam Về Cung Điện',
-                worldX: 624,
-                worldY: 1440,
-                width: 96,
-                height: 48,
+                name: 'Cổng Bắc Lên Cung Điện Cầu Vồng',
+                worldX: 576,
+                worldY: 0,
+                width: 144,
+                height: 60,
                 targetMap: 'map_0',
-                targetPlayerPos: { x: 488, y: 254 },
-                targetOffset: { x: -200, y: -100 }
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -8, y: -1020 }
             },
             {
-                name: 'Cổng Bắc Đi Đấu Trường Huấn Luyện Sư',
-                worldX: 624,
-                worldY: 48,
-                width: 96,
-                height: 48,
-                targetMap: 'map_2',
-                targetPlayerPos: { x: 488, y: 440 },
-                targetOffset: { x: -300, y: -700 }
-            },
-            {
-                name: 'Cổng Đông Ra Bình Nguyên Xanh',
-                worldX: 1248,
-                worldY: 720,
-                width: 48,
+                name: 'Cổng Nam Ra Bình Nguyên Xanh',
+                worldX: 576,
+                worldY: 1440,
+                width: 144,
                 height: 96,
                 targetMap: 'map_3',
-                targetPlayerPos: { x: 488, y: 254 },
-                targetOffset: { x: -200, y: -200 }
+                targetPlayerPos: { x: 448, y: 150 },
+                targetOffset: { x: -152, y: 0 }
+            },
+            {
+                name: 'Cổng Đông Ra Đấu Trường Huấn Luyện Sư',
+                worldX: 1248,
+                worldY: 672,
+                width: 96,
+                height: 96,
+                targetMap: 'map_2',
+                targetPlayerPos: { x: 200, y: 224 },
+                targetOffset: { x: 0, y: -444 }
             }
         ]
     },
@@ -529,14 +485,14 @@ const MAPS_CONFIG = {
         encounterRate: 0.02,
         portals: [
             {
-                name: 'Cổng Nam Về Thành Phố',
-                worldX: 624,
-                worldY: 1440,
-                width: 96,
-                height: 48,
+                name: 'Cổng Tây Về Thành Phố',
+                worldX: 0,
+                worldY: 720,
+                width: 60,
+                height: 96,
                 targetMap: 'map_1',
-                targetPlayerPos: { x: 488, y: 254 },
-                targetOffset: { x: -350, y: -380 }
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -684, y: -396 }
             }
         ]
     },
@@ -556,14 +512,24 @@ const MAPS_CONFIG = {
         encounterRate: 0.025,
         portals: [
             {
+                name: 'Cổng Bắc Về Thành Phố Cầu Vồng',
+                worldX: 576,
+                worldY: 0,
+                width: 144,
+                height: 60,
+                targetMap: 'map_1',
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -152, y: -1056 }
+            },
+            {
                 name: 'Lối Tây Về Thành Phố Cầu Vồng',
                 worldX: 48,
                 worldY: 720,
                 width: 48,
                 height: 96,
                 targetMap: 'map_1',
-                targetPlayerPos: { x: 488, y: 254 },
-                targetOffset: { x: -700, y: -450 }
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -152, y: -400 }
             },
             {
                 name: 'Cổng Đông Đi Hang Động Pha Lê',
