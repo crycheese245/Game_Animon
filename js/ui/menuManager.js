@@ -5,7 +5,8 @@
 class MenuManager {
     constructor() {
         this.isInMainMenu = true;
-        this.currentModal = null; // 'save_load', 'settings', 'about', 'online', 'char_creation'
+        this.isInGameMenu = false;
+        this.currentModal = null; // 'save_load', 'settings', 'about', 'online', 'char_creation', 'bag', 'pet_team'
         this.onStartGame = null;
         this.onNewGame = null;
         this.onLoadGame = null;
@@ -20,6 +21,7 @@ class MenuManager {
     }
 
     initDOM() {
+        // --- 1. CÁC NÚT MÀN HÌNH CHÍNH (TITLE SCREEN - CHỈ 4 MỤC) ---
         // Nút Chơi Mới -> Mở màn hình tạo nhân vật
         document.getElementById('btn-menu-newgame')?.addEventListener('click', () => {
             window.soundEngine?.playMenuClick();
@@ -33,50 +35,63 @@ class MenuManager {
             if (this.onStartGame) this.onStartGame();
         });
 
-        document.getElementById('btn-menu-save')?.addEventListener('click', () => {
-            window.soundEngine?.playMenuClick();
-            this.showSaveLoadModal();
-        });
-
+        // Nút Cài Đặt trên màn hình chính
         document.getElementById('btn-menu-settings')?.addEventListener('click', () => {
             window.soundEngine?.playMenuClick();
             this.showSettingsModal();
         });
 
+        // Nút Giới Thiệu trên màn hình chính
         document.getElementById('btn-menu-about')?.addEventListener('click', () => {
             window.soundEngine?.playMenuClick();
             this.showAboutModal();
         });
 
-        document.getElementById('btn-menu-online')?.addEventListener('click', () => {
+        // --- 2. CÁC NÚT TRONG MENU TRÒ CHƠI (IN-GAME PAUSE MENU) ---
+        // Sủng vật trong game
+        document.getElementById('btn-ingame-pets')?.addEventListener('click', () => {
             window.soundEngine?.playMenuClick();
-            this.showOnlineModal();
-        });
-
-        // Nút Đội Hình Sủng Vật (Header + Menu)
-        document.getElementById('btn-pet-team')?.addEventListener('click', () => {
-            window.soundEngine?.playMenuClick();
-            this.showPetTeamModal();
-        });
-        document.getElementById('btn-menu-pets')?.addEventListener('click', () => {
-            window.soundEngine?.playMenuClick();
+            this.hideInGameMenu();
             this.showPetTeamModal();
         });
 
-        // Nút Túi Đồ (Header + Menu)
-        document.getElementById('btn-inventory')?.addEventListener('click', () => {
+        // Túi đồ trong game
+        document.getElementById('btn-ingame-bag')?.addEventListener('click', () => {
             window.soundEngine?.playMenuClick();
-            this.showBagModal();
-        });
-        document.getElementById('btn-menu-bag')?.addEventListener('click', () => {
-            window.soundEngine?.playMenuClick();
+            this.hideInGameMenu();
             this.showBagModal();
         });
 
-        // Nút Menu trên Header game
-        document.getElementById('btn-in-game-menu')?.addEventListener('click', () => {
+        // Lưu & Tải trong game
+        document.getElementById('btn-ingame-save')?.addEventListener('click', () => {
             window.soundEngine?.playMenuClick();
-            this.showMainMenu();
+            this.hideInGameMenu();
+            this.showSaveLoadModal();
+        });
+
+        // Cài đặt trong game
+        document.getElementById('btn-ingame-settings')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            this.hideInGameMenu();
+            this.showSettingsModal();
+        });
+
+        // Về màn hình chính từ in-game
+        document.getElementById('btn-ingame-title')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            if (confirm('Bạn có chắc chắn muốn quay về Màn hình chính không? Đừng quên lưu game trước khi thoát!')) {
+                this.returnToTitleScreen();
+            }
+        });
+
+        // Tiếp tục chơi / Đóng in-game menu
+        document.getElementById('btn-ingame-resume')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            this.hideInGameMenu();
+        });
+        document.getElementById('btn-ingame-close')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            this.hideInGameMenu();
         });
     }
 
@@ -170,7 +185,9 @@ class MenuManager {
 
     showMainMenu() {
         this.isInMainMenu = true;
+        this.isInGameMenu = false;
         this.hideCharacterCreation();
+        this.hideInGameMenu();
         const menuOverlay = document.getElementById('main-menu-overlay');
         if (menuOverlay) menuOverlay.style.display = 'flex';
     }
@@ -179,6 +196,48 @@ class MenuManager {
         this.isInMainMenu = false;
         const menuOverlay = document.getElementById('main-menu-overlay');
         if (menuOverlay) menuOverlay.style.display = 'none';
+    }
+
+    showInGameMenu() {
+        if (this.isInMainMenu) return;
+        this.isInGameMenu = true;
+        const ingameOverlay = document.getElementById('ingame-menu-overlay');
+        const nameEl = document.getElementById('ingame-player-name');
+        const goldEl = document.getElementById('ingame-player-gold');
+        const avatarEl = document.getElementById('ingame-player-avatar');
+
+        if (nameEl) nameEl.textContent = window.gameState?.playerName || 'Red';
+        if (goldEl) goldEl.textContent = `💰 ${(window.gameState?.inventory?.gold || 0).toLocaleString('vi-VN')} Vàng`;
+        if (avatarEl && window.gameState?.playerAvatar) {
+            avatarEl.src = window.gameState.playerAvatar;
+        }
+
+        if (ingameOverlay) ingameOverlay.style.display = 'flex';
+    }
+
+    hideInGameMenu() {
+        this.isInGameMenu = false;
+        const ingameOverlay = document.getElementById('ingame-menu-overlay');
+        if (ingameOverlay) ingameOverlay.style.display = 'none';
+    }
+
+    toggleInGameMenu() {
+        if (this.isInMainMenu) return;
+        if (this.currentModal) {
+            this.closeModal();
+            return;
+        }
+        if (this.isInGameMenu) {
+            this.hideInGameMenu();
+        } else {
+            this.showInGameMenu();
+        }
+    }
+
+    returnToTitleScreen() {
+        this.hideInGameMenu();
+        this.closeModal();
+        this.showMainMenu();
     }
 
     closeModal() {

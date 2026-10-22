@@ -925,8 +925,8 @@ function animate() {
     // 8. Vẽ HUD thông tin (khi không trong trận đấu)
     drawGameHUD();
 
-    // 9. Nếu đang ở màn hình Menu chính:
-    if (window.menuManager?.isInMainMenu) {
+    // 9. Nếu đang ở màn hình Menu chính hoặc Menu Trong Game:
+    if (window.menuManager?.isInMainMenu || window.menuManager?.isInGameMenu) {
         // Vẽ lớp phủ làm mờ nhẹ thế giới phía sau Menu để tôn Menu nổi bật
         ctx.save();
         ctx.fillStyle = 'rgba(15, 23, 42, 0.55)';
@@ -1318,12 +1318,17 @@ window.addEventListener('keydown', (e) => {
         return;
     }
 
-    // Phím ESC mở/đóng Menu
+    // Phím ESC mở/đóng Menu Trong Game hoặc đóng modal
     if (e.key === 'Escape') {
-        if (window.menuManager.isInMainMenu) {
-            window.menuManager.hideMainMenu();
-        } else {
-            window.menuManager.showMainMenu();
+        if (window.menuManager) {
+            if (window.menuManager.currentModal) {
+                window.menuManager.closeModal();
+            } else if (window.menuManager.isInMainMenu) {
+                // Đang ở màn hình tiêu đề chính
+            } else {
+                // Đang trong game -> Bật/Tắt Menu Trong Game
+                window.menuManager.toggleInGameMenu();
+            }
         }
         return;
     }
