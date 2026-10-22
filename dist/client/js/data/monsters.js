@@ -1,6 +1,5 @@
 // ========================================================
-// HỆ THỐNG SỦNG VẬT & KỸ NĂNG MASTER (TỔNG HỢP TỪ 5 BẢN J2ME)
-// Vương Quốc Sủng Cầu Vồng • Liệt Hỏa 6 • Liên Thú Chiến Kỷ • Thần Thú Đại Lục • Thế Giới Mới
+// DANH SÁCH 102 SỦNG VẬT & NGŨ HÀNH (VƯƠNG QUỐC SỦNG CẦU VỒNG)
 // ========================================================
 const TYPE_EFFECTIVENESS = {
   "Thực Vật": {
@@ -70,56 +69,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_1",
     "sprite": "./img/monsters/npc2_1.png",
     "description": "Tiểu Thụ Quái đáng yêu. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      11,
-      13
-    ],
+    "evolution": {
+      "targetId": 2,
+      "targetCode": "cauvong_pet_2",
+      "targetName": "Bụi gai",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 6,
-        "name": "Châm Diệp Trảm",
-        "type": "Thực Vật",
-        "power": 26,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bên ngoài thành phía nam, Cao nguyên phía đông 2"
   },
   {
     "id": 2,
@@ -145,55 +150,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_1",
     "sprite": "./img/monsters/npc2_1.png",
     "description": "Kinh Cứu Thụ Quái (bụi gai) toàn thân dài khắp. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 3,
+      "targetCode": "cauvong_pet_3",
+      "targetName": "Cây chứa dịch độc",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
-      },
-      {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
         "id": 2,
-        "name": "Phi Diệp Đao Phong",
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
-        "id": 3,
-        "name": "Sâm Lâm Bạo Phát",
-        "type": "Thực Vật",
-        "power": 36,
-        "mpCost": 26,
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
+        "buffDef": 0
+      },
+      {
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 3,
@@ -219,55 +231,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_1",
     "sprite": "./img/monsters/npc2_1.png",
     "description": "Độc Thụ Quái (cây chứa dịch độc) toàn thân tràn ngập nọc độc trí mạng. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 4,
+      "targetCode": "cauvong_pet_4",
+      "targetName": "Cổ Thụ Chi Vương",
+      "reqItemId": 19,
+      "reqItemCode": "item_19",
+      "reqItemName": "Chu quả",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
-        "id": 4,
-        "name": "Mộc Chi Cứu Thù",
-        "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
+        "type": "Mãnh Thú",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 4,
@@ -293,55 +312,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_2",
     "sprite": "./img/monsters/npc2_2.png",
     "description": "Tính tình ôn hòa trưởng giả, khi tức giận sẽ tạo nên uy lực mạnh mẽ có sức hủy diệt to lớn. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 5,
@@ -367,57 +385,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_3",
     "sprite": "./img/monsters/npc2_3.png",
     "description": "Hoa ăn thịt người. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      12,
-      14,
-      16
-    ],
+    "evolution": {
+      "targetId": 6,
+      "targetCode": "cauvong_pet_6",
+      "targetName": "Hoa ngũ sắc",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 0,
-        "name": "Triền Nhiễu",
-        "type": "Thực Vật",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
+        "type": "Kim Loại",
         "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
+        "type": "Kim Loại",
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 6,
-        "name": "Châm Diệp Trảm",
-        "type": "Thực Vật",
-        "power": 26,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Cao nguyên phía đông 1, Cao nguyên phía đông 3, Rừng rậm phía tây 1"
   },
   {
     "id": 6,
@@ -443,55 +466,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_3",
     "sprite": "./img/monsters/npc2_3.png",
     "description": "Loài thực vật có đôi môi gợi cảm kỳ lạ. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
-      },
-      {
-        "id": 2,
-        "name": "Phi Diệp Đao Phong",
-        "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 3,
-        "name": "Sâm Lâm Bạo Phát",
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 36,
-        "mpCost": 26,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
+        "buffDef": 0
+      },
+      {
+        "id": 4,
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
+        "type": "Thực Vật",
+        "power": 27,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 7,
@@ -517,55 +539,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_3",
     "sprite": "./img/monsters/npc2_3.png",
     "description": "Lợi dụng bề ngoài có 5 sắc màu hấp dẫn con mồi, sau đó xơi tái con mồi chỉ với một ngụm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 8,
@@ -591,57 +612,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Trái cây thần kỳ đã hóa hình hài con người. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      13,
-      16,
-      17
-    ],
+    "evolution": {
+      "targetId": 9,
+      "targetCode": "cauvong_pet_9",
+      "targetName": "Mạn đà la",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 6,
-        "name": "Châm Diệp Trảm",
-        "type": "Thực Vật",
-        "power": 26,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Cao nguyên phía đông 2, Rừng rậm phía tây 1, Rừng rậm phía tây 2"
   },
   {
     "id": 9,
@@ -667,55 +693,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Có sức mạnh đặc biệt tạo thành ngòi nổ, thực lực bất phàm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 10,
+      "targetCode": "cauvong_pet_10",
+      "targetName": "Hoa Mạn đà la",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
+        "type": "Kim Loại",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       },
       {
         "id": 2,
-        "name": "Phi Diệp Đao Phong",
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 3,
-        "name": "Sâm Lâm Bạo Phát",
-        "type": "Thực Vật",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 10,
@@ -741,55 +774,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Đóa hoa tiên nở rộ rất xinh đẹp trong xứ xở của Thực Vật hệ. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 11,
@@ -815,57 +847,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_5",
     "sprite": "./img/monsters/npc2_5.png",
     "description": "Tiên Nhân Chưởng Thực Vật hệ toàn thân bao trùm bộ gai nhọn dài khắp. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      11,
-      12,
-      13
-    ],
+    "evolution": {
+      "targetId": 12,
+      "targetCode": "cauvong_pet_12",
+      "targetName": "Gai khổng lồ",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
+        "type": "Phi Hành",
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 6,
-        "name": "Châm Diệp Trảm",
-        "type": "Thực Vật",
-        "power": 26,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bên ngoài thành phía nam, Cao nguyên phía đông 1, Cao nguyên phía đông 2"
   },
   {
     "id": 12,
@@ -891,55 +928,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_5",
     "sprite": "./img/monsters/npc2_5.png",
     "description": "Sử dụng những cái gai bọc quanh thân làm thứ vũ khí đánh lui kẻ địch. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 13,
+      "targetCode": "cauvong_pet_13",
+      "targetName": "Gai độc",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "id": 12,
+        "name": "Tật Phong Tốc Hàng",
+        "category": "Phi Hành Hệ Kỹ năng bậc 3",
+        "type": "Phi Hành",
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       },
       {
         "id": 2,
-        "name": "Phi Diệp Đao Phong",
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 3,
-        "name": "Sâm Lâm Bạo Phát",
-        "type": "Thực Vật",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 13,
@@ -965,55 +1009,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_5",
     "sprite": "./img/monsters/npc2_5.png",
     "description": "Gai độc quanh thân khi cần có khả năng tạo nên uy lực mạnh mẽ làm kẻ địch lập tức bị mất mạng. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 14,
@@ -1039,55 +1082,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_6",
     "sprite": "./img/monsters/npc2_6.png",
     "description": "Tiểu cô nương rất mê bộ môn khiêu vũ. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
-        "id": 6,
-        "name": "Châm Diệp Trảm",
+        "id": 4,
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 26,
-        "mpCost": 18,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 15,
@@ -1113,55 +1155,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_6",
     "sprite": "./img/monsters/npc2_6.png",
     "description": "Tiểu cô nương Hawaii phong tình. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 15,
+      "targetCode": "cauvong_pet_15",
+      "targetName": "Tứ Diệp Tiểu Tả",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
         "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 16,
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
+        "buffDef": 0
       },
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
+        "type": "Phi Hành",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       },
       {
         "id": 2,
-        "name": "Phi Diệp Đao Phong",
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 3,
-        "name": "Sâm Lâm Bạo Phát",
-        "type": "Thực Vật",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 16,
@@ -1187,55 +1236,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Nữ Vương Hoa Tiên khí chất bất phàm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 17,
@@ -1261,55 +1309,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_6",
     "sprite": "./img/monsters/npc2_6.png",
     "description": "Phi Vẫn một đại biểu ái tâm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 17,
+      "targetCode": "cauvong_pet_17",
+      "targetName": "Ái Tâm Thảo",
+      "reqItemId": 19,
+      "reqItemCode": "item_19",
+      "reqItemName": "Chu quả",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
+        "type": "Mãnh Thú",
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
+        "type": "Mãnh Thú",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 4,
-        "name": "Mộc Chi Cứu Thù",
-        "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 18,
@@ -1335,55 +1390,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_7",
     "sprite": "./img/monsters/npc2_7.png",
     "description": "Sư tử dũng mãnh với một lớp bạch kim bao trùm dáng vẻ bên ngoài. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 19,
+      "targetCode": "cauvong_pet_19",
+      "targetName": "Vương Sư",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 19,
@@ -1409,55 +1471,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_7",
     "sprite": "./img/monsters/npc2_7.png",
     "description": "Kim Loại Chi Vương, trên người tản ra khí phách vô cùng mạnh mẽ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 20,
+      "targetCode": "cauvong_pet_20",
+      "targetName": "Đế Vương Sư",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
+        "type": "Mãnh Thú",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 13,
-        "name": "Bạo Liệt Thiết Toản",
-        "type": "Kim Loại",
-        "power": 36,
-        "mpCost": 26,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 20,
@@ -1483,55 +1552,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_8",
     "sprite": "./img/monsters/npc2_8.png",
     "description": "Vương Giả, khí thế làm cho không kẻ nào có thể tới gần. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 21,
+      "targetCode": "cauvong_pet_21",
+      "targetName": "Thủy Tinh Hùng Sư",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
+        "type": "Hải Dương",
+        "power": 13,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 25,
+        "name": "Công Kích thông dụng",
+        "category": "Kỹ năng công kích cơ bản",
+        "type": "Đặc Biệt",
+        "power": 8,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
-        "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 21,
@@ -1557,55 +1633,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_8",
     "sprite": "./img/monsters/npc2_8.png",
     "description": "Phát ra hào quang thần thánh của loài sư tử mạnh mẽ, Kim Loại hệ mạnh nhất! [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 22,
@@ -1631,57 +1706,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_9",
     "sprite": "./img/monsters/npc2_9.png",
     "description": "Hoạt động sâu trong lòng đất, món ăn ưa thích chính là quặng đồng. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      6,
-      10,
-      22
-    ],
+    "evolution": {
+      "targetId": 23,
+      "targetCode": "cauvong_pet_23",
+      "targetName": "Thiết Giáp Xà",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 22,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Kim Loại Di Tích 2, Kim Loại Di Tích 3, Nam Chi Phế Tích 2"
   },
   {
     "id": 23,
@@ -1707,55 +1787,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_10",
     "sprite": "./img/monsters/npc2_10.png",
     "description": "Sủng vật bề ngoài được bao bởi một lớp kim loại kỳ quái. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 24,
+      "targetCode": "cauvong_pet_24",
+      "targetName": "Xích Kim Xà Vương",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 13,
-        "name": "Bạo Liệt Thiết Toản",
-        "type": "Kim Loại",
-        "power": 36,
-        "mpCost": 26,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
+        "buffDef": 0
+      },
+      {
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 24,
@@ -1781,55 +1868,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_11",
     "sprite": "./img/monsters/npc2_11.png",
     "description": "Hoa Lệ Kim Bì thể hiện sự vương giả tôn quý, năng lượng mạnh mẽ đủ để cho đối thủ thần phục. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
+        "buffDef": 0
       },
       {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
+        "type": "Kim Loại",
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
         "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 25,
@@ -1855,55 +1941,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_11",
     "sprite": "./img/monsters/npc2_11.png",
     "description": "Xà Vương buồn. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 25,
+      "targetCode": "cauvong_pet_25",
+      "targetName": "Xích Kim Xà Hậu",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 25,
+        "name": "Công Kích thông dụng",
+        "category": "Kỹ năng công kích cơ bản",
+        "type": "Đặc Biệt",
+        "power": 8,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
-        "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 26,
@@ -1929,57 +2022,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_12",
     "sprite": "./img/monsters/npc2_12.png",
     "description": "Trung thành và chiến đấu anh dũng. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      6,
-      10,
-      24
-    ],
+    "evolution": {
+      "targetId": 27,
+      "targetCode": "cauvong_pet_27",
+      "targetName": "Đội trưởng Thiết Giáp",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 26,
+        "name": "Tàn quân",
+        "category": "Giảm 25% độ trung thành của sủng vật công kích kẻ địch",
+        "type": "Đặc Biệt",
+        "power": 18,
+        "mpCost": 40,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Kim Loại Di Tích 2, Kim Loại Di Tích 3, Bầu trời phương bắc 1"
   },
   {
     "id": 27,
@@ -2005,55 +2103,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_12",
     "sprite": "./img/monsters/npc2_12.png",
     "description": "Khát máu và là tay thiện chiến, có thực lực bất phàm. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 28,
+      "targetCode": "cauvong_pet_28",
+      "targetName": "Tướng Thiết Giáp",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 27,
+        "name": "Trị liệu sơ cấp",
+        "category": "Hồi phục 70 điểm sinh mệnh",
+        "type": "Hồi Phục",
+        "power": 7,
+        "mpCost": 10,
         "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "heal": 70,
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 13,
-        "name": "Bạo Liệt Thiết Toản",
-        "type": "Kim Loại",
-        "power": 36,
-        "mpCost": 26,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 28,
@@ -2079,55 +2184,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_13",
     "sprite": "./img/monsters/npc2_13.png",
     "description": "Tướng quân tay cầm trường thương công kích. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 29,
@@ -2153,55 +2257,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_13",
     "sprite": "./img/monsters/npc2_13.png",
     "description": "Tướng quân thiện chiến rất dũng mãnh và khát máu. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 29,
+      "targetCode": "cauvong_pet_29",
+      "targetName": "Song Đao Tướng Quân",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 28,
+        "name": "Trị liệu chuyên nghiệp",
+        "category": "Hồi phục 200 điểm sinh mệnh",
+        "type": "Hồi Phục",
+        "power": 20,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 200,
+        "buffDef": 0
+      },
+      {
+        "id": 25,
+        "name": "Công Kích thông dụng",
+        "category": "Kỹ năng công kích cơ bản",
+        "type": "Đặc Biệt",
+        "power": 8,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
-        "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 30,
@@ -2227,55 +2338,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_13",
     "sprite": "./img/monsters/npc2_13.png",
     "description": "Tướng quân tiên phong trí dũng song toàn. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 31,
@@ -2301,57 +2411,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Thiết Đầu Công thiên bẩm trời phú. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      5,
-      20,
-      23
-    ],
+    "evolution": {
+      "targetId": 32,
+      "targetCode": "cauvong_pet_32",
+      "targetName": "Thiết Cự Nhân",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 31,
+        "name": "Độc Dịch Công Kích",
+        "category": "Nâng cao hiệu quả Hủ Thực của sủng vật Thực Vật hệ",
+        "type": "Đặc Biệt",
+        "power": 3,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Kim Loại Di Tích 1, Rừng rậm phía tây 5, Nam Chi Phế Tích 3"
   },
   {
     "id": 32,
@@ -2377,55 +2492,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Được các anh em trong Thiết Đầu gọi là người khổng lồ có bàn tay sắt. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 33,
+      "targetCode": "cauvong_pet_33",
+      "targetName": "Thiết Cự Linh",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 32,
+        "name": "Tiêm Nha Lợi Xỉ",
+        "category": "Kéo dài hiệp đấu duy trì liên tục Tê Liệt của sủng vật Mãnh Thú hệ",
+        "type": "Đặc Biệt",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 13,
-        "name": "Bạo Liệt Thiết Toản",
-        "type": "Kim Loại",
-        "power": 36,
-        "mpCost": 26,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 33,
@@ -2451,55 +2573,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Người khổng lồ Taurus. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 34,
@@ -2525,55 +2646,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Sủng vật quanh thân tràn ngập từ tính. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 35,
@@ -2599,57 +2719,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_15",
     "sprite": "./img/monsters/npc2_15.png",
     "description": "Ánh mắt thiện lượng khó che đậy bản chất ác ma. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      21,
-      22,
-      29
-    ],
+    "evolution": {
+      "targetId": 36,
+      "targetCode": "cauvong_pet_36",
+      "targetName": "Thiết Cầu huynh đệ",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 35,
+        "name": "Triều Tịch Năng Lượng",
+        "category": "Sủng vật Hải Dương hệ công kích có thể giảm một phần tiêu hao năng lượng",
+        "type": "Đặc Biệt",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
+        "type": "Hải Dương",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Nam Chi Phế Tích 1, Nam Chi Phế Tích 2, Bến tàu phía bắc Bắc Hải"
   },
   {
     "id": 36,
@@ -2675,55 +2800,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_16",
     "sprite": "./img/monsters/npc2_16.png",
     "description": "Đam mê bộ môn thể thao ngoài trời. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 10,
-        "name": "Thiết Quyền",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 16,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
+        "buffDef": 0
       },
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 13,
-        "name": "Bạo Liệt Thiết Toản",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 36,
-        "mpCost": 26,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 37,
@@ -2749,55 +2873,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_17",
     "sprite": "./img/monsters/npc2_17.png",
     "description": "Ấu tử Bạch Kim Long, tinh nghịch phi thường. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 38,
+      "targetCode": "cauvong_pet_38",
+      "targetName": "Tiểu Bạch Long",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 37,
+        "name": "Kinh nghiệm phong phú",
+        "category": "Đạt được 3 lần kinh nghiệm (có thể đồng thời sử dụng nhiều kinh nghiệm hơn)",
+        "type": "Đặc Biệt",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
         "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 26,
-        "name": "Lôi Đình Nhất Kích",
-        "type": "Phi Hành",
-        "power": 38,
-        "mpCost": 28,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 38,
@@ -2823,55 +2954,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_17",
     "sprite": "./img/monsters/npc2_17.png",
     "description": "Thể tiến hóa Tiểu Phi Long, tốc độ rất nhanh. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 39,
+      "targetCode": "cauvong_pet_39",
+      "targetName": "Kim Dực Long",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 38,
+        "name": "Trọng Sinh Chi Tâm",
+        "category": "Sau khi tử vong có 70% tỷ lệ hồi sinh",
+        "type": "Đặc Biệt",
+        "power": 50,
+        "mpCost": 60,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
         "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 39,
@@ -2897,55 +3035,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_18",
     "sprite": "./img/monsters/npc2_18.png",
     "description": "Thể trưởng thành Phi Long, cơ thể chứa năng lượng mạnh mẽ. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 40,
+      "targetCode": "cauvong_pet_40",
+      "targetName": "Bạch Kim Long",
+      "reqItemId": 23,
+      "reqItemCode": "item_23",
+      "reqItemName": "Thiên vũ",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
+        "id": 39,
+        "name": "Hạnh Vận Chi Tinh",
+        "category": "Nâng cao tỷ lệ gặp được sủng vật hiếm",
+        "type": "Đặc Biệt",
+        "power": 70,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
+        "buffDef": 0
       },
       {
         "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 40,
@@ -2971,55 +3116,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_18",
     "sprite": "./img/monsters/npc2_18.png",
     "description": "Vua bầu trời, có được thực lực thần thánh. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
+        "type": "Phi Hành",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 41,
@@ -3045,57 +3189,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_19",
     "sprite": "./img/monsters/npc2_19.png",
     "description": "Loài chim hung mãnh bay lượn trên không trung. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      25,
-      26,
-      37
-    ],
+    "evolution": {
+      "targetId": 42,
+      "targetCode": "cauvong_pet_42",
+      "targetName": "Vương Thứu",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 41,
+        "name": "Thân Hòa Thiên Sử",
+        "category": "Bắt được kẻ địch thất bại cũng không chạy trốn [bắt sủng chuyên dụng]",
+        "type": "Đặc Biệt",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
         "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 26,
-        "name": "Lôi Đình Nhất Kích",
-        "type": "Phi Hành",
-        "power": 38,
-        "mpCost": 28,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 2, Bầu trời phương bắc 3, Khu trường cũ Bắc Hải 3"
   },
   {
     "id": 42,
@@ -3121,55 +3270,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_19",
     "sprite": "./img/monsters/npc2_19.png",
     "description": "Ưng Chi Vương, vỗ một sải cánh có thể bay đến trời cao. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 43,
+      "targetCode": "cauvong_pet_43",
+      "targetName": "Sư Thứu",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 42,
+        "name": "Đào tẩu chuyên nghiệp",
+        "category": "Chạy trốn nhất định thành công",
+        "type": "Đặc Biệt",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
         "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 43,
@@ -3195,55 +3351,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_19",
     "sprite": "./img/monsters/npc2_19.png",
     "description": "Sư Thân Ưng Thú trong truyền thuyết (sự pha trộn giữa sư tử và chim ưng), dã thú dị thường hung mãnh. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
+        "type": "Phi Hành",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 44,
@@ -3269,57 +3424,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_20",
     "sprite": "./img/monsters/npc2_20.png",
     "description": "Dơi Tặc Mi Thử Nhãn, tên trộm đáng yêu. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      24,
-      26,
-      39
-    ],
+    "evolution": {
+      "targetId": 45,
+      "targetCode": "cauvong_pet_45",
+      "targetName": "Răng nanh của dơi",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 44,
+        "name": "Kim Loại Ý Chí",
+        "category": "Chiến đấu ở khu di tích là thế mạnh có lợi cho sủng vật Kim Loại hệ",
+        "type": "Đặc Biệt",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
         "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 26,
-        "name": "Lôi Đình Nhất Kích",
-        "type": "Phi Hành",
-        "power": 38,
-        "mpCost": 28,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 1, Bầu trời phương bắc 3, Rừng rậm u ám 2"
   },
   {
     "id": 45,
@@ -3345,55 +3505,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_20",
     "sprite": "./img/monsters/npc2_20.png",
     "description": "Batman có đôi mắt màu hồng rất đẹp. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 46,
+      "targetCode": "cauvong_pet_46",
+      "targetName": "Tần số của dơi",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 45,
+        "name": "Phi Hành Ý Chí",
+        "category": "Chiến đấu trên không trung là thế mạnh có lợi cho sủng vật Phi Hành hệ",
+        "type": "Đặc Biệt",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
         "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 46,
@@ -3419,55 +3586,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_21",
     "sprite": "./img/monsters/npc2_21.png",
     "description": "Áo choàng thần bí tạo nên sức hút cho những kẻ kiếm tìm. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
+        "type": "Phi Hành",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 47,
@@ -3493,55 +3659,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_22",
     "sprite": "./img/monsters/npc2_22.png",
     "description": "Thiên Mã cực mạnh ai nhìn cũng muốn gần. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 17,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 26,
-        "name": "Lôi Đình Nhất Kích",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 38,
-        "mpCost": 28,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 48,
@@ -3567,57 +3732,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_22",
     "sprite": "./img/monsters/npc2_22.png",
     "description": "Đôi cánh kim loại vàng rất mạnh rất tốt. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      24,
-      25,
-      28
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 17,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 1, Bầu trời phương bắc 2, Bến tàu phía nam Bắc Hải"
   },
   {
     "id": 49,
@@ -3643,55 +3805,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_23",
     "sprite": "./img/monsters/npc2_23.png",
     "description": "Thiên Mã tuấn tú hoàn mỹ, Thiên Mã Hoàng Gia kiểu mẫu. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 49,
+      "targetCode": "cauvong_pet_49",
+      "targetName": "Thiên Mã Vương",
+      "reqItemId": 23,
+      "reqItemCode": "item_23",
+      "reqItemName": "Thiên vũ",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
+        "id": 48,
+        "name": "Thế Thân Mộc Ngẫu",
+        "category": "Đã bị công kích giảm 30% tỷ lệ thương tổn",
+        "type": "Đặc Biệt",
+        "power": 30,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
+        "buffDef": 0
       },
       {
         "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 50,
@@ -3717,56 +3886,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_24",
     "sprite": "./img/monsters/npc2_24.png",
     "description": "Tiền vệ Tiểu Điểu, chim nhỏ tai kẹo đường đáng yêu. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      25,
-      26
-    ],
+    "evolution": {
+      "targetId": 51,
+      "targetCode": "cauvong_pet_51",
+      "targetName": "Phiêu Phù Mao Cầu",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
-      },
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
         "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
+        "name": "Thủy Cầu Áp Sát",
+        "category": "Hải Dương hệ Kỹ năng bậc 3",
+        "type": "Hải Dương",
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
+      },
+      {
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       },
       {
         "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
+      },
+      {
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 2, Bầu trời phương bắc 3"
   },
   {
     "id": 51,
@@ -3792,55 +3967,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_24",
     "sprite": "./img/monsters/npc2_24.png",
     "description": "Tiểu Điểu lông xù, tánh khí táo bạo. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
+        "type": "Phi Hành",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 52,
@@ -3866,55 +4040,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_24",
     "sprite": "./img/monsters/npc2_24.png",
     "description": "Trạng thái đỉnh cao Mao Cầu, trưởng thành, trang trọng. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
+        "type": "Phi Hành",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 53,
@@ -3940,55 +4113,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Lão Hổ răng hô đáng yêu. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 54,
+      "targetCode": "cauvong_pet_54",
+      "targetName": "Công phu hổ",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 36,
-        "name": "Diễm Kích",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 26,
-        "mpCost": 17,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng đạn lửa nổ tung khi va chạm"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 54,
@@ -4014,55 +4194,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Chiến sỹ ưu tú nhất đứng đầu Hổ Tộc. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 55,
+      "targetCode": "cauvong_pet_55",
+      "targetName": "Hổ Dũng Sĩ",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
+        "id": 17,
+        "name": "Nộ Ý Cuồng Bạo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 3",
         "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 55,
@@ -4088,55 +4275,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Hổ Tộc là những chiến sỹ dũng mãnh và quyết liệt. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 56,
+      "targetCode": "cauvong_pet_56",
+      "targetName": "Hổ Tù Trường",
+      "reqItemId": 17,
+      "reqItemCode": "item_17",
+      "reqItemName": "Thú hồn",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 17,
+        "name": "Nộ Ý Cuồng Bạo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 3",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 19,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
-        "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "id": 30,
+        "name": "Kỹ năng Phong Bế",
+        "category": "3 hiệp giao đấu không thể sử dụng nhiều hơn 3 kỹ năng công kích",
+        "type": "Đặc Biệt",
+        "power": 8,
+        "mpCost": 50,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 56,
@@ -4162,55 +4356,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Lão hổ sáu tay, sức mạnh phi thường, là đại thủ lĩnh Hổ Tộc. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 57,
@@ -4236,57 +4429,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Ngựa xanh phi thường, đặc biệt rất bảo vệ môi trường. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      11,
-      14,
-      38
-    ],
+    "evolution": {
+      "targetId": 58,
+      "targetCode": "cauvong_pet_58",
+      "targetName": "Ngựa vằn",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
         "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 36,
-        "name": "Diễm Kích",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 26,
-        "mpCost": 17,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng đạn lửa nổ tung khi va chạm"
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bên ngoài thành phía nam, Cao nguyên phía đông 3, Rừng rậm u ám 1"
   },
   {
     "id": 58,
@@ -4312,55 +4510,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Ánh hào quang lấp lóe xung quanh. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 17,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 59,
@@ -4386,55 +4583,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Cầm trong tay Song Đao Đường Lang mạnh mẽ. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 60,
@@ -4460,57 +4656,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Tiểu Trư phàm ăn phàm ngủ hay chảy nước mũi. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      12,
-      15,
-      39
-    ],
+    "evolution": {
+      "targetId": 61,
+      "targetCode": "cauvong_pet_61",
+      "targetName": "Heo răng nanh khổng lồ",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 36,
-        "name": "Diễm Kích",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 26,
-        "mpCost": 17,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng đạn lửa nổ tung khi va chạm"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Cao nguyên phía đông 1, Cao nguyên phía đông 4, Rừng rậm u ám 2"
   },
   {
     "id": 61,
@@ -4536,55 +4737,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Heo rừng trong giới xã hội đen, rõ ràng ngay thẳng. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 62,
+      "targetCode": "cauvong_pet_62",
+      "targetName": "Trư Vương",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
+        "id": 17,
+        "name": "Nộ Ý Cuồng Bạo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 3",
         "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
+        "power": 19,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 62,
@@ -4610,55 +4818,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Heo rừng lão đại tánh khí táo bạo. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 63,
@@ -4684,55 +4891,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Heo 101 đốm lấm tấm. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 63,
+      "targetCode": "cauvong_pet_63",
+      "targetName": "Heo đốm",
+      "reqItemId": 17,
+      "reqItemCode": "item_17",
+      "reqItemName": "Thú hồn",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 17,
+        "name": "Nộ Ý Cuồng Bạo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 3",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 19,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 64,
@@ -4758,56 +4972,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_28",
     "sprite": "./img/monsters/npc2_28.png",
     "description": "Tiểu Báo Tử dễ bị nhầm lẫn là tiểu miêu. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      17,
-      20
-    ],
+    "evolution": {
+      "targetId": 65,
+      "targetCode": "cauvong_pet_65",
+      "targetName": "Beo răng kiếm",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 36,
-        "name": "Diễm Kích",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 26,
-        "mpCost": 17,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng đạn lửa nổ tung khi va chạm"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Rừng rậm phía tây 2, Rừng rậm phía tây 5"
   },
   {
     "id": 65,
@@ -4833,55 +5053,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_29",
     "sprite": "./img/monsters/npc2_29.png",
     "description": "Hàm răng móng vuốt 10 phần sắc bén. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 17,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 66,
@@ -4907,56 +5126,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_29",
     "sprite": "./img/monsters/npc2_29.png",
     "description": "Vương giả ẩn giấu trong bóng tối. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      41,
-      42
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Rừng rậm u ám 4, Rừng rậm u ám 5"
   },
   {
     "id": 67,
@@ -4982,55 +5199,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_30",
     "sprite": "./img/monsters/npc2_30.png",
     "description": "Hành Tây Dị Thú hoạt bát. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 30,
-        "name": "Liệt Trảo",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 17,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
+        "buffDef": 0
       },
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 68,
@@ -5056,57 +5272,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_31",
     "sprite": "./img/monsters/npc2_31.png",
     "description": "Tốc độ rất nhanh, danh xưng là “ Lôi Điện ”. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      18,
-      20,
-      41
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Rừng rậm phía tây 3, Rừng rậm phía tây 5, Rừng rậm u ám 4"
   },
   {
     "id": 69,
@@ -5132,55 +5345,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_32",
     "sprite": "./img/monsters/npc2_32.png",
     "description": "Tiểu Cá Kình đáng yêu chơi đùa tinh nghịch trong nước. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 70,
+      "targetCode": "cauvong_pet_70",
+      "targetName": "Cá Kình khổng lồ",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 40,
-        "name": "Thủy Trụ",
-        "type": "Hải Dương",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
         "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 46,
-        "name": "Bạo Phong Tuyết",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Bão tuyết hàn băng đóng băng cả bầu trời"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 70,
@@ -5206,55 +5426,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_33",
     "sprite": "./img/monsters/npc2_33.png",
     "description": "Kính Quang Lọc, những kẻ yêu hòa bình. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 71,
+      "targetCode": "cauvong_pet_71",
+      "targetName": "Cá Kình một sừng",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 40,
-        "name": "Thủy Trụ",
-        "type": "Hải Dương",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
         "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 71,
@@ -5280,55 +5507,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_33",
     "sprite": "./img/monsters/npc2_33.png",
     "description": "Người bảo vệ hòa bình lạnh lùng. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 72,
+      "targetCode": "cauvong_pet_72",
+      "targetName": "Yếu Tắc Kình",
+      "reqItemId": 21,
+      "reqItemCode": "item_21",
+      "reqItemName": "Biển sâu san hô",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
-        "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "id": 29,
+        "name": "Tử Vong Chi Xúc",
+        "category": "Tiêu hao toàn bộ năng lượng hiện tại một lần duy nhất cũng như chuyển hóa thương tổn",
+        "type": "Đặc Biệt",
+        "power": 2,
+        "mpCost": 1,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 72,
@@ -5354,55 +5588,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_34",
     "sprite": "./img/monsters/npc2_34.png",
     "description": "Cá Kình cuồng điên mang theo đầy đủ võ trang. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 73,
@@ -5428,57 +5661,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_35",
     "sprite": "./img/monsters/npc2_35.png",
     "description": "Ca sỹ siêu cấp. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      29,
-      48,
-      53
-    ],
+    "evolution": {
+      "targetId": 74,
+      "targetCode": "cauvong_pet_74",
+      "targetName": "Đao Phong Cánh Cụt",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 40,
-        "name": "Thủy Trụ",
-        "type": "Hải Dương",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
         "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 46,
-        "name": "Bạo Phong Tuyết",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Bão tuyết hàn băng đóng băng cả bầu trời"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bến tàu phía bắc Bắc Hải, Quảng Trường Bắc Hải, Khu trường cũ Bắc Hải 4"
   },
   {
     "id": 74,
@@ -5504,55 +5742,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_36",
     "sprite": "./img/monsters/npc2_36.png",
     "description": "Thân mặc đồng phục hộ vệ. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 75,
+      "targetCode": "cauvong_pet_75",
+      "targetName": "Đế Vương Cánh Cụt",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 40,
-        "name": "Thủy Trụ",
-        "type": "Hải Dương",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
         "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 75,
@@ -5578,55 +5823,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_37",
     "sprite": "./img/monsters/npc2_37.png",
     "description": "Đế Vương Tính cách quái gở. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 76,
@@ -5652,57 +5896,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_38",
     "sprite": "./img/monsters/npc2_38.png",
     "description": "Hải Quy đáng yêu thích đùa dai. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      36,
-      37,
-      53
-    ],
+    "evolution": {
+      "targetId": 77,
+      "targetCode": "cauvong_pet_77",
+      "targetName": "Rùa trinh sát",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 40,
+        "id": 20,
         "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 15,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 46,
-        "name": "Bạo Phong Tuyết",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Bão tuyết hàn băng đóng băng cả bầu trời"
+        "buffDef": 0
+      },
+      {
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Khu trường cũ Bắc Hải 2, Khu trường cũ Bắc Hải 3, Khu trường cũ Bắc Hải 4"
   },
   {
     "id": 77,
@@ -5728,55 +5977,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_39",
     "sprite": "./img/monsters/npc2_39.png",
     "description": "Hải Quy thúc thúc 10 phần mị lực. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 40,
+        "id": 20,
         "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 15,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 78,
@@ -5802,55 +6050,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_40",
     "sprite": "./img/monsters/npc2_40.png",
     "description": "Ẩn dưới biển sâu thần bí là năng lượng bí ẩn của loài rùa. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 79,
@@ -5876,55 +6123,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_40",
     "sprite": "./img/monsters/npc2_40.png",
     "description": "Hình thể lớn nhưng tâm ôn hòa. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 79,
+      "targetCode": "cauvong_pet_79",
+      "targetName": "Rùa khổng lồ biển sâu",
+      "reqItemId": 21,
+      "reqItemCode": "item_21",
+      "reqItemName": "Biển sâu san hô",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 80,
@@ -5950,57 +6204,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_41",
     "sprite": "./img/monsters/npc2_41.png",
     "description": "Trời sinh vốn đã ngây thơ, đáng yêu. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      29,
-      48,
-      53
-    ],
+    "evolution": {
+      "targetId": 81,
+      "targetCode": "cauvong_pet_81",
+      "targetName": "Cua vân Bạc",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 40,
-        "name": "Thủy Trụ",
-        "type": "Hải Dương",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
         "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 46,
-        "name": "Bạo Phong Tuyết",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Bão tuyết hàn băng đóng băng cả bầu trời"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bến tàu phía bắc Bắc Hải, Quảng Trường Bắc Hải, Khu trường cũ Bắc Hải 4"
   },
   {
     "id": 81,
@@ -6026,55 +6285,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_41",
     "sprite": "./img/monsters/npc2_41.png",
     "description": "Cua con thích khóc hay mất bình tĩnh. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 82,
+      "targetCode": "cauvong_pet_82",
+      "targetName": "Cua thiên sứ",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 2
+    },
     "skills": [
       {
-        "id": 40,
-        "name": "Thủy Trụ",
-        "type": "Hải Dương",
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
         "power": 15,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
+        "id": 2,
+        "name": "Bạo Tạc Chủng Tử",
+        "category": "Cỏ Hệ Kỹ năng bậc 3",
+        "type": "Thực Vật",
+        "power": 21,
+        "mpCost": 16,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 82,
@@ -6100,55 +6366,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_41",
     "sprite": "./img/monsters/npc2_41.png",
     "description": "Vì yêu thích những câu chuyện cổ tích mà từ chối trưởng thành. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 83,
@@ -6174,55 +6439,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_42",
     "sprite": "./img/monsters/npc2_42.png",
     "description": "Tiểu cá heo thực dụng, có thể ngồi, có thể chiến đấu. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 40,
+        "id": 20,
         "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 15,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 46,
-        "name": "Bạo Phong Tuyết",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Bão tuyết hàn băng đóng băng cả bầu trời"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 84,
@@ -6248,55 +6512,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_42",
     "sprite": "./img/monsters/npc2_42.png",
     "description": "Cá heo luôn ôm giấc mộng được bay lên không trung. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 40,
+        "id": 20,
         "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 15,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+        "buffDef": 0
       },
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 85,
@@ -6322,55 +6585,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Dị hoá đem lại sức mạnh phi thường cho sinh vật. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 86,
@@ -6396,55 +6658,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_43",
     "sprite": "./img/monsters/npc2_43.png",
     "description": "U Linh hệ. [khắc chế 5 hệ khác]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 87,
@@ -6470,55 +6731,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_43",
     "sprite": "./img/monsters/npc2_43.png",
     "description": "U Linh hệ. [khắc chế 5 hệ khác]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 88,
@@ -6544,55 +6804,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_44",
     "sprite": "./img/monsters/npc2_44.png",
     "description": "Khoái Hoạt Thụ Tinh, tinh quái, đáng yêu. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 89,
+      "targetCode": "cauvong_pet_89",
+      "targetName": "Thụ tinh ngàn năm",
+      "reqItemId": 19,
+      "reqItemCode": "item_19",
+      "reqItemName": "Chu quả",
+      "reqQty": 3
+    },
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
+        "type": "Mãnh Thú",
+        "power": 25,
+        "mpCost": 25,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
-      },
-      {
-        "id": 2,
-        "name": "Phi Diệp Đao Phong",
-        "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 4,
-        "name": "Mộc Chi Cứu Thù",
-        "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 89,
@@ -6618,55 +6885,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_44",
     "sprite": "./img/monsters/npc2_44.png",
     "description": "Thụ Tinh thu hành nhiều năm, thực lực phi phàm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 90,
@@ -6692,55 +6958,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_45",
     "sprite": "./img/monsters/npc2_45.png",
     "description": "Có được ma lực mạnh mẽ nhất Ailulima. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
+      {
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
       {
         "id": 1,
         "name": "Phong Lợi Tiêm Thứ",
+        "category": "Cỏ Hệ Kỹ năng bậc 2",
         "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
+        "power": 18,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
+        "buffDef": 0
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
         "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
+        "power": 23,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
+        "buffDef": 0
       },
       {
         "id": 4,
-        "name": "Mộc Chi Cứu Thù",
+        "name": "Thực Vật Phong Bạo",
+        "category": "Cỏ Hệ Kỹ năng bậc 5",
         "type": "Thực Vật",
-        "power": 46,
-        "mpCost": 35,
+        "power": 27,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-      },
-      {
-        "id": 8,
-        "name": "Thảo Nguyện Thuật",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 18,
-        "accuracy": 100,
-        "heal": 40,
-        "buffDef": 0,
-        "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 91,
@@ -6766,55 +7031,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_46",
     "sprite": "./img/monsters/npc2_46.png",
     "description": "Tiểu Tê Tê đáng yêu, công thủ cũng không tệ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 92,
+      "targetCode": "cauvong_pet_92",
+      "targetName": "Cá Chép Rồng sắt",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
+        "id": 25,
+        "name": "Công Kích thông dụng",
+        "category": "Kỹ năng công kích cơ bản",
+        "type": "Đặc Biệt",
+        "power": 8,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 92,
@@ -6840,55 +7112,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_46",
     "sprite": "./img/monsters/npc2_46.png",
     "description": "Toàn thân mặc bộ giáp Warrior mạnh mẽ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 93,
@@ -6914,55 +7185,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_47",
     "sprite": "./img/monsters/npc2_47.png",
     "description": "Có được lực hủy diệt đáng sợ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
+        "id": 5,
+        "name": "Thiết Chuy",
+        "category": "Kim Loại Hệ Kỹ năng bậc 1",
         "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
+        "buffDef": 0
       },
       {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
+        "id": 6,
+        "name": "Thiết Phù Đồ",
+        "category": "Kim Loại Hệ Kỹ năng bậc 2",
         "type": "Kim Loại",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 8,
+        "name": "Toản Thạch Thiết Cát",
+        "category": "Kim Loại Hệ Kỹ năng bậc 4",
+        "type": "Kim Loại",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
+        "buffDef": 0
       },
       {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
+        "id": 9,
+        "name": "Kim Loại Liệt Trảm",
+        "category": "Kim Loại Hệ Kỹ năng bậc 5",
         "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 94,
@@ -6988,55 +7258,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_48",
     "sprite": "./img/monsters/npc2_48.png",
     "description": "Thần Chi Sứ Giả bay lượn trên không trung lam sắc. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 95,
+      "targetCode": "cauvong_pet_95",
+      "targetName": "Thiên Sử Trường",
+      "reqItemId": 23,
+      "reqItemCode": "item_23",
+      "reqItemName": "Thiên vũ",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
+        "buffDef": 0
       },
       {
         "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
+        "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
+        "mpCost": 19,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
+        "type": "Phi Hành",
+        "power": 13,
+        "mpCost": 10,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 95,
@@ -7062,55 +7339,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_48",
     "sprite": "./img/monsters/npc2_48.png",
     "description": "Thiên Sứ là biểu tượng của sự uy nghi và quyền lực. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
+        "type": "Phi Hành",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 96,
@@ -7136,55 +7412,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_49",
     "sprite": "./img/monsters/npc2_49.png",
     "description": "Hóa thân Cửu Thiên Huyền Nữ. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
+        "id": 10,
+        "name": "Phi Tường Trảm",
+        "category": "Phi Hành Hệ Kỹ năng bậc 1",
         "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
+        "id": 11,
+        "name": "Bạo Phong Toàn Trận",
+        "category": "Phi Hành Hệ Kỹ năng bậc 2",
         "type": "Phi Hành",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 13,
+        "name": "Thánh Linh Khoan Thứ",
+        "category": "Phi Hành Hệ Kỹ năng bậc 4",
+        "type": "Phi Hành",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
+        "id": 14,
+        "name": "Thiên Nộ",
+        "category": "Phi Hành hệ kỹ năng bậc 5",
         "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 97,
@@ -7210,55 +7485,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_50",
     "sprite": "./img/monsters/npc2_50.png",
     "description": "Tắm trong ánh trăng thần bí. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 98,
+      "targetCode": "cauvong_pet_98",
+      "targetName": "Sói Vương Cao Ngạo",
+      "reqItemId": 17,
+      "reqItemCode": "item_17",
+      "reqItemName": "Thú hồn",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 17,
+        "name": "Nộ Ý Cuồng Bạo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 3",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 19,
+        "mpCost": 16,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 98,
@@ -7284,55 +7566,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_50",
     "sprite": "./img/monsters/npc2_50.png",
     "description": "Vua bóng đêm cao ngạo. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 99,
@@ -7358,55 +7639,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_51",
     "sprite": "./img/monsters/npc2_51.png",
     "description": "Vương tử Ngân Hồ Tộc uy phong lẫm liệt. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
+        "id": 15,
+        "name": "Phác Giảo",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 1",
         "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
+        "id": 16,
+        "name": "Tê Liệt Kích",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 2",
         "type": "Mãnh Thú",
-        "power": 29,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 18,
+        "name": "Tứ Ngược Trùng Phong",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+        "type": "Mãnh Thú",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
+        "buffDef": 0
       },
       {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
+        "id": 19,
+        "name": "Cuồng Bạo Tê Hống",
+        "category": "Mãnh Thú hệ Kỹ năng bậc 5",
         "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 100,
@@ -7432,55 +7712,62 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_52",
     "sprite": "./img/monsters/npc2_52.png",
     "description": "Sát thủ khét tiếng của đại dương. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 101,
+      "targetCode": "cauvong_pet_101",
+      "targetName": "Sa Vương Cuồng Bạo",
+      "reqItemId": 21,
+      "reqItemCode": "item_21",
+      "reqItemName": "Biển sâu san hô",
+      "reqQty": 3
+    },
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "id": 0,
+        "name": "Triền Nhiễu",
+        "category": "Cỏ Hệ Kỹ năng bậc 1",
+        "type": "Thực Vật",
+        "power": 15,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 3,
+        "name": "Phi Diệp Đao Phong",
+        "category": "Cỏ Hệ Kỹ năng bậc 4",
+        "type": "Thực Vật",
+        "power": 23,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 101,
@@ -7506,55 +7793,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_52",
     "sprite": "./img/monsters/npc2_52.png",
     "description": "Tồn tại mối nguy hiểm nhất chính trong đại dương. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
+        "id": 20,
+        "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
+        "power": 13,
+        "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+        "buffDef": 0
       },
       {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
+        "id": 21,
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 28,
+        "power": 16,
+        "mpCost": 13,
+        "accuracy": 95,
+        "heal": 0,
+        "buffDef": 0
+      },
+      {
+        "id": 23,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+        "buffDef": 0
       },
       {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
+        "id": 24,
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
+        "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 102,
@@ -7580,3315 +7866,54 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_53",
     "sprite": "./img/monsters/npc2_53.png",
     "description": "Ca sỹ xinh đẹp, tuyệt mỹ thiện lương. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
-    "skills": [
-      {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
-      },
-      {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
-        "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
-      }
-    ]
-  },
-  {
-    "id": 103,
-    "code": "liethoa_pet_1",
-    "name": "Nhiên Dực Bức",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 1,
-    "baseHP": 41,
-    "baseMP": 90,
-    "baseATK": 18,
-    "baseDEF": 14,
-    "baseSPD": 15,
-    "growth": {
-      "hp": 45,
-      "mp": 16,
-      "atk": 11,
-      "def": 8,
-      "spd": 9
-    },
-    "spriteNum": 14,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_14",
-    "sprite": "./img/monsters/npc2_14.png",
-    "description": "Dơi lửa sở hữu sải cánh rực than hồng, chuyên săn mồi đêm",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 36,
-        "name": "Diễm Kích",
-        "type": "Mãnh Thú",
-        "power": 26,
-        "mpCost": 17,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng đạn lửa nổ tung khi va chạm"
-      }
-    ]
-  },
-  {
-    "id": 104,
-    "code": "liethoa_pet_2",
-    "name": "Bom Tinh Nghịch",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 1,
-    "baseHP": 41,
-    "baseMP": 90,
-    "baseATK": 18,
-    "baseDEF": 14,
-    "baseSPD": 15,
-    "growth": {
-      "hp": 45,
-      "mp": 16,
-      "atk": 11,
-      "def": 8,
-      "spd": 9
-    },
-    "spriteNum": 18,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_18",
-    "sprite": "./img/monsters/npc2_18.png",
-    "description": "Khối kim loại tích điện lấp lánh sẵn sàng phát nổ bảo vệ chủ nhân",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
-      },
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
-      }
-    ]
-  },
-  {
-    "id": 105,
-    "code": "liethoa_pet_3",
-    "name": "Nhiên Liệp Sư",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 2,
-    "baseHP": 47,
-    "baseMP": 95,
-    "baseATK": 22,
-    "baseDEF": 17,
-    "baseSPD": 18,
-    "growth": {
-      "hp": 50,
-      "mp": 16,
-      "atk": 13,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 21,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_21",
-    "sprite": "./img/monsters/npc2_21.png",
-    "description": "Sư tử bờm lửa dũng mãnh, vua của thảo nguyên Liệt Hỏa",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 106,
-    "code": "liethoa_pet_4",
-    "name": "Hắc Thán Báo",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 2,
-    "baseHP": 47,
-    "baseMP": 95,
-    "baseATK": 22,
-    "baseDEF": 17,
-    "baseSPD": 18,
-    "growth": {
-      "hp": 50,
-      "mp": 16,
-      "atk": 13,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 22,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_22",
-    "sprite": "./img/monsters/npc2_22.png",
-    "description": "Báo đen bóng đêm di chuyển như làn khói than đen kịt",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 107,
-    "code": "liethoa_pet_5",
-    "name": "Hỏa Diễm Hồ",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 2,
-    "baseHP": 47,
-    "baseMP": 95,
-    "baseATK": 22,
-    "baseDEF": 17,
-    "baseSPD": 18,
-    "growth": {
-      "hp": 50,
-      "mp": 16,
-      "atk": 13,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 23,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_23",
-    "sprite": "./img/monsters/npc2_23.png",
-    "description": "Hồ ly lửa chín đuôi mê hoặc kẻ thù bằng ảo ảnh rực cháy",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 108,
-    "code": "liethoa_pet_6",
-    "name": "Viêm Ma",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 3,
-    "baseHP": 53,
-    "baseMP": 100,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 21,
-    "growth": {
-      "hp": 55,
-      "mp": 16,
-      "atk": 15,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 24,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_24",
-    "sprite": "./img/monsters/npc2_24.png",
-    "description": "Chúa tể dung nham trồi lên từ lòng đất Liệt Hỏa",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
-        "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 109,
-    "code": "liethoa_pet_7",
-    "name": "Long Bảo Bối",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 1,
-    "baseHP": 41,
-    "baseMP": 90,
-    "baseATK": 18,
-    "baseDEF": 14,
-    "baseSPD": 15,
-    "growth": {
-      "hp": 45,
-      "mp": 16,
-      "atk": 11,
-      "def": 8,
-      "spd": 9
-    },
-    "spriteNum": 25,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_25",
-    "sprite": "./img/monsters/npc2_25.png",
-    "description": "Rồng con đáng yêu sở hữu đôi cánh ngọc bích",
-    "evolution": [],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
-      },
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 26,
-        "name": "Lôi Đình Nhất Kích",
-        "type": "Phi Hành",
-        "power": 38,
-        "mpCost": 28,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
-      }
-    ]
-  },
-  {
-    "id": 110,
-    "code": "liethoa_pet_8",
-    "name": "Phệ Hỏa Thú",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 2,
-    "baseHP": 47,
-    "baseMP": 95,
-    "baseATK": 22,
-    "baseDEF": 17,
-    "baseSPD": 18,
-    "growth": {
-      "hp": 50,
-      "mp": 16,
-      "atk": 13,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 26,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_26",
-    "sprite": "./img/monsters/npc2_26.png",
-    "description": "Thú săn lửa nuốt chửng ngọn lửa để gia tăng sức mạnh",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 111,
-    "code": "liethoa_pet_9",
-    "name": "Bạo Long Thú",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 3,
-    "baseHP": 53,
-    "baseMP": 100,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 21,
-    "growth": {
-      "hp": 55,
-      "mp": 16,
-      "atk": 15,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 27,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_27",
-    "sprite": "./img/monsters/npc2_27.png",
-    "description": "Bạo long khổng lồ với uy lực hủy diệt vạn vật",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
-        "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 112,
-    "code": "liethoa_pet_10",
-    "name": "Ly Ngưu Ngưu",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 1,
-    "baseHP": 41,
-    "baseMP": 90,
-    "baseATK": 18,
-    "baseDEF": 14,
-    "baseSPD": 15,
-    "growth": {
-      "hp": 45,
-      "mp": 16,
-      "atk": 11,
-      "def": 8,
-      "spd": 9
-    },
-    "spriteNum": 28,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_28",
-    "sprite": "./img/monsters/npc2_28.png",
-    "description": "Bò chiến giáp sắt bền bỉ và kiên cường",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
-      },
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
-      }
-    ]
-  },
-  {
-    "id": 113,
-    "code": "liethoa_pet_11",
-    "name": "Hỏa Phượng Hoàng",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 3,
-    "baseHP": 53,
-    "baseMP": 100,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 21,
-    "growth": {
-      "hp": 55,
-      "mp": 16,
-      "atk": 15,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 29,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_29",
-    "sprite": "./img/monsters/npc2_29.png",
-    "description": "Phượng hoàng tái sinh từ tro tàn với ngọn lửa bất tử",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-      }
-    ]
-  },
-  {
-    "id": 114,
-    "code": "liethoa_pet_12",
-    "name": "Diệp Tán Oa",
-    "type": "Thực Vật",
-    "color": "#27ae60",
-    "tier": 1,
-    "baseHP": 41,
-    "baseMP": 90,
-    "baseATK": 18,
-    "baseDEF": 14,
-    "baseSPD": 15,
-    "growth": {
-      "hp": 45,
-      "mp": 16,
-      "atk": 11,
-      "def": 8,
-      "spd": 9
-    },
-    "spriteNum": 30,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_30",
-    "sprite": "./img/monsters/npc2_30.png",
-    "description": "Ếch đội lá sen ngộ nghĩnh ẩn náu trong đầm nước",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 0,
-        "name": "Triền Nhiễu",
-        "type": "Thực Vật",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
-      },
-      {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
-      },
-      {
-        "id": 2,
-        "name": "Phi Diệp Đao Phong",
-        "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 6,
-        "name": "Châm Diệp Trảm",
-        "type": "Thực Vật",
-        "power": 26,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
-      }
-    ]
-  },
-  {
-    "id": 115,
-    "code": "liethoa_pet_13",
-    "name": "Thụ Tán Oa",
-    "type": "Thực Vật",
-    "color": "#27ae60",
-    "tier": 2,
-    "baseHP": 47,
-    "baseMP": 95,
-    "baseATK": 22,
-    "baseDEF": 17,
-    "baseSPD": 18,
-    "growth": {
-      "hp": 50,
-      "mp": 16,
-      "atk": 13,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 31,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_31",
-    "sprite": "./img/monsters/npc2_31.png",
-    "description": "Cóc cổ thụ phủ đầy rêu phong với lớp da độc mộc",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 0,
-        "name": "Triền Nhiễu",
-        "type": "Thực Vật",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
-      },
-      {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
-      },
-      {
-        "id": 2,
-        "name": "Phi Diệp Đao Phong",
-        "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 3,
-        "name": "Sâm Lâm Bạo Phát",
-        "type": "Thực Vật",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
-      }
-    ]
-  },
-  {
-    "id": 116,
-    "code": "liethoa_pet_14",
-    "name": "Long Oa",
-    "type": "Hải Dương",
-    "color": "#2980b9",
-    "tier": 3,
-    "baseHP": 53,
-    "baseMP": 100,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 21,
-    "growth": {
-      "hp": 55,
-      "mp": 16,
-      "atk": 15,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 32,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_32",
-    "sprite": "./img/monsters/npc2_32.png",
-    "description": "Rồng cóc đầm lầy hô mưa gọi gió",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
-      },
-      {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
-        "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
-      }
-    ]
-  },
-  {
-    "id": 117,
-    "code": "liethoa_pet_15",
-    "name": "Tiên Nhân Cầu Bảo Bảo",
-    "type": "Thực Vật",
-    "color": "#27ae60",
-    "tier": 1,
-    "baseHP": 41,
-    "baseMP": 90,
-    "baseATK": 18,
-    "baseDEF": 14,
-    "baseSPD": 15,
-    "growth": {
-      "hp": 45,
-      "mp": 16,
-      "atk": 11,
-      "def": 8,
-      "spd": 9
-    },
-    "spriteNum": 33,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_33",
-    "sprite": "./img/monsters/npc2_33.png",
-    "description": "Bé xương rồng sa mạc gai nhọn chi chít đáng yêu",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 0,
-        "name": "Triền Nhiễu",
-        "type": "Thực Vật",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
-      },
-      {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
-      },
-      {
-        "id": 2,
-        "name": "Phi Diệp Đao Phong",
-        "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 6,
-        "name": "Châm Diệp Trảm",
-        "type": "Thực Vật",
-        "power": 26,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
-      }
-    ]
-  },
-  {
-    "id": 118,
-    "code": "liethoa_pet_16",
-    "name": "Tinh Vân Hạc",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 2,
-    "baseHP": 47,
-    "baseMP": 95,
-    "baseATK": 22,
-    "baseDEF": 17,
-    "baseSPD": 18,
-    "growth": {
-      "hp": 50,
-      "mp": 16,
-      "atk": 13,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 34,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_34",
-    "sprite": "./img/monsters/npc2_34.png",
-    "description": "Hạc mây tinh khiết sải cánh giữa dải ngân hà",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
-      },
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-      }
-    ]
-  },
-  {
-    "id": 119,
-    "code": "liethoa_pet_17",
-    "name": "Tuyệt Đối Linh Độ Khuyển",
-    "type": "Hải Dương",
-    "color": "#2980b9",
-    "tier": 2,
-    "baseHP": 47,
-    "baseMP": 95,
-    "baseATK": 22,
-    "baseDEF": 17,
-    "baseSPD": 18,
-    "growth": {
-      "hp": 50,
-      "mp": 16,
-      "atk": 13,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 35,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_35",
-    "sprite": "./img/monsters/npc2_35.png",
-    "description": "Chó tuyết mang hơi thở âm độ đóng băng vạn dặm",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 40,
         "name": "Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 1",
         "type": "Hải Dương",
-        "power": 15,
+        "power": 13,
         "mpCost": 10,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
-      },
-      {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
-      },
-      {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
-        "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
-      }
-    ]
-  },
-  {
-    "id": 120,
-    "code": "liethoa_pet_18",
-    "name": "Tà Vân Khuyển Thần",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 3,
-    "baseHP": 53,
-    "baseMP": 100,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 21,
-    "growth": {
-      "hp": 55,
-      "mp": 16,
-      "atk": 15,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 36,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_36",
-    "sprite": "./img/monsters/npc2_36.png",
-    "description": "Chó thần mây quỷ uy nghiêm bảo hộ lãnh địa thần thánh",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
-        "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 121,
-    "code": "liethoa_pet_19",
-    "name": "Hồng Nhạn",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 1,
-    "baseHP": 41,
-    "baseMP": 90,
-    "baseATK": 18,
-    "baseDEF": 14,
-    "baseSPD": 15,
-    "growth": {
-      "hp": 45,
-      "mp": 16,
-      "atk": 11,
-      "def": 8,
-      "spd": 9
-    },
-    "spriteNum": 37,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_37",
-    "sprite": "./img/monsters/npc2_37.png",
-    "description": "Chim nhạn đỏ rực báo tin xuân và mang đến may mắn",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
+        "buffDef": 0
       },
       {
         "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 26,
-        "name": "Lôi Đình Nhất Kích",
-        "type": "Phi Hành",
-        "power": 38,
-        "mpCost": 28,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
-      }
-    ]
-  },
-  {
-    "id": 122,
-    "code": "liethoa_pet_20",
-    "name": "Quáng Thạch Dực Long",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 3,
-    "baseHP": 53,
-    "baseMP": 100,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 21,
-    "growth": {
-      "hp": 55,
-      "mp": 16,
-      "atk": 15,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 38,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_38",
-    "sprite": "./img/monsters/npc2_38.png",
-    "description": "Dực long bọc quặng thạch cứng hơn kim cương",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
-        "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
-      }
-    ]
-  },
-  {
-    "id": 123,
-    "code": "lienthu_pet_1_1",
-    "name": "Thủy Long Tử",
-    "type": "Hải Dương",
-    "color": "#2980b9",
-    "tier": 1,
-    "baseHP": 43,
-    "baseMP": 96,
-    "baseATK": 19,
-    "baseDEF": 15,
-    "baseSPD": 16,
-    "growth": {
-      "hp": 48,
-      "mp": 18,
-      "atk": 12,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 15,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_15",
-    "sprite": "./img/monsters/npc2_15.png",
-    "description": "Chuỗi tiến hóa Long Tộc Hải Dương thần thoại thống trị muôn trùng sóng biển (Giai đoạn 1/3).",
-    "evolution": [
-      124
-    ],
-    "skills": [
-      {
-        "id": 40,
-        "name": "Thủy Trụ",
+        "name": "Tiên Xạ Thủy Lãng",
+        "category": "Hải Dương hệ Kỹ năng bậc 2",
         "type": "Hải Dương",
-        "power": 15,
-        "mpCost": 10,
+        "power": 16,
+        "mpCost": 13,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
-      },
-      {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
-      },
-      {
-        "id": 46,
-        "name": "Bạo Phong Tuyết",
-        "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Bão tuyết hàn băng đóng băng cả bầu trời"
-      }
-    ]
-  },
-  {
-    "id": 124,
-    "code": "lienthu_pet_1_2",
-    "name": "Huyễn Thủy Long",
-    "type": "Hải Dương",
-    "color": "#2980b9",
-    "tier": 2,
-    "baseHP": 50,
-    "baseMP": 102,
-    "baseATK": 23,
-    "baseDEF": 18,
-    "baseSPD": 19,
-    "growth": {
-      "hp": 54,
-      "mp": 18,
-      "atk": 14,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 16,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_16",
-    "sprite": "./img/monsters/npc2_16.png",
-    "description": "Chuỗi tiến hóa Long Tộc Hải Dương thần thoại thống trị muôn trùng sóng biển (Giai đoạn 2/3).",
-    "evolution": [
-      125
-    ],
-    "skills": [
-      {
-        "id": 40,
-        "name": "Thủy Trụ",
-        "type": "Hải Dương",
-        "power": 15,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
-      },
-      {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
-      },
-      {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
-        "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
-      }
-    ]
-  },
-  {
-    "id": 125,
-    "code": "lienthu_pet_1_3",
-    "name": "Thánh Thiên Long",
-    "type": "Hải Dương",
-    "color": "#2980b9",
-    "tier": 3,
-    "baseHP": 57,
-    "baseMP": 108,
-    "baseATK": 27,
-    "baseDEF": 21,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 60,
-      "mp": 18,
-      "atk": 16,
-      "def": 11,
-      "spd": 12
-    },
-    "spriteNum": 17,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_17",
-    "sprite": "./img/monsters/npc2_17.png",
-    "description": "Chuỗi tiến hóa Long Tộc Hải Dương thần thoại thống trị muôn trùng sóng biển (Giai đoạn 3/3).",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
-      },
-      {
-        "id": 44,
-        "name": "Hải Tiêu Nộ Lãng",
-        "type": "Hải Dương",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-      },
-      {
-        "id": 48,
-        "name": "Thuật Cầu Nguyện",
-        "type": "Hồi Phục",
-        "power": 0,
-        "mpCost": 16,
-        "accuracy": 100,
-        "heal": 45,
-        "buffDef": 0,
-        "desc": "Làn nước mát lành chữa lành 45% sinh lực"
-      }
-    ]
-  },
-  {
-    "id": 126,
-    "code": "lienthu_pet_2_1",
-    "name": "Lục Lâm Long Tử",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 1,
-    "baseHP": 43,
-    "baseMP": 96,
-    "baseATK": 19,
-    "baseDEF": 15,
-    "baseSPD": 16,
-    "growth": {
-      "hp": 48,
-      "mp": 18,
-      "atk": 12,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 19,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_19",
-    "sprite": "./img/monsters/npc2_19.png",
-    "description": "Chuỗi tiến hóa Long Tộc Phi Hành chúa tể bầu trời và gió lốc (Giai đoạn 1/3).",
-    "evolution": [
-      127
-    ],
-    "skills": [
-      {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
-      },
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 26,
-        "name": "Lôi Đình Nhất Kích",
-        "type": "Phi Hành",
-        "power": 38,
-        "mpCost": 28,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
-      }
-    ]
-  },
-  {
-    "id": 127,
-    "code": "lienthu_pet_2_2",
-    "name": "Phong Linh Long",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 2,
-    "baseHP": 50,
-    "baseMP": 102,
-    "baseATK": 23,
-    "baseDEF": 18,
-    "baseSPD": 19,
-    "growth": {
-      "hp": 54,
-      "mp": 18,
-      "atk": 14,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 20,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_20",
-    "sprite": "./img/monsters/npc2_20.png",
-    "description": "Chuỗi tiến hóa Long Tộc Phi Hành chúa tể bầu trời và gió lốc (Giai đoạn 2/3).",
-    "evolution": [
-      128
-    ],
-    "skills": [
-      {
-        "id": 20,
-        "name": "Phong Nhận",
-        "type": "Phi Hành",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lưỡi đao gió chém ngọt từ không trung"
-      },
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
         "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-      }
-    ]
-  },
-  {
-    "id": 128,
-    "code": "lienthu_pet_2_3",
-    "name": "Tật Phong Hoá Long",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 3,
-    "baseHP": 57,
-    "baseMP": 108,
-    "baseATK": 27,
-    "baseDEF": 21,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 60,
-      "mp": 18,
-      "atk": 16,
-      "def": 11,
-      "spd": 12
-    },
-    "spriteNum": 21,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_21",
-    "sprite": "./img/monsters/npc2_21.png",
-    "description": "Chuỗi tiến hóa Long Tộc Phi Hành chúa tể bầu trời và gió lốc (Giai đoạn 3/3).",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
+        "name": "Phún Xạ Thủy Trụ",
+        "category": "Hải Dương hệ Kỹ năng bậc 4",
+        "type": "Hải Dương",
+        "power": 21,
         "mpCost": 19,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
+        "buffDef": 0
       },
       {
         "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-      }
-    ]
-  },
-  {
-    "id": 129,
-    "code": "lienthu_pet_3_1",
-    "name": "Quỷ Long Tử",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 1,
-    "baseHP": 43,
-    "baseMP": 96,
-    "baseATK": 19,
-    "baseDEF": 15,
-    "baseSPD": 16,
-    "growth": {
-      "hp": 48,
-      "mp": 18,
-      "atk": 12,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 23,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_23",
-    "sprite": "./img/monsters/npc2_23.png",
-    "description": "Chuỗi tiến hóa Long Tộc Hắc Ám sở hữu ngọn lửa tà linh diệt thế (Giai đoạn 1/3).",
-    "evolution": [
-      130
-    ],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 36,
-        "name": "Diễm Kích",
-        "type": "Mãnh Thú",
-        "power": 26,
-        "mpCost": 17,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng đạn lửa nổ tung khi va chạm"
-      }
-    ]
-  },
-  {
-    "id": 130,
-    "code": "lienthu_pet_3_2",
-    "name": "Huyễn Ma Kiêu",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 2,
-    "baseHP": 50,
-    "baseMP": 102,
-    "baseATK": 23,
-    "baseDEF": 18,
-    "baseSPD": 19,
-    "growth": {
-      "hp": 54,
-      "mp": 18,
-      "atk": 14,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 24,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_24",
-    "sprite": "./img/monsters/npc2_24.png",
-    "description": "Chuỗi tiến hóa Long Tộc Hắc Ám sở hữu ngọn lửa tà linh diệt thế (Giai đoạn 2/3).",
-    "evolution": [
-      131
-    ],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 131,
-    "code": "lienthu_pet_3_3",
-    "name": "Huyễn Ma Đường",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 3,
-    "baseHP": 57,
-    "baseMP": 108,
-    "baseATK": 27,
-    "baseDEF": 21,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 60,
-      "mp": 18,
-      "atk": 16,
-      "def": 11,
-      "spd": 12
-    },
-    "spriteNum": 25,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_25",
-    "sprite": "./img/monsters/npc2_25.png",
-    "description": "Chuỗi tiến hóa Long Tộc Hắc Ám sở hữu ngọn lửa tà linh diệt thế (Giai đoạn 3/3).",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
-        "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 132,
-    "code": "lienthu_pet_4_1",
-    "name": "Sa Long Tử",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 1,
-    "baseHP": 43,
-    "baseMP": 96,
-    "baseATK": 19,
-    "baseDEF": 15,
-    "baseSPD": 16,
-    "growth": {
-      "hp": 48,
-      "mp": 18,
-      "atk": 12,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 27,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_27",
-    "sprite": "./img/monsters/npc2_27.png",
-    "description": "Chuỗi tiến hóa Địa Long Kim Loại đục sâu lòng đất bảo vệ khoáng mạch (Giai đoạn 1/3).",
-    "evolution": [
-      133
-    ],
-    "skills": [
-      {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
-      },
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
-      }
-    ]
-  },
-  {
-    "id": 133,
-    "code": "lienthu_pet_4_2",
-    "name": "Toản Địa Long",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 2,
-    "baseHP": 50,
-    "baseMP": 102,
-    "baseATK": 23,
-    "baseDEF": 18,
-    "baseSPD": 19,
-    "growth": {
-      "hp": 54,
-      "mp": 18,
-      "atk": 14,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 28,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_28",
-    "sprite": "./img/monsters/npc2_28.png",
-    "description": "Chuỗi tiến hóa Địa Long Kim Loại đục sâu lòng đất bảo vệ khoáng mạch (Giai đoạn 2/3).",
-    "evolution": [
-      134
-    ],
-    "skills": [
-      {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
-      },
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 13,
-        "name": "Bạo Liệt Thiết Toản",
-        "type": "Kim Loại",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
-      }
-    ]
-  },
-  {
-    "id": 134,
-    "code": "lienthu_pet_4_3",
-    "name": "Hậu Thổ Long Vương",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 3,
-    "baseHP": 57,
-    "baseMP": 108,
-    "baseATK": 27,
-    "baseDEF": 21,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 60,
-      "mp": 18,
-      "atk": 16,
-      "def": 11,
-      "spd": 12
-    },
-    "spriteNum": 29,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_29",
-    "sprite": "./img/monsters/npc2_29.png",
-    "description": "Chuỗi tiến hóa Địa Long Kim Loại đục sâu lòng đất bảo vệ khoáng mạch (Giai đoạn 3/3).",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
-        "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
-      }
-    ]
-  },
-  {
-    "id": 135,
-    "code": "lienthu_pet_5_1",
-    "name": "Hoàng Đế Ấu Thú",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 1,
-    "baseHP": 43,
-    "baseMP": 96,
-    "baseATK": 19,
-    "baseDEF": 15,
-    "baseSPD": 16,
-    "growth": {
-      "hp": 48,
-      "mp": 18,
-      "atk": 12,
-      "def": 9,
-      "spd": 10
-    },
-    "spriteNum": 31,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_31",
-    "sprite": "./img/monsters/npc2_31.png",
-    "description": "Chuỗi tiến hóa Hoàng Đế Tộc bọc chiến giáp hoàng kim uy phong lẫm liệt (Giai đoạn 1/3).",
-    "evolution": [
-      136
-    ],
-    "skills": [
-      {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
-      },
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 16,
-        "name": "Bão Cát",
-        "type": "Kim Loại",
-        "power": 24,
-        "mpCost": 16,
-        "accuracy": 90,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
-      }
-    ]
-  },
-  {
-    "id": 136,
-    "code": "lienthu_pet_5_2",
-    "name": "Hoàng Đế Giáp Thú",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 2,
-    "baseHP": 50,
-    "baseMP": 102,
-    "baseATK": 23,
-    "baseDEF": 18,
-    "baseSPD": 19,
-    "growth": {
-      "hp": 54,
-      "mp": 18,
-      "atk": 14,
-      "def": 10,
-      "spd": 11
-    },
-    "spriteNum": 32,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_32",
-    "sprite": "./img/monsters/npc2_32.png",
-    "description": "Chuỗi tiến hóa Hoàng Đế Tộc bọc chiến giáp hoàng kim uy phong lẫm liệt (Giai đoạn 2/3).",
-    "evolution": [
-      137
-    ],
-    "skills": [
-      {
-        "id": 10,
-        "name": "Thiết Quyền",
-        "type": "Kim Loại",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
-      },
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 13,
-        "name": "Bạo Liệt Thiết Toản",
-        "type": "Kim Loại",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
-      }
-    ]
-  },
-  {
-    "id": 137,
-    "code": "lienthu_pet_5_3",
-    "name": "Hoàng Đế Dực Thú",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 3,
-    "baseHP": 57,
-    "baseMP": 108,
-    "baseATK": 27,
-    "baseDEF": 21,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 60,
-      "mp": 18,
-      "atk": 16,
-      "def": 11,
-      "spd": 12
-    },
-    "spriteNum": 33,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_33",
-    "sprite": "./img/monsters/npc2_33.png",
-    "description": "Chuỗi tiến hóa Hoàng Đế Tộc bọc chiến giáp hoàng kim uy phong lẫm liệt (Giai đoạn 3/3).",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
-        "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
-      }
-    ]
-  },
-  {
-    "id": 138,
-    "code": "mythical_pet_1",
-    "name": "Chu Tước",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 3,
-    "baseHP": 60,
-    "baseMP": 118,
-    "baseATK": 30,
-    "baseDEF": 23,
-    "baseSPD": 25,
-    "growth": {
-      "hp": 64,
-      "mp": 20,
-      "atk": 18,
-      "def": 12,
-      "spd": 14
-    },
-    "spriteNum": 1,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_1",
-    "sprite": "./img/monsters/npc2_1.png",
-    "description": "Thần thú Chu Tước trong Tứ Tượng cai quản ngọn lửa phương Nam",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-      }
-    ]
-  },
-  {
-    "id": 139,
-    "code": "mythical_pet_2",
-    "name": "Nghịch Chu Tước",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 3,
-    "baseHP": 60,
-    "baseMP": 118,
-    "baseATK": 30,
-    "baseDEF": 23,
-    "baseSPD": 25,
-    "growth": {
-      "hp": 64,
-      "mp": 20,
-      "atk": 18,
-      "def": 12,
-      "spd": 14
-    },
-    "spriteNum": 2,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_2",
-    "sprite": "./img/monsters/npc2_2.png",
-    "description": "Dị bản hắc ám của Chu Tước bộc phát cuồng nộ diệt thế",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
-        "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 140,
-    "code": "mythical_pet_3",
-    "name": "Huyễn Vũ",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 3,
-    "baseHP": 60,
-    "baseMP": 118,
-    "baseATK": 30,
-    "baseDEF": 23,
-    "baseSPD": 25,
-    "growth": {
-      "hp": 64,
-      "mp": 20,
-      "atk": 18,
-      "def": 12,
-      "spd": 14
-    },
-    "spriteNum": 3,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_3",
-    "sprite": "./img/monsters/npc2_3.png",
-    "description": "Linh điểu huyền ảo mang đôi cánh cầu vồng lộng lẫy",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-      }
-    ]
-  },
-  {
-    "id": 141,
-    "code": "mythical_pet_4",
-    "name": "Mộc Tu Long",
-    "type": "Thực Vật",
-    "color": "#27ae60",
-    "tier": 2,
-    "baseHP": 54,
-    "baseMP": 112,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 58,
-      "mp": 20,
-      "atk": 16,
-      "def": 11,
-      "spd": 13
-    },
-    "spriteNum": 4,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_4",
-    "sprite": "./img/monsters/npc2_4.png",
-    "description": "Rồng thảo mộc tu luyện ngàn năm giữa rừng sâu",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 0,
-        "name": "Triền Nhiễu",
-        "type": "Thực Vật",
-        "power": 16,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Dây leo quấn chặt gây sát thương và khống chế"
-      },
-      {
-        "id": 1,
-        "name": "Phong Lợi Tiêm Thứ",
-        "type": "Thực Vật",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
-      },
-      {
-        "id": 2,
-        "name": "Phi Diệp Đao Phong",
-        "type": "Thực Vật",
-        "power": 28,
-        "mpCost": 18,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-      },
-      {
-        "id": 3,
-        "name": "Sâm Lâm Bạo Phát",
-        "type": "Thực Vật",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
-      }
-    ]
-  },
-  {
-    "id": 142,
-    "code": "mythical_pet_5",
-    "name": "Thần Tộc",
-    "type": "Kim Loại",
-    "color": "#f39c12",
-    "tier": 3,
-    "baseHP": 60,
-    "baseMP": 118,
-    "baseATK": 30,
-    "baseDEF": 23,
-    "baseSPD": 25,
-    "growth": {
-      "hp": 64,
-      "mp": 20,
-      "atk": 18,
-      "def": 12,
-      "spd": 14
-    },
-    "spriteNum": 5,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_5",
-    "sprite": "./img/monsters/npc2_5.png",
-    "description": "Chiến binh thần tộc khoác áo giáp thánh quang",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 11,
-        "name": "Cương Thiết Trảm",
-        "type": "Kim Loại",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-      },
-      {
-        "id": 12,
-        "name": "Kim Tinh Xung Kích",
-        "type": "Kim Loại",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-      },
-      {
-        "id": 14,
-        "name": "Trảm Kim Đoạn Ngọc",
-        "type": "Kim Loại",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-      },
-      {
-        "id": 19,
-        "name": "Cương Cân Thiết Cốt",
-        "type": "Phòng Ngự",
-        "power": 0,
-        "mpCost": 14,
-        "accuracy": 100,
-        "heal": 0,
-        "buffDef": 45,
-        "desc": "Biến cơ thể thành khối kim cương siêu cứng"
-      }
-    ]
-  },
-  {
-    "id": 143,
-    "code": "mythical_pet_6",
-    "name": "Thương Mang Lang",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 2,
-    "baseHP": 54,
-    "baseMP": 112,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 58,
-      "mp": 20,
-      "atk": 16,
-      "def": 11,
-      "spd": 13
-    },
-    "spriteNum": 6,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_6",
-    "sprite": "./img/monsters/npc2_6.png",
-    "description": "Sói tuyết Thương Mang tiếng hú vang dội đỉnh núi băng",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 144,
-    "code": "mythical_pet_7",
-    "name": "Xích Vũ Lang",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 2,
-    "baseHP": 54,
-    "baseMP": 112,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 58,
-      "mp": 20,
-      "atk": 16,
-      "def": 11,
-      "spd": 13
-    },
-    "spriteNum": 7,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_7",
-    "sprite": "./img/monsters/npc2_7.png",
-    "description": "Sói lửa bờm đỏ rực chuyên săn lùng nơi miệng núi lửa",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 30,
-        "name": "Liệt Trảo",
-        "type": "Mãnh Thú",
-        "power": 17,
-        "mpCost": 10,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Móng vuốt rực lửa cào xé dữ dội"
-      },
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
-  },
-  {
-    "id": 145,
-    "code": "mythical_pet_8",
-    "name": "Tử Ảnh Ngao",
-    "type": "Phi Hành",
-    "color": "#9b59b6",
-    "tier": 3,
-    "baseHP": 60,
-    "baseMP": 118,
-    "baseATK": 30,
-    "baseDEF": 23,
-    "baseSPD": 25,
-    "growth": {
-      "hp": 64,
-      "mp": 20,
-      "atk": 18,
-      "def": 12,
-      "spd": 14
-    },
-    "spriteNum": 8,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_8",
-    "sprite": "./img/monsters/npc2_8.png",
-    "description": "Ngao thần bóng tím lướt nhanh như ánh chớp",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 21,
-        "name": "Liệp Dực Trảm",
-        "type": "Phi Hành",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sải cánh săn mồi chém rách đối thủ"
-      },
-      {
-        "id": 22,
-        "name": "Toàn Phong Xung Kích",
-        "type": "Phi Hành",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-      },
-      {
-        "id": 24,
-        "name": "Thần Phong Liệt Không",
-        "type": "Phi Hành",
-        "power": 48,
-        "mpCost": 36,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn bão thần thánh xé toạc không gian"
-      },
-      {
-        "id": 23,
-        "name": "Vũ Dực Cuồng Phong",
-        "type": "Phi Hành",
-        "power": 37,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-      }
-    ]
-  },
-  {
-    "id": 146,
-    "code": "mythical_pet_9",
-    "name": "Băng Ma Sư",
-    "type": "Hải Dương",
-    "color": "#2980b9",
-    "tier": 2,
-    "baseHP": 54,
-    "baseMP": 112,
-    "baseATK": 26,
-    "baseDEF": 20,
-    "baseSPD": 22,
-    "growth": {
-      "hp": 58,
-      "mp": 20,
-      "atk": 16,
-      "def": 11,
-      "spd": 13
-    },
-    "spriteNum": 9,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_9",
-    "sprite": "./img/monsters/npc2_9.png",
-    "description": "Sư tử băng với bộ lông kết bằng tinh thể tuyết",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 40,
-        "name": "Thủy Trụ",
+        "name": "Hải Thần Phục Cừu",
+        "category": "Hải Dương hệ Kỹ năng bậc 5",
         "type": "Hải Dương",
-        "power": 15,
-        "mpCost": 10,
+        "power": 25,
+        "mpCost": 25,
         "accuracy": 95,
         "heal": 0,
-        "buffDef": 0,
-        "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
-      },
-      {
-        "id": 41,
-        "name": "Ba Đào Trọng Kích",
-        "type": "Hải Dương",
-        "power": 22,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
-      },
-      {
-        "id": 42,
-        "name": "Hải Lãng Nộ Đào",
-        "type": "Hải Dương",
-        "power": 28,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
-      },
-      {
-        "id": 43,
-        "name": "Hàn Băng Toái Toản",
-        "type": "Hải Dương",
-        "power": 36,
-        "mpCost": 26,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
+        "buffDef": 0
       }
-    ]
-  },
-  {
-    "id": 147,
-    "code": "mythical_pet_10",
-    "name": "Đế Ma Sư",
-    "type": "Mãnh Thú",
-    "color": "#e74c3c",
-    "tier": 3,
-    "baseHP": 60,
-    "baseMP": 118,
-    "baseATK": 30,
-    "baseDEF": 23,
-    "baseSPD": 25,
-    "growth": {
-      "hp": 64,
-      "mp": 20,
-      "atk": 18,
-      "def": 12,
-      "spd": 14
-    },
-    "spriteNum": 10,
-    "spriteVariant": 0,
-    "spriteKey": "npc2_10",
-    "sprite": "./img/monsters/npc2_10.png",
-    "description": "Đế vương ma thú quyền năng tối cao",
-    "evolution": [],
-    "skills": [
-      {
-        "id": 31,
-        "name": "Cuồng Bạo Xung Chàng",
-        "type": "Mãnh Thú",
-        "power": 23,
-        "mpCost": 14,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-      },
-      {
-        "id": 32,
-        "name": "Viêm Hống Toái Cốt",
-        "type": "Mãnh Thú",
-        "power": 29,
-        "mpCost": 19,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-      },
-      {
-        "id": 34,
-        "name": "Hồng Liên Liệt Hỏa",
-        "type": "Mãnh Thú",
-        "power": 50,
-        "mpCost": 38,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-      },
-      {
-        "id": 33,
-        "name": "Nộ Diễm Liệt Ba",
-        "type": "Mãnh Thú",
-        "power": 38,
-        "mpCost": 27,
-        "accuracy": 95,
-        "heal": 0,
-        "buffDef": 0,
-        "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-      }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   }
 ];
 
@@ -10896,659 +7921,552 @@ const SKILLS_PRESET = [
   {
     "id": 0,
     "name": "Triền Nhiễu",
+    "category": "Cỏ Hệ Kỹ năng bậc 1",
     "type": "Thực Vật",
-    "power": 16,
-    "mpCost": 10,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Dây leo quấn chặt gây sát thương và khống chế"
-  },
-  {
-    "id": 1,
-    "name": "Phong Lợi Tiêm Thứ",
-    "type": "Thực Vật",
-    "power": 22,
-    "mpCost": 14,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Phóng ra gai nhọn sắc bén như lưỡi cưa"
-  },
-  {
-    "id": 2,
-    "name": "Phi Diệp Đao Phong",
-    "type": "Thực Vật",
-    "power": 28,
-    "mpCost": 18,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Phóng bão lá sắc bén tựa ngàn lưỡi kiếm"
-  },
-  {
-    "id": 3,
-    "name": "Sâm Lâm Bạo Phát",
-    "type": "Thực Vật",
-    "power": 36,
-    "mpCost": 26,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Sức mạnh rừng thẳm bộc phát đè bẹp đối phương"
-  },
-  {
-    "id": 4,
-    "name": "Mộc Chi Cứu Thù",
-    "type": "Thực Vật",
-    "power": 46,
-    "mpCost": 35,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Chiêu thức tối thượng hệ Thực Vật hủy diệt kẻ địch"
-  },
-  {
-    "id": 5,
-    "name": "Diệp Toàn",
-    "type": "Thực Vật",
-    "power": 18,
-    "mpCost": 11,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Lốc xoáy lá cây sắc ngọt bao vây mục tiêu"
-  },
-  {
-    "id": 6,
-    "name": "Châm Diệp Trảm",
-    "type": "Thực Vật",
-    "power": 26,
-    "mpCost": 18,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Lưỡi trảm lá kim xuyên thủng lớp phòng hộ"
-  },
-  {
-    "id": 7,
-    "name": "Đằng Mạn Triền Nhiễu",
-    "type": "Thực Vật",
-    "power": 34,
-    "mpCost": 24,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Đại dây leo cổ thụ cuốn siết mục tiêu liên hồi"
-  },
-  {
-    "id": 8,
-    "name": "Thảo Nguyện Thuật",
-    "type": "Hồi Phục",
-    "power": 0,
-    "mpCost": 18,
-    "accuracy": 100,
-    "heal": 40,
-    "buffDef": 0,
-    "desc": "Cầu nguyện thảo nguyên hồi 40% lượng máu tối đa"
-  },
-  {
-    "id": 9,
-    "name": "Quang Hợp Hiệu Ứng",
-    "type": "Hồi Phục",
-    "power": 0,
-    "mpCost": 28,
-    "accuracy": 100,
-    "heal": 65,
-    "buffDef": 0,
-    "desc": "Thu nạp ánh sáng phục hồi 65% sinh lực"
-  },
-  {
-    "id": 10,
-    "name": "Thiết Quyền",
-    "type": "Kim Loại",
-    "power": 16,
-    "mpCost": 10,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Nắm đấm kim loại nặng nề nện thẳng mục tiêu"
-  },
-  {
-    "id": 11,
-    "name": "Cương Thiết Trảm",
-    "type": "Kim Loại",
-    "power": 22,
-    "mpCost": 14,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Đường kiếm thép sắc lạnh chém đứt giáp trụ"
-  },
-  {
-    "id": 12,
-    "name": "Kim Tinh Xung Kích",
-    "type": "Kim Loại",
-    "power": 28,
-    "mpCost": 19,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Lao thẳng với mũi khoan kim cương cực mạnh"
-  },
-  {
-    "id": 13,
-    "name": "Bạo Liệt Thiết Toản",
-    "type": "Kim Loại",
-    "power": 36,
-    "mpCost": 26,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Mũi khoan thép bạo nổ gây chấn thương diện rộng"
-  },
-  {
-    "id": 14,
-    "name": "Trảm Kim Đoạn Ngọc",
-    "type": "Kim Loại",
-    "power": 48,
-    "mpCost": 36,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Tuyệt kỹ kim loại chém sắt gãy ngọc vô song"
-  },
-  {
-    "id": 15,
-    "name": "Thổ Thuẫn",
-    "type": "Phòng Ngự",
-    "power": 0,
-    "mpCost": 12,
-    "accuracy": 100,
-    "heal": 0,
-    "buffDef": 35,
-    "desc": "Dựng tường đất cứng cáp tăng 35% phòng ngự"
-  },
-  {
-    "id": 16,
-    "name": "Bão Cát",
-    "type": "Kim Loại",
-    "power": 24,
-    "mpCost": 16,
-    "accuracy": 90,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Cơn bão bụi cát cuốn xé và giảm tầm nhìn địch"
-  },
-  {
-    "id": 17,
-    "name": "Nham Băng",
-    "type": "Kim Loại",
-    "power": 32,
-    "mpCost": 22,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Nham thạch nổ tung phá toái trận địa"
-  },
-  {
-    "id": 18,
-    "name": "Thổ Chi Loạn Vũ",
-    "type": "Kim Loại",
-    "power": 44,
-    "mpCost": 32,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Đại địa cuồng nộ nghiền nát tất cả mục tiêu"
-  },
-  {
-    "id": 19,
-    "name": "Cương Cân Thiết Cốt",
-    "type": "Phòng Ngự",
-    "power": 0,
-    "mpCost": 14,
-    "accuracy": 100,
-    "heal": 0,
-    "buffDef": 45,
-    "desc": "Biến cơ thể thành khối kim cương siêu cứng"
-  },
-  {
-    "id": 20,
-    "name": "Phong Nhận",
-    "type": "Phi Hành",
-    "power": 17,
-    "mpCost": 10,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Lưỡi đao gió chém ngọt từ không trung"
-  },
-  {
-    "id": 21,
-    "name": "Liệp Dực Trảm",
-    "type": "Phi Hành",
-    "power": 23,
-    "mpCost": 14,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Sải cánh săn mồi chém rách đối thủ"
-  },
-  {
-    "id": 22,
-    "name": "Toàn Phong Xung Kích",
-    "type": "Phi Hành",
-    "power": 29,
-    "mpCost": 19,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Cuộn trọn theo lốc xoáy đâm sầm vào kẻ địch"
-  },
-  {
-    "id": 23,
-    "name": "Vũ Dực Cuồng Phong",
-    "type": "Phi Hành",
-    "power": 37,
-    "mpCost": 26,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Đập cánh tạo siêu bão càn quét trận đấu"
-  },
-  {
-    "id": 24,
-    "name": "Thần Phong Liệt Không",
-    "type": "Phi Hành",
-    "power": 48,
-    "mpCost": 36,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Cơn bão thần thánh xé toạc không gian"
-  },
-  {
-    "id": 25,
-    "name": "Lôi Kích",
-    "type": "Phi Hành",
-    "power": 25,
-    "mpCost": 16,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Tia sét rền vang giáng sập mục tiêu"
-  },
-  {
-    "id": 26,
-    "name": "Lôi Đình Nhất Kích",
-    "type": "Phi Hành",
-    "power": 38,
-    "mpCost": 28,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Sấm sét cửu thiên giáng thế gây tê liệt"
-  },
-  {
-    "id": 27,
-    "name": "Yến Hồi Thiểm",
-    "type": "Phi Hành",
-    "power": 32,
-    "mpCost": 22,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Lượn cánh chớp nhoáng phản kích hiểm hóc"
-  },
-  {
-    "id": 28,
-    "name": "Phi Yến Hoàn Sào",
-    "type": "Phi Hành",
-    "power": 45,
-    "mpCost": 34,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Đường bay huyền ảo kết liễu kẻ thù"
-  },
-  {
-    "id": 29,
-    "name": "Điện Quang Thạch Hỏa",
-    "type": "Phi Hành",
-    "power": 42,
-    "mpCost": 32,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Tốc độ tia chớp tấn công dồn dập không kịp trở tay"
-  },
-  {
-    "id": 30,
-    "name": "Liệt Trảo",
-    "type": "Mãnh Thú",
-    "power": 17,
-    "mpCost": 10,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Móng vuốt rực lửa cào xé dữ dội"
-  },
-  {
-    "id": 31,
-    "name": "Cuồng Bạo Xung Chàng",
-    "type": "Mãnh Thú",
-    "power": 23,
-    "mpCost": 14,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Húc mạnh bạo liệt hất văng đối thủ"
-  },
-  {
-    "id": 32,
-    "name": "Viêm Hống Toái Cốt",
-    "type": "Mãnh Thú",
-    "power": 29,
-    "mpCost": 19,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Tiếng gầm rực lửa làm rúng động và nứt giáp đối thủ"
-  },
-  {
-    "id": 33,
-    "name": "Nộ Diễm Liệt Ba",
-    "type": "Mãnh Thú",
-    "power": 38,
-    "mpCost": 27,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Sóng lửa cuộn trào thiêu đốt toàn bộ vùng xung quanh"
-  },
-  {
-    "id": 34,
-    "name": "Hồng Liên Liệt Hỏa",
-    "type": "Mãnh Thú",
-    "power": 50,
-    "mpCost": 38,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Hoa sen lửa địa ngục hủy diệt vạn vật"
-  },
-  {
-    "id": 35,
-    "name": "Hỏa Trảo",
-    "type": "Mãnh Thú",
-    "power": 18,
-    "mpCost": 11,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Vuốt lửa bốc cháy cào xé mục tiêu"
-  },
-  {
-    "id": 36,
-    "name": "Diễm Kích",
-    "type": "Mãnh Thú",
-    "power": 26,
-    "mpCost": 17,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Phóng đạn lửa nổ tung khi va chạm"
-  },
-  {
-    "id": 37,
-    "name": "Viêm Lôi Phá",
-    "type": "Mãnh Thú",
-    "power": 36,
-    "mpCost": 26,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Sự kết hợp giữa sấm sét và lửa đỏ uy lực bão táp"
-  },
-  {
-    "id": 38,
-    "name": "Liệt Diễm Phong Bạo",
-    "type": "Mãnh Thú",
-    "power": 44,
-    "mpCost": 34,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Bão lửa cuồng phong nhấn chìm trận đấu"
-  },
-  {
-    "id": 39,
-    "name": "Vĩnh Hằng Hỏa Ảnh",
-    "type": "Mãnh Thú",
-    "power": 52,
-    "mpCost": 40,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Ngọn lửa vĩnh cửu bất diệt nuốt trọn sinh lực địch"
-  },
-  {
-    "id": 40,
-    "name": "Thủy Trụ",
-    "type": "Hải Dương",
     "power": 15,
     "mpCost": 10,
     "accuracy": 95,
     "heal": 0,
-    "buffDef": 0,
-    "desc": "Cột nước áp lực cao bắn thẳng từ mặt đất"
+    "buffDef": 0
   },
   {
-    "id": 41,
-    "name": "Ba Đào Trọng Kích",
-    "type": "Hải Dương",
-    "power": 22,
-    "mpCost": 14,
+    "id": 1,
+    "name": "Phong Lợi Tiêm Thứ",
+    "category": "Cỏ Hệ Kỹ năng bậc 2",
+    "type": "Thực Vật",
+    "power": 18,
+    "mpCost": 13,
     "accuracy": 95,
     "heal": 0,
-    "buffDef": 0,
-    "desc": "Cơn sóng cuồn cuộn đập mạnh vào kẻ thù"
+    "buffDef": 0
   },
   {
-    "id": 42,
-    "name": "Hải Lãng Nộ Đào",
-    "type": "Hải Dương",
-    "power": 28,
+    "id": 2,
+    "name": "Bạo Tạc Chủng Tử",
+    "category": "Cỏ Hệ Kỹ năng bậc 3",
+    "type": "Thực Vật",
+    "power": 21,
+    "mpCost": 16,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 3,
+    "name": "Phi Diệp Đao Phong",
+    "category": "Cỏ Hệ Kỹ năng bậc 4",
+    "type": "Thực Vật",
+    "power": 23,
     "mpCost": 19,
     "accuracy": 95,
     "heal": 0,
-    "buffDef": 0,
-    "desc": "Sóng biển giận dữ cuốn phăng phòng tuyến địch"
+    "buffDef": 0
   },
   {
-    "id": 43,
-    "name": "Hàn Băng Toái Toản",
-    "type": "Hải Dương",
-    "power": 36,
-    "mpCost": 26,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Những mũi băng nhọn hoắt nghiền nát giáp trụ"
-  },
-  {
-    "id": 44,
-    "name": "Hải Tiêu Nộ Lãng",
-    "type": "Hải Dương",
-    "power": 48,
-    "mpCost": 36,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Đại hồng thủy đại dương nuốt chửng đối thủ"
-  },
-  {
-    "id": 45,
-    "name": "Băng Lao",
-    "type": "Hải Dương",
-    "power": 20,
-    "mpCost": 12,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Hộp băng vĩnh cửu khóa chặt mục tiêu"
-  },
-  {
-    "id": 46,
-    "name": "Bạo Phong Tuyết",
-    "type": "Hải Dương",
-    "power": 36,
-    "mpCost": 26,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Bão tuyết hàn băng đóng băng cả bầu trời"
-  },
-  {
-    "id": 47,
-    "name": "Băng Phong Hãm Tịnh",
-    "type": "Hải Dương",
-    "power": 44,
-    "mpCost": 34,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Bẫy băng đóng băng mọi nỗ lực phản kháng"
-  },
-  {
-    "id": 48,
-    "name": "Thuật Cầu Nguyện",
-    "type": "Hồi Phục",
-    "power": 0,
-    "mpCost": 16,
-    "accuracy": 100,
-    "heal": 45,
-    "buffDef": 0,
-    "desc": "Làn nước mát lành chữa lành 45% sinh lực"
-  },
-  {
-    "id": 49,
-    "name": "Thủy Bích",
-    "type": "Phòng Ngự",
-    "power": 0,
-    "mpCost": 12,
-    "accuracy": 100,
-    "heal": 0,
-    "buffDef": 35,
-    "desc": "Tường nước bao bọc giảm 35% sát thương nhận vào"
-  },
-  {
-    "id": 50,
-    "name": "Thiên Vương Chiến Ý",
-    "type": "Đặc Biệt",
-    "power": 0,
-    "mpCost": 15,
-    "accuracy": 100,
-    "heal": 0,
-    "buffDef": 25,
-    "desc": "Chiến ý ngút trời gia tăng toàn diện công phòng"
-  },
-  {
-    "id": 51,
-    "name": "Lực Phách Thiên Quân",
-    "type": "Đặc Biệt",
-    "power": 36,
+    "id": 4,
+    "name": "Thực Vật Phong Bạo",
+    "category": "Cỏ Hệ Kỹ năng bậc 5",
+    "type": "Thực Vật",
+    "power": 27,
     "mpCost": 25,
     "accuracy": 95,
     "heal": 0,
-    "buffDef": 0,
-    "desc": "Đòn bổ ngàn cân chẻ đôi giáp trụ"
+    "buffDef": 0
   },
   {
-    "id": 52,
-    "name": "Càn Khôn Nhất Kích",
-    "type": "Đặc Biệt",
-    "power": 44,
-    "mpCost": 32,
+    "id": 5,
+    "name": "Thiết Chuy",
+    "category": "Kim Loại Hệ Kỹ năng bậc 1",
+    "type": "Kim Loại",
+    "power": 13,
+    "mpCost": 10,
     "accuracy": 95,
     "heal": 0,
-    "buffDef": 0,
-    "desc": "Xoay chuyển càn khôn xuất kích quyết định"
+    "buffDef": 0
   },
   {
-    "id": 53,
-    "name": "Bối Thủy Nhất Chiến",
-    "type": "Đặc Biệt",
-    "power": 48,
-    "mpCost": 36,
+    "id": 6,
+    "name": "Thiết Phù Đồ",
+    "category": "Kim Loại Hệ Kỹ năng bậc 2",
+    "type": "Kim Loại",
+    "power": 16,
+    "mpCost": 13,
     "accuracy": 95,
     "heal": 0,
-    "buffDef": 0,
-    "desc": "Trận chiến bờ sông không đường lùi sát thương bộc phá"
+    "buffDef": 0
   },
   {
-    "id": 54,
-    "name": "Phản Kích",
-    "type": "Đặc Biệt",
-    "power": 32,
-    "mpCost": 20,
-    "accuracy": 95,
-    "heal": 0,
-    "buffDef": 0,
-    "desc": "Lợi dụng lực tấn công của địch phản đòn bất ngờ"
-  },
-  {
-    "id": 55,
-    "name": "Niết Bàn Kích",
-    "type": "Hồi Phục",
-    "power": 25,
-    "mpCost": 35,
-    "accuracy": 95,
-    "heal": 50,
-    "buffDef": 0,
-    "desc": "Vừa tấn công vừa hồi sinh 50% lượng máu tối đa"
-  },
-  {
-    "id": 56,
-    "name": "Thần Ân Nghiễm Trạch",
-    "type": "Hồi Phục",
-    "power": 0,
-    "mpCost": 38,
-    "accuracy": 100,
-    "heal": 80,
-    "buffDef": 0,
-    "desc": "Ân sủng tối cao phục hồi 80% sinh lực lập tức"
-  },
-  {
-    "id": 57,
-    "name": "Minh Kính Chỉ Thủy",
-    "type": "Phòng Ngự",
-    "power": 0,
+    "id": 7,
+    "name": "Bạo Liệt Vũ",
+    "category": "Kim Loại Hệ Kỹ năng bậc 3",
+    "type": "Kim Loại",
+    "power": 19,
     "mpCost": 16,
-    "accuracy": 100,
+    "accuracy": 95,
     "heal": 0,
-    "buffDef": 50,
-    "desc": "Tâm tĩnh như gương chặn 50% sát thương phải chịu"
+    "buffDef": 0
+  },
+  {
+    "id": 8,
+    "name": "Toản Thạch Thiết Cát",
+    "category": "Kim Loại Hệ Kỹ năng bậc 4",
+    "type": "Kim Loại",
+    "power": 21,
+    "mpCost": 19,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 9,
+    "name": "Kim Loại Liệt Trảm",
+    "category": "Kim Loại Hệ Kỹ năng bậc 5",
+    "type": "Kim Loại",
+    "power": 25,
+    "mpCost": 25,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 10,
+    "name": "Phi Tường Trảm",
+    "category": "Phi Hành Hệ Kỹ năng bậc 1",
+    "type": "Phi Hành",
+    "power": 13,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 11,
+    "name": "Bạo Phong Toàn Trận",
+    "category": "Phi Hành Hệ Kỹ năng bậc 2",
+    "type": "Phi Hành",
+    "power": 16,
+    "mpCost": 13,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 12,
+    "name": "Tật Phong Tốc Hàng",
+    "category": "Phi Hành Hệ Kỹ năng bậc 3",
+    "type": "Phi Hành",
+    "power": 19,
+    "mpCost": 16,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 13,
+    "name": "Thánh Linh Khoan Thứ",
+    "category": "Phi Hành Hệ Kỹ năng bậc 4",
+    "type": "Phi Hành",
+    "power": 21,
+    "mpCost": 19,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 14,
+    "name": "Thiên Nộ",
+    "category": "Phi Hành hệ kỹ năng bậc 5",
+    "type": "Phi Hành",
+    "power": 25,
+    "mpCost": 25,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 15,
+    "name": "Phác Giảo",
+    "category": "Mãnh Thú hệ Kỹ năng bậc 1",
+    "type": "Mãnh Thú",
+    "power": 13,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 16,
+    "name": "Tê Liệt Kích",
+    "category": "Mãnh Thú hệ Kỹ năng bậc 2",
+    "type": "Mãnh Thú",
+    "power": 16,
+    "mpCost": 13,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 17,
+    "name": "Nộ Ý Cuồng Bạo",
+    "category": "Mãnh Thú hệ Kỹ năng bậc 3",
+    "type": "Mãnh Thú",
+    "power": 19,
+    "mpCost": 16,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 18,
+    "name": "Tứ Ngược Trùng Phong",
+    "category": "Mãnh Thú hệ Kỹ năng bậc 4",
+    "type": "Mãnh Thú",
+    "power": 21,
+    "mpCost": 19,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 19,
+    "name": "Cuồng Bạo Tê Hống",
+    "category": "Mãnh Thú hệ Kỹ năng bậc 5",
+    "type": "Mãnh Thú",
+    "power": 25,
+    "mpCost": 25,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 20,
+    "name": "Thủy Trụ",
+    "category": "Hải Dương hệ Kỹ năng bậc 1",
+    "type": "Hải Dương",
+    "power": 13,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 21,
+    "name": "Tiên Xạ Thủy Lãng",
+    "category": "Hải Dương hệ Kỹ năng bậc 2",
+    "type": "Hải Dương",
+    "power": 16,
+    "mpCost": 13,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 22,
+    "name": "Thủy Cầu Áp Sát",
+    "category": "Hải Dương hệ Kỹ năng bậc 3",
+    "type": "Hải Dương",
+    "power": 19,
+    "mpCost": 16,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 23,
+    "name": "Phún Xạ Thủy Trụ",
+    "category": "Hải Dương hệ Kỹ năng bậc 4",
+    "type": "Hải Dương",
+    "power": 21,
+    "mpCost": 19,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 24,
+    "name": "Hải Thần Phục Cừu",
+    "category": "Hải Dương hệ Kỹ năng bậc 5",
+    "type": "Hải Dương",
+    "power": 25,
+    "mpCost": 25,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 25,
+    "name": "Công Kích thông dụng",
+    "category": "Kỹ năng công kích cơ bản",
+    "type": "Đặc Biệt",
+    "power": 8,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 26,
+    "name": "Tàn quân",
+    "category": "Giảm 25% độ trung thành của sủng vật công kích kẻ địch",
+    "type": "Đặc Biệt",
+    "power": 18,
+    "mpCost": 40,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 27,
+    "name": "Trị liệu sơ cấp",
+    "category": "Hồi phục 70 điểm sinh mệnh",
+    "type": "Hồi Phục",
+    "power": 7,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 70,
+    "buffDef": 0
+  },
+  {
+    "id": 28,
+    "name": "Trị liệu chuyên nghiệp",
+    "category": "Hồi phục 200 điểm sinh mệnh",
+    "type": "Hồi Phục",
+    "power": 20,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 200,
+    "buffDef": 0
+  },
+  {
+    "id": 29,
+    "name": "Tử Vong Chi Xúc",
+    "category": "Tiêu hao toàn bộ năng lượng hiện tại một lần duy nhất cũng như chuyển hóa thương tổn",
+    "type": "Đặc Biệt",
+    "power": 2,
+    "mpCost": 1,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 30,
+    "name": "Kỹ năng Phong Bế",
+    "category": "3 hiệp giao đấu không thể sử dụng nhiều hơn 3 kỹ năng công kích",
+    "type": "Đặc Biệt",
+    "power": 8,
+    "mpCost": 50,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 31,
+    "name": "Độc Dịch Công Kích",
+    "category": "Nâng cao hiệu quả Hủ Thực của sủng vật Thực Vật hệ",
+    "type": "Đặc Biệt",
+    "power": 3,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 32,
+    "name": "Tiêm Nha Lợi Xỉ",
+    "category": "Kéo dài hiệp đấu duy trì liên tục Tê Liệt của sủng vật Mãnh Thú hệ",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 33,
+    "name": "Cương Cân Thiết Cốt",
+    "category": "Nâng cao hiệu quả phòng ngự của sủng vật Kim Loại hệ",
+    "type": "Phòng Ngự",
+    "power": 80,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 30
+  },
+  {
+    "id": 34,
+    "name": "Tinh Thần Công Kích",
+    "category": "Sủng vật Phi Hành hệ công kích đồng thời có thể giảm bớt năng lượng đối thủ",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 35,
+    "name": "Triều Tịch Năng Lượng",
+    "category": "Sủng vật Hải Dương hệ công kích có thể giảm một phần tiêu hao năng lượng",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 36,
+    "name": "Kinh nghiệm đa dạng",
+    "category": "Đạt được 2 lần kinh nghiệm (có thể đồng thời sử dụng kinh nghiệm phong phú)",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 37,
+    "name": "Kinh nghiệm phong phú",
+    "category": "Đạt được 3 lần kinh nghiệm (có thể đồng thời sử dụng nhiều kinh nghiệm hơn)",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 38,
+    "name": "Trọng Sinh Chi Tâm",
+    "category": "Sau khi tử vong có 70% tỷ lệ hồi sinh",
+    "type": "Đặc Biệt",
+    "power": 50,
+    "mpCost": 60,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 39,
+    "name": "Hạnh Vận Chi Tinh",
+    "category": "Nâng cao tỷ lệ gặp được sủng vật hiếm",
+    "type": "Đặc Biệt",
+    "power": 70,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 40,
+    "name": "Đồng bạn trung thành",
+    "category": "Lòng trung thành của sủng vật vĩnh viễn không giảm",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 41,
+    "name": "Thân Hòa Thiên Sử",
+    "category": "Bắt được kẻ địch thất bại cũng không chạy trốn [bắt sủng chuyên dụng]",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 42,
+    "name": "Đào tẩu chuyên nghiệp",
+    "category": "Chạy trốn nhất định thành công",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 43,
+    "name": "Hoa Thảo Ý Chí",
+    "category": "Chiến đấu trên khu hoa viên là thế mạnh có lợi cho sủng vật Thực Vật hệ",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 44,
+    "name": "Kim Loại Ý Chí",
+    "category": "Chiến đấu ở khu di tích là thế mạnh có lợi cho sủng vật Kim Loại hệ",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 45,
+    "name": "Phi Hành Ý Chí",
+    "category": "Chiến đấu trên không trung là thế mạnh có lợi cho sủng vật Phi Hành hệ",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 46,
+    "name": "Mãnh Thú Ý Chí",
+    "category": "Chiến đấu ở vùng đồng bằng là thế mạnh có lợi cho sủng vật Mãnh Thú hệ",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 47,
+    "name": "Hải Dương Ý Chí",
+    "category": "Chiến đấu trên đại dương là thế mạnh có lợi cho sủng vật Hải Dương hệ",
+    "type": "Đặc Biệt",
+    "power": 15,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
+  },
+  {
+    "id": 48,
+    "name": "Thế Thân Mộc Ngẫu",
+    "category": "Đã bị công kích giảm 30% tỷ lệ thương tổn",
+    "type": "Đặc Biệt",
+    "power": 30,
+    "mpCost": 10,
+    "accuracy": 95,
+    "heal": 0,
+    "buffDef": 0
   }
 ];
 
 // Hàm tính toán chỉ số theo Cấp độ (Chuẩn công thức J2ME: Base + (Growth * Level) / 10)
 function calculateMonsterStats(baseMonster, level = 5) {
-    if (!baseMonster) return null;
     const g = baseMonster.growth || { hp: 35, mp: 15, atk: 8, def: 6, spd: 8 };
     const hp = Math.floor(baseMonster.baseHP + (g.hp * level) / 10);
     const mp = Math.floor(baseMonster.baseMP + (g.mp * level) / 10);
     const attack = Math.floor(baseMonster.baseATK + (g.atk * level) / 10);
     const defense = Math.floor(baseMonster.baseDEF + (g.def * level) / 10);
     const speed = Math.floor(baseMonster.baseSPD + (g.spd * level) / 10);
-
-    // Đảm bảo sủng vật luôn mang đủ 4 kỹ năng hoàn chỉnh
-    const skills = (baseMonster.skills && baseMonster.skills.length > 0)
-        ? baseMonster.skills
-        : [
-            { name: 'Đánh Thường', power: 15, mpCost: 0, type: baseMonster.type || 'Đặc Biệt' }
-        ];
 
     return {
         ...baseMonster,
@@ -11559,8 +8477,7 @@ function calculateMonsterStats(baseMonster, level = 5) {
         maxMp: mp,
         attack,
         defense,
-        speed,
-        skills
+        speed
     };
 }
 

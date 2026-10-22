@@ -69,10 +69,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_1",
     "sprite": "./img/monsters/npc2_1.png",
     "description": "Tiểu Thụ Quái đáng yêu. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      11,
-      13
-    ],
+    "evolution": {
+      "targetId": 2,
+      "targetCode": "cauvong_pet_2",
+      "targetName": "Bụi gai",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -118,7 +123,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bên ngoài thành phía nam, Cao nguyên phía đông 2"
   },
   {
     "id": 2,
@@ -144,9 +150,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_1",
     "sprite": "./img/monsters/npc2_1.png",
     "description": "Kinh Cứu Thụ Quái (bụi gai) toàn thân dài khắp. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 3,
+      "targetCode": "cauvong_pet_3",
+      "targetName": "Cây chứa dịch độc",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -192,7 +204,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 3,
@@ -218,9 +231,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_1",
     "sprite": "./img/monsters/npc2_1.png",
     "description": "Độc Thụ Quái (cây chứa dịch độc) toàn thân tràn ngập nọc độc trí mạng. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 4,
+      "targetCode": "cauvong_pet_4",
+      "targetName": "Cổ Thụ Chi Vương",
+      "reqItemId": 19,
+      "reqItemCode": "item_19",
+      "reqItemName": "Chu quả",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -266,7 +285,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 4,
@@ -292,9 +312,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_2",
     "sprite": "./img/monsters/npc2_2.png",
     "description": "Tính tình ôn hòa trưởng giả, khi tức giận sẽ tạo nên uy lực mạnh mẽ có sức hủy diệt to lớn. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -340,7 +358,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 5,
@@ -366,11 +385,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_3",
     "sprite": "./img/monsters/npc2_3.png",
     "description": "Hoa ăn thịt người. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      12,
-      14,
-      16
-    ],
+    "evolution": {
+      "targetId": 6,
+      "targetCode": "cauvong_pet_6",
+      "targetName": "Hoa ngũ sắc",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 6,
@@ -416,7 +439,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Cao nguyên phía đông 1, Cao nguyên phía đông 3, Rừng rậm phía tây 1"
   },
   {
     "id": 6,
@@ -442,9 +466,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_3",
     "sprite": "./img/monsters/npc2_3.png",
     "description": "Loài thực vật có đôi môi gợi cảm kỳ lạ. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -490,7 +512,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 7,
@@ -516,9 +539,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_3",
     "sprite": "./img/monsters/npc2_3.png",
     "description": "Lợi dụng bề ngoài có 5 sắc màu hấp dẫn con mồi, sau đó xơi tái con mồi chỉ với một ngụm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -564,7 +585,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 8,
@@ -590,11 +612,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Trái cây thần kỳ đã hóa hình hài con người. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      13,
-      16,
-      17
-    ],
+    "evolution": {
+      "targetId": 9,
+      "targetCode": "cauvong_pet_9",
+      "targetName": "Mạn đà la",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -640,7 +666,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Cao nguyên phía đông 2, Rừng rậm phía tây 1, Rừng rậm phía tây 2"
   },
   {
     "id": 9,
@@ -666,9 +693,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Có sức mạnh đặc biệt tạo thành ngòi nổ, thực lực bất phàm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 10,
+      "targetCode": "cauvong_pet_10",
+      "targetName": "Hoa Mạn đà la",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -714,7 +747,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 10,
@@ -740,9 +774,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Đóa hoa tiên nở rộ rất xinh đẹp trong xứ xở của Thực Vật hệ. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -788,7 +820,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 11,
@@ -814,11 +847,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_5",
     "sprite": "./img/monsters/npc2_5.png",
     "description": "Tiên Nhân Chưởng Thực Vật hệ toàn thân bao trùm bộ gai nhọn dài khắp. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      11,
-      12,
-      13
-    ],
+    "evolution": {
+      "targetId": 12,
+      "targetCode": "cauvong_pet_12",
+      "targetName": "Gai khổng lồ",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -864,7 +901,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bên ngoài thành phía nam, Cao nguyên phía đông 1, Cao nguyên phía đông 2"
   },
   {
     "id": 12,
@@ -890,9 +928,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_5",
     "sprite": "./img/monsters/npc2_5.png",
     "description": "Sử dụng những cái gai bọc quanh thân làm thứ vũ khí đánh lui kẻ địch. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 13,
+      "targetCode": "cauvong_pet_13",
+      "targetName": "Gai độc",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -938,7 +982,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 13,
@@ -964,9 +1009,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_5",
     "sprite": "./img/monsters/npc2_5.png",
     "description": "Gai độc quanh thân khi cần có khả năng tạo nên uy lực mạnh mẽ làm kẻ địch lập tức bị mất mạng. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -1012,7 +1055,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 14,
@@ -1038,9 +1082,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_6",
     "sprite": "./img/monsters/npc2_6.png",
     "description": "Tiểu cô nương rất mê bộ môn khiêu vũ. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -1086,7 +1128,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 15,
@@ -1112,9 +1155,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_6",
     "sprite": "./img/monsters/npc2_6.png",
     "description": "Tiểu cô nương Hawaii phong tình. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 15,
+      "targetCode": "cauvong_pet_15",
+      "targetName": "Tứ Diệp Tiểu Tả",
+      "reqItemId": 18,
+      "reqItemCode": "item_18",
+      "reqItemName": "Thụ chướng thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -1160,7 +1209,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 16,
@@ -1186,9 +1236,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_4",
     "sprite": "./img/monsters/npc2_4.png",
     "description": "Nữ Vương Hoa Tiên khí chất bất phàm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -1234,7 +1282,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 17,
@@ -1260,9 +1309,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_6",
     "sprite": "./img/monsters/npc2_6.png",
     "description": "Phi Vẫn một đại biểu ái tâm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 17,
+      "targetCode": "cauvong_pet_17",
+      "targetName": "Ái Tâm Thảo",
+      "reqItemId": 19,
+      "reqItemCode": "item_19",
+      "reqItemName": "Chu quả",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -1308,7 +1363,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 18,
@@ -1334,9 +1390,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_7",
     "sprite": "./img/monsters/npc2_7.png",
     "description": "Sư tử dũng mãnh với một lớp bạch kim bao trùm dáng vẻ bên ngoài. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 19,
+      "targetCode": "cauvong_pet_19",
+      "targetName": "Vương Sư",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -1382,7 +1444,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 19,
@@ -1408,9 +1471,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_7",
     "sprite": "./img/monsters/npc2_7.png",
     "description": "Kim Loại Chi Vương, trên người tản ra khí phách vô cùng mạnh mẽ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 20,
+      "targetCode": "cauvong_pet_20",
+      "targetName": "Đế Vương Sư",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -1456,7 +1525,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 20,
@@ -1482,9 +1552,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_8",
     "sprite": "./img/monsters/npc2_8.png",
     "description": "Vương Giả, khí thế làm cho không kẻ nào có thể tới gần. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 21,
+      "targetCode": "cauvong_pet_21",
+      "targetName": "Thủy Tinh Hùng Sư",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -1530,7 +1606,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 21,
@@ -1556,9 +1633,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_8",
     "sprite": "./img/monsters/npc2_8.png",
     "description": "Phát ra hào quang thần thánh của loài sư tử mạnh mẽ, Kim Loại hệ mạnh nhất! [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -1604,7 +1679,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 22,
@@ -1630,11 +1706,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_9",
     "sprite": "./img/monsters/npc2_9.png",
     "description": "Hoạt động sâu trong lòng đất, món ăn ưa thích chính là quặng đồng. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      6,
-      10,
-      22
-    ],
+    "evolution": {
+      "targetId": 23,
+      "targetCode": "cauvong_pet_23",
+      "targetName": "Thiết Giáp Xà",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -1680,7 +1760,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Kim Loại Di Tích 2, Kim Loại Di Tích 3, Nam Chi Phế Tích 2"
   },
   {
     "id": 23,
@@ -1706,9 +1787,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_10",
     "sprite": "./img/monsters/npc2_10.png",
     "description": "Sủng vật bề ngoài được bao bởi một lớp kim loại kỳ quái. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 24,
+      "targetCode": "cauvong_pet_24",
+      "targetName": "Xích Kim Xà Vương",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -1754,7 +1841,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 24,
@@ -1780,9 +1868,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_11",
     "sprite": "./img/monsters/npc2_11.png",
     "description": "Hoa Lệ Kim Bì thể hiện sự vương giả tôn quý, năng lượng mạnh mẽ đủ để cho đối thủ thần phục. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -1828,7 +1914,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 25,
@@ -1854,9 +1941,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_11",
     "sprite": "./img/monsters/npc2_11.png",
     "description": "Xà Vương buồn. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 25,
+      "targetCode": "cauvong_pet_25",
+      "targetName": "Xích Kim Xà Hậu",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -1902,7 +1995,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 26,
@@ -1928,11 +2022,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_12",
     "sprite": "./img/monsters/npc2_12.png",
     "description": "Trung thành và chiến đấu anh dũng. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      6,
-      10,
-      24
-    ],
+    "evolution": {
+      "targetId": 27,
+      "targetCode": "cauvong_pet_27",
+      "targetName": "Đội trưởng Thiết Giáp",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -1978,7 +2076,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Kim Loại Di Tích 2, Kim Loại Di Tích 3, Bầu trời phương bắc 1"
   },
   {
     "id": 27,
@@ -2004,9 +2103,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_12",
     "sprite": "./img/monsters/npc2_12.png",
     "description": "Khát máu và là tay thiện chiến, có thực lực bất phàm. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 28,
+      "targetCode": "cauvong_pet_28",
+      "targetName": "Tướng Thiết Giáp",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -2052,7 +2157,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 28,
@@ -2078,9 +2184,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_13",
     "sprite": "./img/monsters/npc2_13.png",
     "description": "Tướng quân tay cầm trường thương công kích. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -2126,7 +2230,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 29,
@@ -2152,9 +2257,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_13",
     "sprite": "./img/monsters/npc2_13.png",
     "description": "Tướng quân thiện chiến rất dũng mãnh và khát máu. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 29,
+      "targetCode": "cauvong_pet_29",
+      "targetName": "Song Đao Tướng Quân",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -2200,7 +2311,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 30,
@@ -2226,9 +2338,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_13",
     "sprite": "./img/monsters/npc2_13.png",
     "description": "Tướng quân tiên phong trí dũng song toàn. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -2274,7 +2384,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 31,
@@ -2300,11 +2411,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Thiết Đầu Công thiên bẩm trời phú. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      5,
-      20,
-      23
-    ],
+    "evolution": {
+      "targetId": 32,
+      "targetCode": "cauvong_pet_32",
+      "targetName": "Thiết Cự Nhân",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -2350,7 +2465,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Kim Loại Di Tích 1, Rừng rậm phía tây 5, Nam Chi Phế Tích 3"
   },
   {
     "id": 32,
@@ -2376,9 +2492,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Được các anh em trong Thiết Đầu gọi là người khổng lồ có bàn tay sắt. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 33,
+      "targetCode": "cauvong_pet_33",
+      "targetName": "Thiết Cự Linh",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -2424,7 +2546,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 33,
@@ -2450,9 +2573,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Người khổng lồ Taurus. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -2498,7 +2619,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 34,
@@ -2524,9 +2646,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_14",
     "sprite": "./img/monsters/npc2_14.png",
     "description": "Sủng vật quanh thân tràn ngập từ tính. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -2572,7 +2692,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 35,
@@ -2598,11 +2719,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_15",
     "sprite": "./img/monsters/npc2_15.png",
     "description": "Ánh mắt thiện lượng khó che đậy bản chất ác ma. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      21,
-      22,
-      29
-    ],
+    "evolution": {
+      "targetId": 36,
+      "targetCode": "cauvong_pet_36",
+      "targetName": "Thiết Cầu huynh đệ",
+      "reqItemId": 24,
+      "reqItemCode": "item_24",
+      "reqItemName": "Tinh nguyên thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -2648,7 +2773,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Nam Chi Phế Tích 1, Nam Chi Phế Tích 2, Bến tàu phía bắc Bắc Hải"
   },
   {
     "id": 36,
@@ -2674,9 +2800,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_16",
     "sprite": "./img/monsters/npc2_16.png",
     "description": "Đam mê bộ môn thể thao ngoài trời. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -2722,7 +2846,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 37,
@@ -2748,9 +2873,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_17",
     "sprite": "./img/monsters/npc2_17.png",
     "description": "Ấu tử Bạch Kim Long, tinh nghịch phi thường. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 38,
+      "targetCode": "cauvong_pet_38",
+      "targetName": "Tiểu Bạch Long",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -2796,7 +2927,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 38,
@@ -2822,9 +2954,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_17",
     "sprite": "./img/monsters/npc2_17.png",
     "description": "Thể tiến hóa Tiểu Phi Long, tốc độ rất nhanh. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 39,
+      "targetCode": "cauvong_pet_39",
+      "targetName": "Kim Dực Long",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -2870,7 +3008,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 39,
@@ -2896,9 +3035,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_18",
     "sprite": "./img/monsters/npc2_18.png",
     "description": "Thể trưởng thành Phi Long, cơ thể chứa năng lượng mạnh mẽ. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 40,
+      "targetCode": "cauvong_pet_40",
+      "targetName": "Bạch Kim Long",
+      "reqItemId": 23,
+      "reqItemCode": "item_23",
+      "reqItemName": "Thiên vũ",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -2944,7 +3089,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 40,
@@ -2970,9 +3116,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_18",
     "sprite": "./img/monsters/npc2_18.png",
     "description": "Vua bầu trời, có được thực lực thần thánh. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -3018,7 +3162,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 41,
@@ -3044,11 +3189,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_19",
     "sprite": "./img/monsters/npc2_19.png",
     "description": "Loài chim hung mãnh bay lượn trên không trung. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      25,
-      26,
-      37
-    ],
+    "evolution": {
+      "targetId": 42,
+      "targetCode": "cauvong_pet_42",
+      "targetName": "Vương Thứu",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -3094,7 +3243,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 2, Bầu trời phương bắc 3, Khu trường cũ Bắc Hải 3"
   },
   {
     "id": 42,
@@ -3120,9 +3270,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_19",
     "sprite": "./img/monsters/npc2_19.png",
     "description": "Ưng Chi Vương, vỗ một sải cánh có thể bay đến trời cao. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 43,
+      "targetCode": "cauvong_pet_43",
+      "targetName": "Sư Thứu",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -3168,7 +3324,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 43,
@@ -3194,9 +3351,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_19",
     "sprite": "./img/monsters/npc2_19.png",
     "description": "Sư Thân Ưng Thú trong truyền thuyết (sự pha trộn giữa sư tử và chim ưng), dã thú dị thường hung mãnh. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -3242,7 +3397,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 44,
@@ -3268,11 +3424,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_20",
     "sprite": "./img/monsters/npc2_20.png",
     "description": "Dơi Tặc Mi Thử Nhãn, tên trộm đáng yêu. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      24,
-      26,
-      39
-    ],
+    "evolution": {
+      "targetId": 45,
+      "targetCode": "cauvong_pet_45",
+      "targetName": "Răng nanh của dơi",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -3318,7 +3478,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 1, Bầu trời phương bắc 3, Rừng rậm u ám 2"
   },
   {
     "id": 45,
@@ -3344,9 +3505,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_20",
     "sprite": "./img/monsters/npc2_20.png",
     "description": "Batman có đôi mắt màu hồng rất đẹp. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 46,
+      "targetCode": "cauvong_pet_46",
+      "targetName": "Tần số của dơi",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -3392,7 +3559,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 46,
@@ -3418,9 +3586,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_21",
     "sprite": "./img/monsters/npc2_21.png",
     "description": "Áo choàng thần bí tạo nên sức hút cho những kẻ kiếm tìm. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -3466,7 +3632,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 47,
@@ -3492,9 +3659,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_22",
     "sprite": "./img/monsters/npc2_22.png",
     "description": "Thiên Mã cực mạnh ai nhìn cũng muốn gần. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -3540,7 +3705,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 48,
@@ -3566,11 +3732,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_22",
     "sprite": "./img/monsters/npc2_22.png",
     "description": "Đôi cánh kim loại vàng rất mạnh rất tốt. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      24,
-      25,
-      28
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -3616,7 +3778,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 1, Bầu trời phương bắc 2, Bến tàu phía nam Bắc Hải"
   },
   {
     "id": 49,
@@ -3642,9 +3805,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_23",
     "sprite": "./img/monsters/npc2_23.png",
     "description": "Thiên Mã tuấn tú hoàn mỹ, Thiên Mã Hoàng Gia kiểu mẫu. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 49,
+      "targetCode": "cauvong_pet_49",
+      "targetName": "Thiên Mã Vương",
+      "reqItemId": 23,
+      "reqItemCode": "item_23",
+      "reqItemName": "Thiên vũ",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -3690,7 +3859,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 50,
@@ -3716,10 +3886,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_24",
     "sprite": "./img/monsters/npc2_24.png",
     "description": "Tiền vệ Tiểu Điểu, chim nhỏ tai kẹo đường đáng yêu. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      25,
-      26
-    ],
+    "evolution": {
+      "targetId": 51,
+      "targetCode": "cauvong_pet_51",
+      "targetName": "Phiêu Phù Mao Cầu",
+      "reqItemId": 22,
+      "reqItemCode": "item_22",
+      "reqItemName": "Cách không thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 22,
@@ -3765,7 +3940,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bầu trời phương bắc 2, Bầu trời phương bắc 3"
   },
   {
     "id": 51,
@@ -3791,9 +3967,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_24",
     "sprite": "./img/monsters/npc2_24.png",
     "description": "Tiểu Điểu lông xù, tánh khí táo bạo. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -3839,7 +4013,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 52,
@@ -3865,9 +4040,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_24",
     "sprite": "./img/monsters/npc2_24.png",
     "description": "Trạng thái đỉnh cao Mao Cầu, trưởng thành, trang trọng. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -3913,7 +4086,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 53,
@@ -3939,9 +4113,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Lão Hổ răng hô đáng yêu. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 54,
+      "targetCode": "cauvong_pet_54",
+      "targetName": "Công phu hổ",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -3987,7 +4167,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 54,
@@ -4013,9 +4194,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Chiến sỹ ưu tú nhất đứng đầu Hổ Tộc. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 55,
+      "targetCode": "cauvong_pet_55",
+      "targetName": "Hổ Dũng Sĩ",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -4061,7 +4248,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 55,
@@ -4087,9 +4275,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Hổ Tộc là những chiến sỹ dũng mãnh và quyết liệt. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 56,
+      "targetCode": "cauvong_pet_56",
+      "targetName": "Hổ Tù Trường",
+      "reqItemId": 17,
+      "reqItemCode": "item_17",
+      "reqItemName": "Thú hồn",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -4135,7 +4329,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 56,
@@ -4161,9 +4356,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_25",
     "sprite": "./img/monsters/npc2_25.png",
     "description": "Lão hổ sáu tay, sức mạnh phi thường, là đại thủ lĩnh Hổ Tộc. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -4209,7 +4402,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 57,
@@ -4235,11 +4429,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Ngựa xanh phi thường, đặc biệt rất bảo vệ môi trường. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      11,
-      14,
-      38
-    ],
+    "evolution": {
+      "targetId": 58,
+      "targetCode": "cauvong_pet_58",
+      "targetName": "Ngựa vằn",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 16,
@@ -4285,7 +4483,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bên ngoài thành phía nam, Cao nguyên phía đông 3, Rừng rậm u ám 1"
   },
   {
     "id": 58,
@@ -4311,9 +4510,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Ánh hào quang lấp lóe xung quanh. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -4359,7 +4556,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 59,
@@ -4385,9 +4583,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Cầm trong tay Song Đao Đường Lang mạnh mẽ. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -4433,7 +4629,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 60,
@@ -4459,11 +4656,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Tiểu Trư phàm ăn phàm ngủ hay chảy nước mũi. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      12,
-      15,
-      39
-    ],
+    "evolution": {
+      "targetId": 61,
+      "targetCode": "cauvong_pet_61",
+      "targetName": "Heo răng nanh khổng lồ",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -4509,7 +4710,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Cao nguyên phía đông 1, Cao nguyên phía đông 4, Rừng rậm u ám 2"
   },
   {
     "id": 61,
@@ -4535,9 +4737,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Heo rừng trong giới xã hội đen, rõ ràng ngay thẳng. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 62,
+      "targetCode": "cauvong_pet_62",
+      "targetName": "Trư Vương",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -4583,7 +4791,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 62,
@@ -4609,9 +4818,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Heo rừng lão đại tánh khí táo bạo. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -4657,7 +4864,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 63,
@@ -4683,9 +4891,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_27",
     "sprite": "./img/monsters/npc2_27.png",
     "description": "Heo 101 đốm lấm tấm. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 63,
+      "targetCode": "cauvong_pet_63",
+      "targetName": "Heo đốm",
+      "reqItemId": 17,
+      "reqItemCode": "item_17",
+      "reqItemName": "Thú hồn",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -4731,7 +4945,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 64,
@@ -4757,10 +4972,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_28",
     "sprite": "./img/monsters/npc2_28.png",
     "description": "Tiểu Báo Tử dễ bị nhầm lẫn là tiểu miêu. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      17,
-      20
-    ],
+    "evolution": {
+      "targetId": 65,
+      "targetCode": "cauvong_pet_65",
+      "targetName": "Beo răng kiếm",
+      "reqItemId": 16,
+      "reqItemCode": "item_16",
+      "reqItemName": "Cứng cỏi thạch",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -4806,7 +5026,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Rừng rậm phía tây 2, Rừng rậm phía tây 5"
   },
   {
     "id": 65,
@@ -4832,9 +5053,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_29",
     "sprite": "./img/monsters/npc2_29.png",
     "description": "Hàm răng móng vuốt 10 phần sắc bén. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -4880,7 +5099,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 66,
@@ -4906,10 +5126,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_29",
     "sprite": "./img/monsters/npc2_29.png",
     "description": "Vương giả ẩn giấu trong bóng tối. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      41,
-      42
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -4955,7 +5172,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Rừng rậm u ám 4, Rừng rậm u ám 5"
   },
   {
     "id": 67,
@@ -4981,9 +5199,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_30",
     "sprite": "./img/monsters/npc2_30.png",
     "description": "Hành Tây Dị Thú hoạt bát. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -5029,7 +5245,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 68,
@@ -5055,11 +5272,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_31",
     "sprite": "./img/monsters/npc2_31.png",
     "description": "Tốc độ rất nhanh, danh xưng là “ Lôi Điện ”. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      18,
-      20,
-      41
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -5105,7 +5318,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Rừng rậm phía tây 3, Rừng rậm phía tây 5, Rừng rậm u ám 4"
   },
   {
     "id": 69,
@@ -5131,9 +5345,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_32",
     "sprite": "./img/monsters/npc2_32.png",
     "description": "Tiểu Cá Kình đáng yêu chơi đùa tinh nghịch trong nước. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": {
+      "targetId": 70,
+      "targetCode": "cauvong_pet_70",
+      "targetName": "Cá Kình khổng lồ",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -5179,7 +5399,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 70,
@@ -5205,9 +5426,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_33",
     "sprite": "./img/monsters/npc2_33.png",
     "description": "Kính Quang Lọc, những kẻ yêu hòa bình. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 71,
+      "targetCode": "cauvong_pet_71",
+      "targetName": "Cá Kình một sừng",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -5253,7 +5480,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 71,
@@ -5279,9 +5507,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_33",
     "sprite": "./img/monsters/npc2_33.png",
     "description": "Người bảo vệ hòa bình lạnh lùng. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 72,
+      "targetCode": "cauvong_pet_72",
+      "targetName": "Yếu Tắc Kình",
+      "reqItemId": 21,
+      "reqItemCode": "item_21",
+      "reqItemName": "Biển sâu san hô",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -5327,7 +5561,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 72,
@@ -5353,9 +5588,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_34",
     "sprite": "./img/monsters/npc2_34.png",
     "description": "Cá Kình cuồng điên mang theo đầy đủ võ trang. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -5401,7 +5634,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 73,
@@ -5427,11 +5661,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_35",
     "sprite": "./img/monsters/npc2_35.png",
     "description": "Ca sỹ siêu cấp. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      29,
-      48,
-      53
-    ],
+    "evolution": {
+      "targetId": 74,
+      "targetCode": "cauvong_pet_74",
+      "targetName": "Đao Phong Cánh Cụt",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -5477,7 +5715,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bến tàu phía bắc Bắc Hải, Quảng Trường Bắc Hải, Khu trường cũ Bắc Hải 4"
   },
   {
     "id": 74,
@@ -5503,9 +5742,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_36",
     "sprite": "./img/monsters/npc2_36.png",
     "description": "Thân mặc đồng phục hộ vệ. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 75,
+      "targetCode": "cauvong_pet_75",
+      "targetName": "Đế Vương Cánh Cụt",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -5551,7 +5796,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 75,
@@ -5577,9 +5823,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_37",
     "sprite": "./img/monsters/npc2_37.png",
     "description": "Đế Vương Tính cách quái gở. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -5625,7 +5869,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 76,
@@ -5651,11 +5896,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_38",
     "sprite": "./img/monsters/npc2_38.png",
     "description": "Hải Quy đáng yêu thích đùa dai. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      36,
-      37,
-      53
-    ],
+    "evolution": {
+      "targetId": 77,
+      "targetCode": "cauvong_pet_77",
+      "targetName": "Rùa trinh sát",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 20,
@@ -5701,7 +5950,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Khu trường cũ Bắc Hải 2, Khu trường cũ Bắc Hải 3, Khu trường cũ Bắc Hải 4"
   },
   {
     "id": 77,
@@ -5727,9 +5977,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_39",
     "sprite": "./img/monsters/npc2_39.png",
     "description": "Hải Quy thúc thúc 10 phần mị lực. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -5775,7 +6023,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 78,
@@ -5801,9 +6050,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_40",
     "sprite": "./img/monsters/npc2_40.png",
     "description": "Ẩn dưới biển sâu thần bí là năng lượng bí ẩn của loài rùa. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -5849,7 +6096,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 79,
@@ -5875,9 +6123,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_40",
     "sprite": "./img/monsters/npc2_40.png",
     "description": "Hình thể lớn nhưng tâm ôn hòa. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 79,
+      "targetCode": "cauvong_pet_79",
+      "targetName": "Rùa khổng lồ biển sâu",
+      "reqItemId": 21,
+      "reqItemCode": "item_21",
+      "reqItemName": "Biển sâu san hô",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -5923,7 +6177,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 80,
@@ -5949,11 +6204,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_41",
     "sprite": "./img/monsters/npc2_41.png",
     "description": "Trời sinh vốn đã ngây thơ, đáng yêu. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      29,
-      48,
-      53
-    ],
+    "evolution": {
+      "targetId": 81,
+      "targetCode": "cauvong_pet_81",
+      "targetName": "Cua vân Bạc",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -5999,7 +6258,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Bắt gặp tại: Bến tàu phía bắc Bắc Hải, Quảng Trường Bắc Hải, Khu trường cũ Bắc Hải 4"
   },
   {
     "id": 81,
@@ -6025,9 +6285,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_41",
     "sprite": "./img/monsters/npc2_41.png",
     "description": "Cua con thích khóc hay mất bình tĩnh. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": {
+      "targetId": 82,
+      "targetCode": "cauvong_pet_82",
+      "targetName": "Cua thiên sứ",
+      "reqItemId": 20,
+      "reqItemCode": "item_20",
+      "reqItemName": "Bong bóng",
+      "reqQty": 2
+    },
     "skills": [
       {
         "id": 0,
@@ -6073,7 +6339,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 82,
@@ -6099,9 +6366,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_41",
     "sprite": "./img/monsters/npc2_41.png",
     "description": "Vì yêu thích những câu chuyện cổ tích mà từ chối trưởng thành. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -6147,7 +6412,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 83,
@@ -6173,9 +6439,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_42",
     "sprite": "./img/monsters/npc2_42.png",
     "description": "Tiểu cá heo thực dụng, có thể ngồi, có thể chiến đấu. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -6221,7 +6485,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 84,
@@ -6247,9 +6512,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_42",
     "sprite": "./img/monsters/npc2_42.png",
     "description": "Cá heo luôn ôm giấc mộng được bay lên không trung. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -6295,7 +6558,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 85,
@@ -6321,9 +6585,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_26",
     "sprite": "./img/monsters/npc2_26.png",
     "description": "Dị hoá đem lại sức mạnh phi thường cho sinh vật. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -3
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -6369,7 +6631,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thu được qua Dị Hóa Bí Mật"
   },
   {
     "id": 86,
@@ -6395,9 +6658,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_43",
     "sprite": "./img/monsters/npc2_43.png",
     "description": "U Linh hệ. [khắc chế 5 hệ khác]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -6443,7 +6704,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 87,
@@ -6469,9 +6731,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_43",
     "sprite": "./img/monsters/npc2_43.png",
     "description": "U Linh hệ. [khắc chế 5 hệ khác]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -6517,7 +6777,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 88,
@@ -6543,9 +6804,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_44",
     "sprite": "./img/monsters/npc2_44.png",
     "description": "Khoái Hoạt Thụ Tinh, tinh quái, đáng yêu. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 89,
+      "targetCode": "cauvong_pet_89",
+      "targetName": "Thụ tinh ngàn năm",
+      "reqItemId": 19,
+      "reqItemCode": "item_19",
+      "reqItemName": "Chu quả",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -6591,7 +6858,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 89,
@@ -6617,9 +6885,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_44",
     "sprite": "./img/monsters/npc2_44.png",
     "description": "Thụ Tinh thu hành nhiều năm, thực lực phi phàm. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -6665,7 +6931,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 90,
@@ -6691,9 +6958,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_45",
     "sprite": "./img/monsters/npc2_45.png",
     "description": "Có được ma lực mạnh mẽ nhất Ailulima. [khắc chế Phi Hành hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 0,
@@ -6739,7 +7004,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 91,
@@ -6765,9 +7031,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_46",
     "sprite": "./img/monsters/npc2_46.png",
     "description": "Tiểu Tê Tê đáng yêu, công thủ cũng không tệ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 92,
+      "targetCode": "cauvong_pet_92",
+      "targetName": "Cá Chép Rồng sắt",
+      "reqItemId": 25,
+      "reqItemCode": "item_25",
+      "reqItemName": "Bạch kim",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -6813,7 +7085,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 92,
@@ -6839,9 +7112,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_46",
     "sprite": "./img/monsters/npc2_46.png",
     "description": "Toàn thân mặc bộ giáp Warrior mạnh mẽ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -6887,7 +7158,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 93,
@@ -6913,9 +7185,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_47",
     "sprite": "./img/monsters/npc2_47.png",
     "description": "Có được lực hủy diệt đáng sợ. [khắc chế Mãnh Thú hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 5,
@@ -6961,7 +7231,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 94,
@@ -6987,9 +7258,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_48",
     "sprite": "./img/monsters/npc2_48.png",
     "description": "Thần Chi Sứ Giả bay lượn trên không trung lam sắc. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 95,
+      "targetCode": "cauvong_pet_95",
+      "targetName": "Thiên Sử Trường",
+      "reqItemId": 23,
+      "reqItemCode": "item_23",
+      "reqItemName": "Thiên vũ",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -7035,7 +7312,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 95,
@@ -7061,9 +7339,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_48",
     "sprite": "./img/monsters/npc2_48.png",
     "description": "Thiên Sứ là biểu tượng của sự uy nghi và quyền lực. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -7109,7 +7385,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 96,
@@ -7135,9 +7412,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_49",
     "sprite": "./img/monsters/npc2_49.png",
     "description": "Hóa thân Cửu Thiên Huyền Nữ. [khắc chế Hải Dương hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 10,
@@ -7183,7 +7458,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 97,
@@ -7209,9 +7485,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_50",
     "sprite": "./img/monsters/npc2_50.png",
     "description": "Tắm trong ánh trăng thần bí. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 98,
+      "targetCode": "cauvong_pet_98",
+      "targetName": "Sói Vương Cao Ngạo",
+      "reqItemId": 17,
+      "reqItemCode": "item_17",
+      "reqItemName": "Thú hồn",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -7257,7 +7539,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 98,
@@ -7283,9 +7566,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_50",
     "sprite": "./img/monsters/npc2_50.png",
     "description": "Vua bóng đêm cao ngạo. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -7331,7 +7612,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 99,
@@ -7357,9 +7639,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_51",
     "sprite": "./img/monsters/npc2_51.png",
     "description": "Vương tử Ngân Hồ Tộc uy phong lẫm liệt. [khắc chế Thực Vật hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 15,
@@ -7405,7 +7685,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   },
   {
     "id": 100,
@@ -7431,9 +7712,15 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_52",
     "sprite": "./img/monsters/npc2_52.png",
     "description": "Sát thủ khét tiếng của đại dương. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -5
-    ],
+    "evolution": {
+      "targetId": 101,
+      "targetCode": "cauvong_pet_101",
+      "targetName": "Sa Vương Cuồng Bạo",
+      "reqItemId": 21,
+      "reqItemCode": "item_21",
+      "reqItemName": "Biển sâu san hô",
+      "reqQty": 3
+    },
     "skills": [
       {
         "id": 0,
@@ -7479,7 +7766,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Ấp Trứng Sủng Vật Thần Bí"
   },
   {
     "id": 101,
@@ -7505,9 +7793,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_52",
     "sprite": "./img/monsters/npc2_52.png",
     "description": "Tồn tại mối nguy hiểm nhất chính trong đại dương. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -2
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -7553,7 +7839,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Chỉ có thể có qua Tiến Hóa"
   },
   {
     "id": 102,
@@ -7579,9 +7866,7 @@ const MONSTERS_PRESET = [
     "spriteKey": "npc2_53",
     "sprite": "./img/monsters/npc2_53.png",
     "description": "Ca sỹ xinh đẹp, tuyệt mỹ thiện lương. [khắc chế Kim Loại hệ]",
-    "evolution": [
-      -1
-    ],
+    "evolution": null,
     "skills": [
       {
         "id": 20,
@@ -7627,7 +7912,8 @@ const MONSTERS_PRESET = [
         "heal": 0,
         "buffDef": 0
       }
-    ]
+    ],
+    "source": "Thưởng Nhiệm Vụ Cốt Truyện"
   }
 ];
 

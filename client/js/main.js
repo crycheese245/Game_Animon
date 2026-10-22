@@ -70,11 +70,40 @@ const gameState = {
         pokeballs: 10,
         greatBalls: 3,
         masterBalls: 1,
-        fireStone: 1,
-        leafStone: 1,
-        waterStone: 1,
-        thunderStone: 1,
-        repel: 2
+        fireStone: 2,
+        leafStone: 3,
+        waterStone: 2,
+        thunderStone: 2,
+        repel: 2,
+        item_0: 5,
+        item_1: 3,
+        item_2: 1,
+        item_3: 5,
+        item_4: 1, // Trứng Thực Vật
+        item_5: 1, // Trứng Kim Loại
+        item_6: 1,
+        item_7: 2,
+        item_9: 10,
+        item_10: 3,
+        item_11: 1,
+        item_13: 3, // Dược Thủy Ấp Trứng
+        item_14: 2,
+        item_16: 2,
+        item_18: 3,
+        item_20: 2,
+        item_22: 2,
+        item_24: 2,
+        item_33: 1
+    },
+    storageBox: [],
+    incubator: {
+        eggItem: null,
+        progress: 0,
+        maxSteps: 100
+    },
+    questProgress: {
+        mainIndex: 0,
+        completedSide: []
     }
 };
 
@@ -826,6 +855,9 @@ function checkWildBattleEncounter(playerHitbox) {
                     playerTeam: gameState.playerTeam,
                     inventory: gameState.inventory,
                     onEnd: ({ won, needHeal }) => {
+                        if (won && gameState.incubator?.eggItem) {
+                            gameState.incubator.progress = Math.min(gameState.incubator.maxSteps, gameState.incubator.progress + 10);
+                        }
                         if (needHeal) {
                             loadMap('playerHouse', { x: 488, y: 380 }, { x: 0, y: 0 });
                         }
@@ -1073,9 +1105,13 @@ function handlePlayerMovement() {
         }
     }
 
-    // Kiểm tra bước chân vào cỏ
-    if (player.moving) {
+    // Kiểm tra bước chân vào cỏ & tích luỹ bước đi cho Lò Ấp Trứng
+    if (player.moving && moving) {
         checkWildBattleEncounter(playerHitbox);
+        gameState.stepCounter = (gameState.stepCounter || 0) + 1;
+        if (gameState.stepCounter % 12 === 0 && gameState.incubator?.eggItem) {
+            gameState.incubator.progress = Math.min(gameState.incubator.maxSteps, gameState.incubator.progress + 1);
+        }
     }
 }
 
@@ -1289,12 +1325,34 @@ window.menuManager.onNewGame = ({ gender, name, starterCode }) => {
         pokeballs: 10,
         greatBalls: 3,
         masterBalls: 1,
-        fireStone: 1,
-        leafStone: 1,
-        waterStone: 1,
-        thunderStone: 1,
-        repel: 2
+        fireStone: 2,
+        leafStone: 3,
+        waterStone: 2,
+        thunderStone: 2,
+        repel: 2,
+        item_0: 5,
+        item_1: 3,
+        item_2: 1,
+        item_3: 5,
+        item_4: 1, // Trứng Thực Vật
+        item_5: 1, // Trứng Kim Loại
+        item_6: 1,
+        item_7: 2,
+        item_9: 10,
+        item_10: 3,
+        item_11: 1,
+        item_13: 3, // Dược Thủy Ấp Trứng
+        item_14: 2,
+        item_16: 2,
+        item_18: 3,
+        item_20: 2,
+        item_22: 2,
+        item_24: 2,
+        item_33: 1
     };
+    gameState.storageBox = [];
+    gameState.incubator = { eggItem: null, progress: 0, maxSteps: 100 };
+    gameState.questProgress = { mainIndex: 0, completedSide: [] };
     gameState.playtime = 0;
 
     applyPlayerGender(gender);
@@ -1423,7 +1481,35 @@ window.addEventListener('keydown', (e) => {
             break;
         case 'b':
         case 'B':
-            gameState.isDebug = !gameState.isDebug;
+            if (keys.shift.pressed) {
+                gameState.isDebug = !gameState.isDebug;
+            } else if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'storage_box') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showStorageBoxModal();
+                }
+            }
+            break;
+        case 'u':
+        case 'U':
+            if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'incubator') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showIncubatorModal();
+                }
+            }
+            break;
+        case 't':
+        case 'T':
+            if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'arena') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showBossArenaModal();
+                }
+            }
             break;
         case 'm':
         case 'M':
@@ -1448,6 +1534,36 @@ window.addEventListener('keydown', (e) => {
                     window.menuManager.closeModal();
                 } else {
                     window.menuManager.showPetTeamModal();
+                }
+            }
+            break;
+        case 'k':
+        case 'K':
+            if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'shop') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showShopModal();
+                }
+            }
+            break;
+        case 'x':
+        case 'X':
+            if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'pokedex') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showPokedexModal();
+                }
+            }
+            break;
+        case 'q':
+        case 'Q':
+            if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'quests') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showQuestModal();
                 }
             }
             break;
