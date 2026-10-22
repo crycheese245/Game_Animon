@@ -424,42 +424,6 @@ const MAPS_CONFIG = {
         ]
     },
 
-    // 2. THÀNH PHỐ CẦU VỒNG (MAP 1 NGUYÊN BẢN J2ME)
-    map_1: {
-        id: 'map_1',
-        name: 'Thành Phố Cầu Vồng (Quảng Trường)',
-        theme: 'city',
-        baseColor: '#004e98',
-        pathColor: '#ecf0f1',
-        width: 1344,
-        height: 1536,
-        initialOffset: { x: -176, y: 0 },
-        initialPlayerPos: { x: 448, y: 224 },
-        wildPool: [], // Thành phố an toàn
-        encounterRate: 0,
-        portals: [
-            {
-                name: 'Cổng Bắc Lên Cung Điện Cầu Vồng',
-                worldX: 528,
-                worldY: 0,
-                width: 144,
-                height: 60,
-                targetMap: 'map_0',
-                targetPlayerPos: { x: 448, y: 224 },
-                targetOffset: { x: -80, y: -1150 }
-            },
-            {
-                name: 'Cổng Nam Ra Bình Nguyên Xanh',
-                worldX: 528,
-                worldY: 1440,
-                width: 96,
-                height: 96,
-                targetMap: 'map_3',
-                targetPlayerPos: { x: 448, y: 224 },
-                targetOffset: { x: -200, y: 0 }
-            }
-        ]
-    },
 
     // 3. THỊ TRẤN KHỞI ĐẦU (PELLET TOWN DỰ PHÒNG)
     pelletTown: {
@@ -508,7 +472,7 @@ const MAPS_CONFIG = {
         id: 'map_1',
         name: 'Thành Phố Cầu Vồng (Quảng Trường)',
         theme: 'city',
-        baseColor: '#34495e',
+        baseColor: '#2e7d32',
         pathColor: '#ecf0f1',
         width: 1344,
         height: 1536,

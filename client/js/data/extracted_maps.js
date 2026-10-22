@@ -3909,7 +3909,7 @@ const J2ME_MAPS_DATA = {
   "map_1": {
     "id": 1,
     "name": "Thành Phố Cầu Vồng (Quảng Trường)",
-    "tilesetId": 1,
+    "tilesetId": 0,
     "cols": 28,
     "rows": 32,
     "tileSize": 20,
@@ -8384,7 +8384,7 @@ const J2ME_MAPS_DATA = {
   "map_2": {
     "id": 2,
     "name": "Đấu Trường Huấn Luyện Sư",
-    "tilesetId": 2,
+    "tilesetId": 1,
     "cols": 28,
     "rows": 32,
     "tileSize": 20,
@@ -16970,7 +16970,7 @@ const J2ME_MAPS_DATA = {
   "map_4": {
     "id": 4,
     "name": "Hang Động Pha Lê",
-    "tilesetId": 3,
+    "tilesetId": 2,
     "cols": 16,
     "rows": 32,
     "tileSize": 20,
@@ -22779,7 +22779,7 @@ const J2ME_MAPS_DATA = {
   "map_6": {
     "id": 6,
     "name": "Lối Mòn Vực Đá",
-    "tilesetId": 2,
+    "tilesetId": 3,
     "cols": 16,
     "rows": 32,
     "tileSize": 20,
@@ -29870,7 +29870,7 @@ const J2ME_MAPS_DATA = {
   "map_9": {
     "id": 9,
     "name": "Đền Thờ Cổ Đại",
-    "tilesetId": 3,
+    "tilesetId": 2,
     "cols": 20,
     "rows": 26,
     "tileSize": 20,
@@ -32056,7 +32056,7 @@ const J2ME_MAPS_DATA = {
   "map_10": {
     "id": 10,
     "name": "Hầm Ngục Bí Mật",
-    "tilesetId": 4,
+    "tilesetId": 3,
     "cols": 30,
     "rows": 18,
     "tileSize": 20,
@@ -66931,7 +66931,7 @@ const J2ME_MAPS_DATA = {
   "map_20": {
     "id": 20,
     "name": "Khu Vực 20",
-    "tilesetId": 3,
+    "tilesetId": 4,
     "cols": 20,
     "rows": 20,
     "tileSize": 20,
@@ -84741,7 +84741,7 @@ const J2ME_MAPS_DATA = {
   "map_26": {
     "id": 26,
     "name": "Khu Vực 26",
-    "tilesetId": 1,
+    "tilesetId": 3,
     "cols": 16,
     "rows": 22,
     "tileSize": 20,
@@ -86337,7 +86337,7 @@ const J2ME_MAPS_DATA = {
   "map_27": {
     "id": 27,
     "name": "Khu Vực 27",
-    "tilesetId": 5,
+    "tilesetId": 1,
     "cols": 30,
     "rows": 34,
     "tileSize": 20,
@@ -101225,7 +101225,7 @@ const J2ME_MAPS_DATA = {
   "map_32": {
     "id": 32,
     "name": "Khu Vực 32",
-    "tilesetId": 6,
+    "tilesetId": 5,
     "cols": 20,
     "rows": 24,
     "tileSize": 20,
@@ -103964,7 +103964,7 @@ const J2ME_MAPS_DATA = {
   "map_34": {
     "id": 34,
     "name": "Khu Vực 34",
-    "tilesetId": 7,
+    "tilesetId": 6,
     "cols": 20,
     "rows": 34,
     "tileSize": 20,
@@ -113657,7 +113657,7 @@ const J2ME_MAPS_DATA = {
   "map_37": {
     "id": 37,
     "name": "Khu Vực 37",
-    "tilesetId": 8,
+    "tilesetId": 7,
     "cols": 22,
     "rows": 26,
     "tileSize": 20,
@@ -125594,7 +125594,7 @@ const J2ME_MAPS_DATA = {
   "map_42": {
     "id": 42,
     "name": "Khu Vực 42",
-    "tilesetId": 9,
+    "tilesetId": 8,
     "cols": 20,
     "rows": 24,
     "tileSize": 20,
@@ -130485,7 +130485,7 @@ const J2ME_MAPS_DATA = {
   "map_44": {
     "id": 44,
     "name": "Khu Vực 44",
-    "tilesetId": 6,
+    "tilesetId": 9,
     "cols": 26,
     "rows": 28,
     "tileSize": 20,
@@ -133757,7 +133757,7 @@ const J2ME_MAPS_DATA = {
   "map_45": {
     "id": 45,
     "name": "Khu Vực 45",
-    "tilesetId": 9,
+    "tilesetId": 6,
     "cols": 18,
     "rows": 20,
     "tileSize": 20,
@@ -136350,7 +136350,7 @@ const J2ME_MAPS_DATA = {
   "map_47": {
     "id": 47,
     "name": "Khu Vực 47",
-    "tilesetId": 5,
+    "tilesetId": 9,
     "cols": 20,
     "rows": 20,
     "tileSize": 20,
@@ -138030,7 +138030,7 @@ const J2ME_MAPS_DATA = {
   "map_48": {
     "id": 48,
     "name": "Khu Vực 48",
-    "tilesetId": 10,
+    "tilesetId": 5,
     "cols": 24,
     "rows": 30,
     "tileSize": 20,
@@ -142661,7 +142661,7 @@ const J2ME_MAPS_DATA = {
   "map_50": {
     "id": 50,
     "name": "Khu Vực 50",
-    "tilesetId": 9,
+    "tilesetId": 10,
     "cols": 33,
     "rows": 32,
     "tileSize": 20,
@@ -146217,7 +146217,7 @@ const J2ME_MAPS_DATA = {
   "map_51": {
     "id": 51,
     "name": "Khu Vực 51",
-    "tilesetId": 3,
+    "tilesetId": 9,
     "cols": 30,
     "rows": 30,
     "tileSize": 20,
@@ -150613,7 +150613,7 @@ const J2ME_MAPS_DATA = {
   "map_52": {
     "id": 52,
     "name": "Tổ Xà Hậu Hoàng Kim",
-    "tilesetId": 7,
+    "tilesetId": 3,
     "cols": 26,
     "rows": 30,
     "tileSize": 20,
@@ -154455,7 +154455,7 @@ const J2ME_MAPS_DATA = {
   "map_53": {
     "id": 53,
     "name": "Khu Vực 53",
-    "tilesetId": 9,
+    "tilesetId": 7,
     "cols": 17,
     "rows": 20,
     "tileSize": 20,
@@ -160232,7 +160232,7 @@ const J2ME_MAPS_DATA = {
   "map_56": {
     "id": 56,
     "name": "Khu Vực 56",
-    "tilesetId": 8,
+    "tilesetId": 9,
     "cols": 20,
     "rows": 26,
     "tileSize": 20,
@@ -165461,7 +165461,7 @@ const J2ME_MAPS_DATA = {
   "map_58": {
     "id": 58,
     "name": "Khu Vực 58",
-    "tilesetId": 9,
+    "tilesetId": 8,
     "cols": 20,
     "rows": 20,
     "tileSize": 20,
@@ -166517,7 +166517,7 @@ const J2ME_MAPS_DATA = {
   "map_59": {
     "id": 59,
     "name": "Khu Vực 59",
-    "tilesetId": 3,
+    "tilesetId": 9,
     "cols": 20,
     "rows": 26,
     "tileSize": 20,
@@ -169216,7 +169216,7 @@ const J2ME_MAPS_DATA = {
   "map_60": {
     "id": 60,
     "name": "Khu Vực 60",
-    "tilesetId": 6,
+    "tilesetId": 3,
     "cols": 20,
     "rows": 20,
     "tileSize": 20,
@@ -171159,7 +171159,7 @@ const J2ME_MAPS_DATA = {
   "map_61": {
     "id": 61,
     "name": "Khu Vực 61",
-    "tilesetId": 2,
+    "tilesetId": 6,
     "cols": 40,
     "rows": 20,
     "tileSize": 20,
@@ -174063,7 +174063,7 @@ const J2ME_MAPS_DATA = {
   "map_62": {
     "id": 62,
     "name": "Khu Vực 62",
-    "tilesetId": 9,
+    "tilesetId": 2,
     "cols": 28,
     "rows": 26,
     "tileSize": 20,
@@ -183829,7 +183829,7 @@ const J2ME_MAPS_DATA = {
   "map_66": {
     "id": 66,
     "name": "Khu Vực 66",
-    "tilesetId": 2,
+    "tilesetId": 9,
     "cols": 22,
     "rows": 22,
     "tileSize": 20,
@@ -186130,7 +186130,7 @@ const J2ME_MAPS_DATA = {
   "map_67": {
     "id": 67,
     "name": "Khu Vực 67",
-    "tilesetId": 11,
+    "tilesetId": 2,
     "cols": 32,
     "rows": 20,
     "tileSize": 20,

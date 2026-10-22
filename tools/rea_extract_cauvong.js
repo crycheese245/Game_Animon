@@ -35,10 +35,18 @@ console.log('\n[1/4] Đang phân tích và trích xuất Tiled Maps & Tilesets..
 
 let areaDat = null;
 let numMaps = 0;
+let mapToTileset = [];
 const areaDatPath = path.join(JAR_EXTRACTED_DIR, 'data/map/area.dat');
 if (fs.existsSync(areaDatPath)) {
     areaDat = fs.readFileSync(areaDatPath);
-    numMaps = areaDat[2]; // 68 maps
+    const dataLen = areaDat.readUInt16BE(0);
+    const data = areaDat.slice(2, 2 + dataLen);
+    let c = 0;
+    numMaps = data[c++]; // 68 maps
+    mapToTileset = [];
+    for (let i = 0; i < numMaps; i++) {
+        mapToTileset.push(data[c++]);
+    }
 }
 
 // Đọc 11 bộ tilesets (0.data .. 10.data)
@@ -117,7 +125,7 @@ const MAP_NAMES = {
 const extractedMaps = {};
 
 for (let mId = 0; mId < numMaps; mId++) {
-    const tilesetId = areaDat ? areaDat[4 + mId] : 0;
+    const tilesetId = mapToTileset[mId] !== undefined ? mapToTileset[mId] : 0;
     const mapPath = path.join(JAR_EXTRACTED_DIR, 'data/map', `${mId}.mid`);
     if (!fs.existsSync(mapPath)) continue;
 
@@ -631,6 +639,9 @@ for (let m = 0; m <= 10; m++) {
     if (fs.existsSync(src)) {
         fs.copyFileSync(src, `client/img/maps/${m}.png`);
         fs.copyFileSync(src, `img/maps/${m}.png`);
+        if (fs.existsSync('dist/client/img/maps')) {
+            fs.copyFileSync(src, `dist/client/img/maps/${m}.png`);
+        }
     }
 }
 
@@ -653,6 +664,9 @@ if (typeof window !== 'undefined') {
 fs.writeFileSync('client/js/data/extracted_maps.js', mapsOut, 'utf-8');
 if (!fs.existsSync('js/data')) fs.mkdirSync('js/data', { recursive: true });
 fs.writeFileSync('js/data/extracted_maps.js', mapsOut, 'utf-8');
+if (fs.existsSync('dist/client/js/data')) {
+    fs.writeFileSync('dist/client/js/data/extracted_maps.js', mapsOut, 'utf-8');
+}
 
 // Ghi Sprites Data
 const spritesOut = `// ========================================================
