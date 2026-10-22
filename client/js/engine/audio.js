@@ -66,9 +66,16 @@ class SoundEngine {
 
     playBattleStart() {
         if (this.muted) return;
-        const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99];
-        notes.forEach((freq, idx) => {
-            setTimeout(() => this.playTone(freq, 'square', 0.12, 0.18), idx * 70);
+        // 1. Âm thanh chớp sáng giật màn hình (Screen flash shock tones)
+        const shockNotes = [987.77, 1318.51, 1567.98, 1975.53];
+        shockNotes.forEach((freq, idx) => {
+            setTimeout(() => this.playTone(freq, 'sawtooth', 0.08, 0.2), idx * 80);
+        });
+
+        // 2. Điệp khúc vào trận đấu Pokemon GBA
+        const battleNotes = [392.00, 440.00, 523.25, 659.25, 783.99, 880.00, 1046.50];
+        battleNotes.forEach((freq, idx) => {
+            setTimeout(() => this.playTone(freq, 'square', 0.14, 0.22), 340 + idx * 75);
         });
     }
 

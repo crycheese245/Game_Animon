@@ -20,3 +20,5 @@ Thumbs.db
 # Tooling Binaries & Large Generated Output
 tools/cfr.jar
 tools/decompiled_src/
+tools/extracted_jars/
+tools/jar_extracted/

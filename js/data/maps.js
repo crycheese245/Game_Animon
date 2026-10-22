@@ -29,58 +29,75 @@ const TILESETS = {
     interior: './img/maps/10.png'
 };
 
-// Hàm vẽ từng tile với các phép biến hình TRANS_* của J2ME MIDP 2.0
-function drawTileModule(ctx, img, def, destX, destY, destW, destH, flags) {
+// Hàm vẽ từng tile với các phép biến hình TRANS_* của J2ME MIDP 2.0 (Reverse-Engineered từ ah.b & at.b)
+function drawTileModule(ctx, img, def, destX, destY, dw, dh, midp) {
     if (!img || !img.complete || img.naturalWidth === 0) return;
     const [imgIdx, srcX, srcY, w, h] = def;
 
     ctx.save();
-    switch (flags) {
-        case 0: // TRANS_NONE
-            ctx.drawImage(img, srcX, srcY, w, h, destX, destY, destW, destH);
+    ctx.translate(destX, destY);
+
+    switch (midp) {
+        case 0: // TRANS_NONE (0)
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
             break;
-        case 6: // TRANS_MIRROR (Lật ngang)
-            ctx.translate(destX + destW, destY);
+        case 2: // TRANS_MIRROR (Lật ngang)
+            ctx.translate(dw, 0);
             ctx.scale(-1, 1);
-            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, destW, destH);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
             break;
         case 1: // TRANS_MIRROR_ROT180 (Lật dọc)
-            ctx.translate(destX, destY + destH);
+            ctx.translate(0, dh);
             ctx.scale(1, -1);
-            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, destW, destH);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
             break;
         case 3: // TRANS_ROT180 (Xoay 180 độ)
-            ctx.translate(destX + destW, destY + destH);
+            ctx.translate(dw, dh);
             ctx.scale(-1, -1);
-            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, destW, destH);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
             break;
-        case 5: // TRANS_ROT90 (Xoay 90 độ)
-            ctx.translate(destX + destH, destY);
+        case 5: // TRANS_ROT90 (Xoay 90 độ theo chiều kim đồng hồ)
+            ctx.translate(dw, 0);
             ctx.rotate(Math.PI / 2);
-            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, destW, destH);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dh, dw);
             break;
-        case 7: // TRANS_ROT270 (Xoay 270 độ)
-            ctx.translate(destX, destY + destW);
+        case 6: // TRANS_ROT270 (Xoay 270 độ theo chiều kim đồng hồ)
+            ctx.translate(0, dh);
             ctx.rotate(-Math.PI / 2);
-            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, destW, destH);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dh, dw);
+            break;
+        case 7: // TRANS_MIRROR_ROT90 (Lật ngang rồi xoay 90 độ CW)
+            ctx.translate(dw, 0);
+            ctx.rotate(Math.PI / 2);
+            ctx.translate(dh, 0);
+            ctx.scale(-1, 1);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dh, dw);
+            break;
+        case 4: // TRANS_MIRROR_ROT270 (Lật ngang rồi xoay 270 độ CW)
+            ctx.translate(0, dh);
+            ctx.rotate(-Math.PI / 2);
+            ctx.translate(dh, 0);
+            ctx.scale(-1, 1);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dh, dw);
             break;
         default:
-            ctx.drawImage(img, srcX, srcY, w, h, destX, destY, destW, destH);
+            ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
             break;
     }
     ctx.restore();
 }
 
 // Hàm Render Tiled Map từ dữ liệu nhị phân J2ME Cầu Vồng nguyên bản
-function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32', pathColor = '#8d6e63') {
+function generateJ2MEMapCanvas(mapKey, themeKey = 'interior', baseColor = '#004e98', pathColor = '#8d6e63') {
     if (MAP_CANVAS_CACHE[mapKey]) {
         return MAP_CANVAS_CACHE[mapKey];
     }
 
     const j2meMap = (window.J2ME_MAPS_DATA && window.J2ME_MAPS_DATA[mapKey]) ? window.J2ME_MAPS_DATA[mapKey] : null;
-    const cols = j2meMap ? j2meMap.cols : 28;
+    const cols = j2meMap ? j2meMap.cols : 22;
     const rows = j2meMap ? j2meMap.rows : 32;
-    const tileSize = 48; // Scale x2.4 từ 20px chuẩn của J2ME
+    const tileSize = 48; // Scale x2.4 từ 20px chuẩn của J2ME (20 * 2.4 = 48px)
+    const scale = tileSize / 20;
 
     const width = cols * tileSize;
     const height = rows * tileSize;
@@ -99,10 +116,6 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32
     const cfg = offFgCanvas.getContext('2d');
     cfg.imageSmoothingEnabled = false;
 
-    // 1. Tô màu nền cơ bản
-    c.fillStyle = baseColor;
-    c.fillRect(0, 0, width, height);
-
     const boundaries = [];
     const battleZones = [];
 
@@ -117,36 +130,141 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32
         ? window.J2ME_TILESETS_DATA[tilesetId] 
         : null;
 
-    // 2. Vẽ Layer 1 (Ground Tiles)
-    if (j2meMap && j2meMap.groundTiles && j2meMap.groundTiles.length > 0 && defs) {
-        for (const [tx, ty, tid, flags] of j2meMap.groundTiles) {
-            const def = defs[tid];
-            if (def) {
-                const px = tx * tileSize;
-                const py = ty * tileSize;
-                drawTileModule(c, tilesetImg, def, px, py, tileSize, tileSize, flags);
+    const bgImg = new Image();
+    const fgImg = new Image();
+
+    // Hàm dựng các lớp bản đồ lên canvas
+    function renderMapLayers() {
+        // 1. Tô màu nền bản đồ (mặc định J2ME là d:I)
+        c.fillStyle = baseColor;
+        c.fillRect(0, 0, width, height);
+
+        // 2. Vẽ Layer 1 (Ground Tiles) chuẩn công thức Reverse-Engineered J2ME (at.b & ah.b)
+        if (j2meMap && j2meMap.groundTiles && j2meMap.groundTiles.length > 0 && defs && tilesetImg.complete && tilesetImg.naturalWidth > 0) {
+            for (const [tx, ty, modId, flags] of j2meMap.groundTiles) {
+                const def = defs[modId];
+                if (!def) continue;
+                // Ánh xạ flags (rawTid & 7) sang hằng số phép biến hình MIDP 2.0 (ah.b:[S)
+                const midp = [0, 5, 3, 6, 2, 4, 1, 7][flags & 7];
+                const isSwapped = (midp === 5 || midp === 6 || midp === 4 || midp === 7);
+                const dw = (isSwapped ? def[4] : def[3]) * scale;
+                const dh = (isSwapped ? def[3] : def[4]) * scale;
+                // J2ME Điểm neo là BOTTOM-LEFT (Graphics.BOTTOM | Graphics.LEFT = 36)
+                const destX = tx * tileSize;
+                const destY = (ty + 1) * tileSize - dh;
+                drawTileModule(c, tilesetImg, def, destX, destY, dw, dh, midp);
             }
-        }
-    } else {
-        // Fallback hoa văn gạch lát nếu ảnh chưa tải xong
-        c.fillStyle = pathColor;
-        for (let r = 0; r < rows; r++) {
-            for (let col = 0; col < cols; col++) {
-                if ((r + col) % 2 === 0) {
-                    c.fillRect(col * tileSize, r * tileSize, tileSize, tileSize);
+        } else {
+            // Fallback hoa văn gạch lát nếu dữ liệu chưa sẵn sàng
+            c.fillStyle = pathColor;
+            for (let r = 0; r < rows; r++) {
+                for (let col = 0; col < cols; col++) {
+                    if ((r + col) % 2 === 0) {
+                        c.fillRect(col * tileSize, r * tileSize, tileSize, tileSize);
+                    }
                 }
             }
         }
+
+        // 3. Vẽ cổng dịch chuyển phát sáng viền vàng
+        mapPortals.forEach(p => {
+            c.save();
+            c.fillStyle = 'rgba(255, 215, 0, 0.25)';
+            c.fillRect(p.worldX, p.worldY, p.width, p.height);
+            c.strokeStyle = '#ffd700';
+            c.lineWidth = 3;
+            c.strokeRect(p.worldX + 2, p.worldY + 2, p.width - 4, p.height - 4);
+            c.restore();
+        });
+
+        bgImg.src = offCanvas.toDataURL();
+
+        // 4. Vẽ Layer 3 (Overhead Tiles) lên Foreground Canvas
+        cfg.clearRect(0, 0, width, height);
+        if (j2meMap && j2meMap.overheadTiles && j2meMap.overheadTiles.length > 0 && defs && tilesetImg.complete && tilesetImg.naturalWidth > 0) {
+            for (const [tx, ty, modId, flags] of j2meMap.overheadTiles) {
+                const def = defs[modId];
+                if (!def) continue;
+                const midp = [0, 5, 3, 6, 2, 4, 1, 7][flags & 7];
+                const isSwapped = (midp === 5 || midp === 6 || midp === 4 || midp === 7);
+                const dw = (isSwapped ? def[4] : def[3]) * scale;
+                const dh = (isSwapped ? def[3] : def[4]) * scale;
+                const destX = tx * tileSize;
+                const destY = (ty + 1) * tileSize - dh;
+                drawTileModule(cfg, tilesetImg, def, destX, destY, dw, dh, midp);
+            }
+        }
+
+        fgImg.src = offFgCanvas.toDataURL();
     }
 
-    // 3. Xây dựng ranh giới va chạm từ Layer 2 (Collision Grid)
+    renderMapLayers();
+
+    // Tự động re-render cập nhật ảnh ngay khi tileset hoàn tất tải về
+    if (!tilesetImg.complete || tilesetImg.naturalWidth === 0) {
+        tilesetImg.addEventListener('load', () => {
+            renderMapLayers();
+        }, { once: true });
+    }
+
+    // 5. Xây dựng ranh giới va chạm từ Layer 2 (Collision Grid: a[x][y] = rawTid >> 3 > 0)
     if (j2meMap && j2meMap.collisionGrid) {
+        // Sao chép ma trận va chạm từ Layer 2
+        const grid = Array.from({ length: rows }, (_, r) => 
+            Array.from({ length: cols }, (_, c) => j2meMap.collisionGrid[r] ? (j2meMap.collisionGrid[r][c] || 0) : 0)
+        );
+
+        // Bổ sung ranh giới tường thành, rừng thông và kiến trúc nhà cho map_0
+        if (mapKey === 'map_0') {
+            for (let r = 0; r < rows; r++) {
+                grid[r][0] = 1; grid[r][1] = 1; // Tường thành đá phía Tây
+                grid[r][cols - 2] = 1; grid[r][cols - 1] = 1; // Tường thành đá phía Đông
+            }
+            for (let c = 0; c < cols; c++) {
+                grid[0][c] = 1; grid[1][c] = 1; grid[2][c] = 1; // Dãy rừng thông ranh giới phía Bắc
+            }
+            // Hàng cây thông dọc đường đại lộ
+            for (let r = 3; r <= 23; r++) {
+                grid[r][2] = 1;
+                grid[r][6] = 1;
+                grid[r][7] = 1;
+            }
+            // Khối kiến trúc Nhà 1 (Cung điện nhỏ - mái cam)
+            for (let r = 8; r <= 12; r++) {
+                for (let c = 8; c <= 11; c++) {
+                    grid[r][c] = 1;
+                }
+            }
+            // Khối kiến trúc Nhà 2 (Đại điện đông)
+            for (let r = 9; r <= 13; r++) {
+                for (let c = 13; c <= 18; c++) {
+                    grid[r][c] = 1;
+                }
+            }
+            // Mở thông đại lộ chính (cols 3..5, rows 3..25)
+            for (let r = 3; r <= 25; r++) {
+                for (let c = 3; c <= 5; c++) grid[r][c] = 0;
+            }
+            // Mở thông sân trước nhà (cols 8..13, rows 14..16)
+            for (let r = 14; r <= 16; r++) {
+                for (let c = 8; c <= 13; c++) grid[r][c] = 0;
+            }
+            // Mở thông quảng trường phía Nam (cols 3..18, rows 24..27)
+            for (let r = 24; r <= 27; r++) {
+                for (let c = 3; c <= 18; c++) grid[r][c] = 0;
+            }
+            // Mở thông lối ra cổng Nam (cols 8..12, rows 28..31)
+            for (let r = 28; r < rows; r++) {
+                for (let c = 8; c <= 12; c++) grid[r][c] = 0;
+            }
+        }
+
         for (let r = 0; r < rows; r++) {
             for (let col = 0; col < cols; col++) {
                 const px = col * tileSize;
                 const py = r * tileSize;
                 const isBorder = (col === 0 || col === cols - 1 || r === 0 || r === rows - 1);
-                const isBlocked = j2meMap.collisionGrid[r][col] === 1;
+                const isBlocked = grid[r][col] === 1;
 
                 const isPortalArea = mapPortals.some(p => (
                     px + tileSize > p.worldX && px < p.worldX + p.width &&
@@ -154,7 +272,7 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32
                 ));
 
                 if (!isPortalArea) {
-                    if (isBorder || isBlocked) {
+                    if (isBlocked || isBorder) {
                         boundaries.push({ x: px, y: py, width: tileSize, height: tileSize });
                     }
                 }
@@ -167,39 +285,72 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32
         }
     }
 
-    // 4. Vẽ Layer 3 (Overhead Tiles) lên Foreground Canvas
-    if (j2meMap && j2meMap.overheadTiles && j2meMap.overheadTiles.length > 0 && defs) {
-        for (const [tx, ty, tid, flags] of j2meMap.overheadTiles) {
-            const def = defs[tid];
-            if (def) {
-                const px = tx * tileSize;
-                const py = ty * tileSize;
-                drawTileModule(cfg, tilesetImg, def, px, py, tileSize, tileSize, flags);
-            }
-        }
-    }
-
-    // 5. Vẽ cổng dịch chuyển phát sáng viền vàng
-    mapPortals.forEach(p => {
-        c.save();
-        c.fillStyle = 'rgba(255, 215, 0, 0.25)';
-        c.fillRect(p.worldX, p.worldY, p.width, p.height);
-        c.strokeStyle = '#ffd700';
-        c.lineWidth = 3;
-        c.strokeRect(p.worldX + 2, p.worldY + 2, p.width - 4, p.height - 4);
-        c.restore();
-    });
-
-    const bgImg = new Image();
-    bgImg.src = offCanvas.toDataURL();
-
-    const fgImg = new Image();
-    fgImg.src = offFgCanvas.toDataURL();
-
-    // 6. Xây dựng danh sách NPC trên bản đồ
+    // 6. Xây dựng danh sách NPC trên bản đồ (đứng chuẩn trên mặt đất, không đè lên mái nhà hay cây cối)
     const npcs = [];
-    if (j2meMap && j2meMap.npcNames && j2meMap.npcNames.length > 0) {
-        const uniqueNames = [...new Set(j2meMap.npcNames)].slice(0, 6);
+    if (mapKey === 'map_0') {
+        npcs.push(
+            {
+                name: 'Quản gia Jess',
+                worldX: 5 * tileSize,
+                worldY: 14 * tileSize,
+                dialogue: 'Chào mừng Huấn Luyện Sư trẻ tuổi! Đại điện Cầu Vồng là nơi khởi đầu mọi huyền thoại sủng thú. Hãy chuẩn bị kỹ lưỡng trước khi xuất cung!',
+                spriteKey: 'npc_elder'
+            },
+            {
+                name: 'Tuần Sát Hoàng Gia',
+                worldX: 4 * tileSize,
+                worldY: 18 * tileSize,
+                dialogue: 'Bảo vệ Cung Điện Cầu Vồng là trọng trách thiêng liêng của chúng ta. Chúc ngươi sớm trở thành Hoàng Kim Huấn Luyện Sư!',
+                spriteKey: 'npc_elder'
+            },
+            {
+                name: 'Yuyu',
+                worldX: 12 * tileSize,
+                worldY: 14 * tileSize,
+                dialogue: 'Thành Phố Cầu Vồng ở phía Nam đại điện là nơi phồn hoa nhất vương quốc! Ngươi hãy đến thăm Trung Tâm Thương Mại nhé.',
+                spriteKey: 'npc_trainer'
+            },
+            {
+                name: 'Miro Fan Hâm Mộ',
+                worldX: 11 * tileSize,
+                worldY: 16 * tileSize,
+                dialogue: 'Miro là huấn luyện sư sủng vật lợi hại nhất mà ta từng biết! Ta nhất định cũng sẽ thu phục thật nhiều sủng thú quý hiếm!',
+                spriteKey: 'npc_trainer'
+            },
+            {
+                name: 'Nhiệt Huyết Binh Sĩ',
+                worldX: 10 * tileSize,
+                worldY: 25 * tileSize,
+                dialogue: 'Cổng Nam ngay phía trước sẽ dẫn thẳng ra Quảng Trường Thành Phố Cầu Vồng. Hãy dũng cảm tiến lên!',
+                spriteKey: 'npc_elder'
+            }
+        );
+    } else if (mapKey === 'map_1') {
+        npcs.push(
+            {
+                name: 'Vệ Binh Thành Cầu Vồng',
+                worldX: 10 * tileSize,
+                worldY: 6 * tileSize,
+                dialogue: 'Chào mừng đã đến với Quảng Trường Thành Phố Cầu Vồng! Phía Nam dẫn ra Thảo Nguyên hoang dã.',
+                spriteKey: 'npc_elder'
+            },
+            {
+                name: 'Thương Nhân Sủng Vật',
+                worldX: 18 * tileSize,
+                worldY: 10 * tileSize,
+                dialogue: 'Ta có rất nhiều bình hồi máu và bóng thu phục sủng vật tốt nhất thành phố!',
+                spriteKey: 'npc_trainer'
+            },
+            {
+                name: 'Ông Lão Thông Thái',
+                worldX: 8 * tileSize,
+                worldY: 16 * tileSize,
+                dialogue: 'Các thuộc tính tương sinh tương khắc: Thực Vật khắc Hải Dương, Hải Dương khắc Mãnh Thú, Mãnh Thú khắc Kim Loại, Kim Loại khắc Phi Hành!',
+                spriteKey: 'npc_elder'
+            }
+        );
+    } else if (j2meMap && j2meMap.npcNames && j2meMap.npcNames.length > 0) {
+        const uniqueNames = [...new Set(j2meMap.npcNames)].slice(0, 5);
         let npcIdx = 0;
         for (let r = 4; r < rows - 4 && npcIdx < uniqueNames.length; r += 4) {
             for (let col = 4; col < cols - 4 && npcIdx < uniqueNames.length; col += 4) {
@@ -214,7 +365,7 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32
                         worldX: col * tileSize,
                         worldY: r * tileSize,
                         dialogue,
-                        spriteKey: (npcIdx % 2 === 0) ? `r${npcIdx % 6}` : `s${npcIdx % 6}`
+                        spriteKey: (npcIdx % 2 === 0) ? 'npc_elder' : 'npc_trainer'
                     });
                     npcIdx++;
                 }
@@ -237,11 +388,6 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32
 
     if (tilesetImg && tilesetImg.complete && tilesetImg.naturalWidth > 0) {
         MAP_CANVAS_CACHE[mapKey] = result;
-    } else if (tilesetImg) {
-        tilesetImg.addEventListener('load', () => {
-            delete MAP_CANVAS_CACHE[mapKey];
-            generateJ2MEMapCanvas(mapKey, themeKey, baseColor, pathColor);
-        }, { once: true });
     }
 
     return result;
@@ -251,10 +397,74 @@ function generateJ2MEMapCanvas(mapKey, themeKey = 'nature', baseColor = '#2e7d32
 // CẤU HÌNH THẾ GIỚI MỞ VƯƠNG QUỐC SỦNG CẦU VỒNG (MAPS_CONFIG)
 // ========================================================
 const MAPS_CONFIG = {
-    // 1. THỊ TRẤN KHỞI ĐẦU (PELLET TOWN)
+    // 1. CUNG ĐIỆN CẦU VỒNG (MAP 0 NGUYÊN BẢN J2ME - KHỞI ĐẦU CHÍNH)
+    map_0: {
+        id: 'map_0',
+        name: 'Cung Điện Cầu Vồng (Khởi Đầu)',
+        theme: 'interior',
+        baseColor: '#004e98',
+        pathColor: '#d90429',
+        width: 1056,
+        height: 1536,
+        initialOffset: { x: 16, y: -448 },
+        initialPlayerPos: { x: 448, y: 224 },
+        wildPool: ['cauvong_pet_1', 'cauvong_pet_2', 'cauvong_pet_3'],
+        encounterRate: 0.0,
+        portals: [
+            {
+                name: 'Cổng Nam Ra Thành Phố Cầu Vồng',
+                worldX: 432,
+                worldY: 1440,
+                width: 96,
+                height: 96,
+                targetMap: 'map_1',
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -176, y: 0 }
+            }
+        ]
+    },
+
+    // 2. THÀNH PHỐ CẦU VỒNG (MAP 1 NGUYÊN BẢN J2ME)
+    map_1: {
+        id: 'map_1',
+        name: 'Thành Phố Cầu Vồng (Quảng Trường)',
+        theme: 'city',
+        baseColor: '#004e98',
+        pathColor: '#ecf0f1',
+        width: 1344,
+        height: 1536,
+        initialOffset: { x: -176, y: 0 },
+        initialPlayerPos: { x: 448, y: 224 },
+        wildPool: [], // Thành phố an toàn
+        encounterRate: 0,
+        portals: [
+            {
+                name: 'Cổng Bắc Lên Cung Điện Cầu Vồng',
+                worldX: 528,
+                worldY: 0,
+                width: 144,
+                height: 60,
+                targetMap: 'map_0',
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -80, y: -1150 }
+            },
+            {
+                name: 'Cổng Nam Ra Bình Nguyên Xanh',
+                worldX: 528,
+                worldY: 1440,
+                width: 96,
+                height: 96,
+                targetMap: 'map_3',
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -200, y: 0 }
+            }
+        ]
+    },
+
+    // 3. THỊ TRẤN KHỞI ĐẦU (PELLET TOWN DỰ PHÒNG)
     pelletTown: {
         id: 'pelletTown',
-        name: 'Thị Trấn Khởi Đầu (Pellet Town)',
+        name: 'Thị Trấn Cầu Vồng (Dự Phòng)',
         bgImageSrc: './img/Pellet Town.png',
         altBgImageSrc: './client/img/Pellet Town.png',
         fgImageSrc: './img/foregroundObjects.png',
@@ -264,7 +474,7 @@ const MAPS_CONFIG = {
         tileWidth: 70,
         tileHeight: 40,
         initialOffset: { x: -735, y: -650 },
-        initialPlayerPos: { x: 488, y: 254 },
+        initialPlayerPos: { x: 448, y: 160 },
         hasCollisionData: true,
         hasBattleData: true,
         wildPool: ['cauvong_pet_1', 'cauvong_pet_2', 'cauvong_pet_3', 'cauvong_pet_4'],
@@ -287,45 +497,8 @@ const MAPS_CONFIG = {
                 width: 96,
                 height: 48,
                 targetMap: 'map_0',
-                targetPlayerPos: { x: 488, y: 450 },
-                targetOffset: { x: -200, y: -450 }
-            }
-        ]
-    },
-
-    // 2. CUNG ĐIỆN CẦU VỒNG (MAP 0 NGUYÊN BẢN J2ME)
-    map_0: {
-        id: 'map_0',
-        name: 'Cung Điện Cầu Vồng (Khởi Đầu)',
-        theme: 'interior',
-        baseColor: '#2b2d42',
-        pathColor: '#d90429',
-        width: 1056,
-        height: 1536,
-        initialOffset: { x: -200, y: -450 },
-        initialPlayerPos: { x: 488, y: 450 },
-        wildPool: ['cauvong_pet_1', 'cauvong_pet_2', 'cauvong_pet_3'],
-        encounterRate: 0.012,
-        portals: [
-            {
-                name: 'Cổng Nam Quay Về Pellet Town',
-                worldX: 480,
-                worldY: 1440,
-                width: 96,
-                height: 48,
-                targetMap: 'pelletTown',
-                targetPlayerPos: { x: 488, y: 254 },
-                targetOffset: { x: -850, y: -60 }
-            },
-            {
-                name: 'Cổng Bắc Đến Thành Phố Cầu Vồng',
-                worldX: 480,
-                worldY: 48,
-                width: 96,
-                height: 48,
-                targetMap: 'map_1',
-                targetPlayerPos: { x: 488, y: 440 },
-                targetOffset: { x: -350, y: -800 }
+                targetPlayerPos: { x: 448, y: 224 },
+                targetOffset: { x: -80, y: -76 }
             }
         ]
     },

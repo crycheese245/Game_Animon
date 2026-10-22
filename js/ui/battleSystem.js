@@ -21,6 +21,12 @@ class BattleSystem {
         this.skillIndex = 0;
         this.subState = 'main_menu'; // 'main_menu', 'skills', 'bag'
 
+        this.vfxParticles = [];
+        this.lastEnemyX = 0;
+        this.lastEnemyY = 0;
+        this.lastPlayerX = 0;
+        this.lastPlayerY = 0;
+
         this.onBattleEnd = null;
     }
 
@@ -28,6 +34,8 @@ class BattleSystem {
         this.active = true;
         this.state = 'intro';
         this.subState = 'main_menu';
+        this.introTimer = 0;
+        this.introDuration = 650;
         this.wildMonster = { ...wildMonster, hp: wildMonster.hp, maxHp: wildMonster.maxHp };
         this.playerTeam = playerTeam;
         this.inventory = inventory || { pokeballs: 5, potions: 3 };
@@ -86,18 +94,27 @@ class BattleSystem {
             `Xuất trận nào, ${this.playerMonster.name} (${pType})!`
         ];
 
-        setTimeout(() => {
+        if (this.introTimer) clearTimeout(this.introTimer);
+        this.introTimer = setTimeout(() => {
             this.nextDialog();
-        }, 1500);
+        }, 1200);
     }
 
     nextDialog() {
-        if (this.dialogQueue.length > 0) {
+        if (this.introTimer) {
+            clearTimeout(this.introTimer);
+            this.introTimer = null;
+        }
+
+        if (this.dialogQueue && this.dialogQueue.length > 0) {
             this.message = this.dialogQueue.shift();
+            this.introTimer = setTimeout(() => {
+                this.nextDialog();
+            }, 1200);
         } else {
             this.state = 'player_turn';
-            this.subState = 'main_menu';
-            this.message = `Bạn sẽ chọn hành động gì?`;
+            this.subState = 'skills';
+            this.message = `Lượt của ${this.playerMonster.name}! Hãy chọn kỹ năng tấn công [1-4]:`;
         }
     }
 
@@ -107,8 +124,9 @@ class BattleSystem {
 
         // Kiểm tra MP
         const mpCost = skill.mpCost || 0;
-        if (this.playerMonster.mp !== undefined && this.playerMonster.mp < mpCost) {
-            this.message = `Không đủ MP (${this.playerMonster.mp}/${mpCost}) để dùng [${skill.name}]!`;
+        const curMp = this.playerMonster.mp !== undefined ? this.playerMonster.mp : (this.playerMonster.maxMp || 50);
+        if (curMp < mpCost) {
+            this.message = `Không đủ MP (${curMp}/${mpCost}) để dùng [${skill.name}]!`;
             return;
         }
 
@@ -121,9 +139,11 @@ class BattleSystem {
         if (this.playerJ2MESprite) this.playerJ2MESprite.triggerAttack();
 
         // Kỹ năng hồi phục
-        if (skill.heal) {
-            const healAmount = Math.floor((this.playerMonster.maxHp * skill.heal) / 100);
+        if (skill.heal || skill.type === 'Hồi Phục') {
+            const healPercent = skill.heal || 35;
+            const healAmount = Math.floor((this.playerMonster.maxHp * healPercent) / 100);
             this.playerMonster.hp = Math.min(this.playerMonster.maxHp, this.playerMonster.hp + healAmount);
+            this.triggerVfx('Hồi Phục', this.lastPlayerX || 220, this.lastPlayerY || 350);
             this.message = `${this.playerMonster.name} thi triển [${skill.name}], hồi phục ${healAmount} HP!`;
 
             setTimeout(() => {
@@ -133,9 +153,11 @@ class BattleSystem {
         }
 
         // Kỹ năng tăng phòng ngự
-        if (skill.buffDef) {
-            this.playerMonster.defense = Math.floor(this.playerMonster.defense * (1 + skill.buffDef / 100));
-            this.message = `${this.playerMonster.name} thi triển [${skill.name}], phòng ngự tăng thêm ${skill.buffDef}%!`;
+        if (skill.buffDef || skill.type === 'Phòng Ngự') {
+            const buff = skill.buffDef || 30;
+            this.playerMonster.defense = Math.floor(this.playerMonster.defense * (1 + buff / 100));
+            this.triggerVfx('Phòng Ngự', this.lastPlayerX || 220, this.lastPlayerY || 350);
+            this.message = `${this.playerMonster.name} thi triển [${skill.name}], phòng ngự tăng thêm ${buff}%!`;
 
             setTimeout(() => {
                 this.enemyTurn();
@@ -143,28 +165,41 @@ class BattleSystem {
             return;
         }
 
-        // Tính tương khắc ngũ hành J2ME (Kim, Mộc, Thủy, Hỏa, Thổ)
-        const attackerType = this.playerMonster.type || 'Kim';
-        const defenderType = this.wildMonster.type || 'Mộc';
+        // Tính tương khắc ngũ hành chuẩn Vương Quốc Sủng Cầu Vồng
+        // Thực Vật -> Phi Hành -> Hải Dương -> Kim Loại -> Mãnh Thú -> Thực Vật
+        const attackerClass = this.playerMonster.type || 'Thực Vật';
+        const skillType = skill.type || attackerClass;
+        const defenderClass = this.wildMonster.type || 'Thực Vật';
         let elementMult = 1.0;
         let effectMsg = '';
 
-        if (window.TYPE_EFFECTIVENESS && window.TYPE_EFFECTIVENESS[attackerType]) {
-            const eff = window.TYPE_EFFECTIVENESS[attackerType];
-            if (eff.strongAgainst && eff.strongAgainst.includes(defenderType)) {
-                elementMult = 1.6;
+        const effectiveType = (skillType === 'Đặc Biệt' || skillType === 'Thường') ? attackerClass : skillType;
+
+        if (window.TYPE_EFFECTIVENESS && window.TYPE_EFFECTIVENESS[effectiveType]) {
+            const eff = window.TYPE_EFFECTIVENESS[effectiveType];
+            if (eff.strongAgainst && eff.strongAgainst.includes(defenderClass)) {
+                elementMult = 1.75;
                 effectMsg = ' (Khắc chế ngũ hành! Chí mạng!)';
-            } else if (eff.weakAgainst && eff.weakAgainst.includes(defenderType)) {
-                elementMult = 0.65;
+            } else if (eff.weakAgainst && eff.weakAgainst.includes(defenderClass)) {
+                elementMult = 0.6;
                 effectMsg = ' (Bị ngũ hành kháng cự!)';
             }
         }
 
+        // STAB (Same Type Attack Bonus) khi kỹ năng trùng hệ với sủng vật
+        let stab = 1.0;
+        if (skillType === attackerClass) {
+            stab = 1.25;
+        }
+
         // Tính sát thương chuẩn
         const power = skill.power || 20;
-        const damage = Math.max(5, Math.floor(power * (this.playerMonster.attack / Math.max(1, this.wildMonster.defense)) * elementMult * (0.85 + Math.random() * 0.3)));
+        const pAtk = this.playerMonster.attack || 15;
+        const wDef = Math.max(1, this.wildMonster.defense || 10);
+        const damage = Math.max(5, Math.floor(power * (pAtk / wDef) * elementMult * stab * (0.88 + Math.random() * 0.24)));
 
         setTimeout(() => {
+            this.triggerVfx(effectiveType, this.lastEnemyX || 814, this.lastEnemyY || 180);
             if (this.wildJ2MESprite) this.wildJ2MESprite.triggerHurt();
             this.wildMonster.hp = Math.max(0, this.wildMonster.hp - damage);
             this.message = `${this.playerMonster.name} dùng [${skill.name}], gây ${damage} sát thương!${effectMsg}`;
@@ -182,34 +217,73 @@ class BattleSystem {
     // Lượt quái vật đối thủ phản công
     enemyTurn() {
         this.state = 'enemy_turn';
-        const skills = this.wildMonster.skills || [{ name: 'Cắn Xé', power: 15, type: this.wildMonster.type || 'Thường' }];
-        const skill = skills[Math.floor(Math.random() * skills.length)];
+        const skills = (this.wildMonster.skills && this.wildMonster.skills.length > 0)
+            ? this.wildMonster.skills
+            : [{ name: 'Cắn Xé', power: 15, type: this.wildMonster.type || 'Mãnh Thú', mpCost: 0 }];
+
+        // Chọn kỹ năng phù hợp với lượng MP còn lại của đối thủ
+        const curMp = this.wildMonster.mp !== undefined ? this.wildMonster.mp : (this.wildMonster.maxMp || 50);
+        const affordable = skills.filter(s => (s.mpCost || 0) <= curMp);
+        const skill = affordable.length > 0
+            ? affordable[Math.floor(Math.random() * affordable.length)]
+            : (skills[0] || { name: 'Đánh Thường', power: 12, type: 'Đặc Biệt', mpCost: 0 });
 
         setTimeout(() => {
+            if (this.wildMonster.mp !== undefined && skill.mpCost) {
+                this.wildMonster.mp = Math.max(0, this.wildMonster.mp - skill.mpCost);
+            }
+
             window.soundEngine?.playAttack();
             if (this.wildJ2MESprite) this.wildJ2MESprite.triggerAttack();
 
+            // Đối thủ hồi phục
+            if (skill.heal || skill.type === 'Hồi Phục') {
+                const healPercent = skill.heal || 35;
+                const healAmt = Math.floor((this.wildMonster.maxHp * healPercent) / 100);
+                this.wildMonster.hp = Math.min(this.wildMonster.maxHp, this.wildMonster.hp + healAmt);
+                this.triggerVfx('Hồi Phục', this.lastEnemyX || 814, this.lastEnemyY || 180);
+                this.message = `${this.wildMonster.name} đối thủ dùng [${skill.name}], hồi phục ${healAmt} HP!`;
+
+                setTimeout(() => {
+                    this.state = 'player_turn';
+                    this.subState = 'skills';
+                    this.message = `Lượt của bạn. Hãy chọn kỹ năng tấn công [1-4]:`;
+                }, 1200);
+                return;
+            }
+
             // Tính tương khắc ngũ hành của địch
-            const attackerType = this.wildMonster.type || 'Thủy';
-            const defenderType = this.playerMonster.type || 'Hỏa';
+            const attackerClass = this.wildMonster.type || 'Hải Dương';
+            const skillType = skill.type || attackerClass;
+            const defenderClass = this.playerMonster.type || 'Thực Vật';
             let elementMult = 1.0;
             let effectMsg = '';
 
-            if (window.TYPE_EFFECTIVENESS && window.TYPE_EFFECTIVENESS[attackerType]) {
-                const eff = window.TYPE_EFFECTIVENESS[attackerType];
-                if (eff.strongAgainst && eff.strongAgainst.includes(defenderType)) {
-                    elementMult = 1.5;
+            const effectiveType = (skillType === 'Đặc Biệt' || skillType === 'Thường') ? attackerClass : skillType;
+
+            if (window.TYPE_EFFECTIVENESS && window.TYPE_EFFECTIVENESS[effectiveType]) {
+                const eff = window.TYPE_EFFECTIVENESS[effectiveType];
+                if (eff.strongAgainst && eff.strongAgainst.includes(defenderClass)) {
+                    elementMult = 1.65;
                     effectMsg = ' (Khắc chế ngũ hành!)';
-                } else if (eff.weakAgainst && eff.weakAgainst.includes(defenderType)) {
-                    elementMult = 0.7;
+                } else if (eff.weakAgainst && eff.weakAgainst.includes(defenderClass)) {
+                    elementMult = 0.65;
                     effectMsg = ' (Bị kháng cự!)';
                 }
             }
 
+            let stab = 1.0;
+            if (skillType === attackerClass) {
+                stab = 1.25;
+            }
+
             const power = skill.power || 15;
-            const damage = Math.max(4, Math.floor(power * (this.wildMonster.attack / Math.max(1, this.playerMonster.defense)) * elementMult * (0.85 + Math.random() * 0.3)));
+            const wAtk = this.wildMonster.attack || 14;
+            const pDef = Math.max(1, this.playerMonster.defense || 12);
+            const damage = Math.max(4, Math.floor(power * (wAtk / pDef) * elementMult * stab * (0.85 + Math.random() * 0.3)));
 
             setTimeout(() => {
+                this.triggerVfx(effectiveType, this.lastPlayerX || 220, this.lastPlayerY || 350);
                 if (this.playerJ2MESprite) this.playerJ2MESprite.triggerHurt();
                 this.playerMonster.hp = Math.max(0, this.playerMonster.hp - damage);
                 this.message = `${this.wildMonster.name} đối thủ dùng [${skill.name}], gây ${damage} sát thương!${effectMsg}`;
@@ -220,8 +294,8 @@ class BattleSystem {
                     this.playerFainted();
                 } else {
                     this.state = 'player_turn';
-                    this.subState = 'main_menu';
-                    this.message = `Lượt của bạn. Hãy chọn hành động!`;
+                    this.subState = 'skills';
+                    this.message = `Lượt của bạn. Hãy chọn kỹ năng tấn công [1-4]:`;
                 }
             }, 1300);
         }, 800);
@@ -229,25 +303,43 @@ class BattleSystem {
 
     // Dùng bóng bắt quái
     usePokeball() {
-        if (this.inventory.pokeballs <= 0) {
-            this.message = 'Bạn đã hết Bóng Bắt Quái (Animon Ball)!';
+        let ballType = null;
+        let multiplier = 1.0;
+        let ballName = 'Cầu Bắt Thường';
+
+        if ((this.inventory.pokeballs || 0) > 0) {
+            ballType = 'pokeballs';
+            multiplier = 1.0;
+            ballName = 'Cầu Bắt Thường (Animon Ball)';
+        } else if ((this.inventory.greatBalls || 0) > 0) {
+            ballType = 'greatBalls';
+            multiplier = 1.6;
+            ballName = 'Cầu Bắt Cao Cấp (Great Ball)';
+        } else if ((this.inventory.masterBalls || 0) > 0) {
+            ballType = 'masterBalls';
+            multiplier = 999.0;
+            ballName = 'Cầu Thần Kỳ (Master Ball)';
+        }
+
+        if (!ballType) {
+            this.message = 'Bạn đã hết Cầu Bắt Quái trong túi đồ!';
             return;
         }
 
-        this.inventory.pokeballs--;
+        this.inventory[ballType]--;
         this.state = 'executing';
-        this.message = `Bạn ném Bóng Bắt Quái về phía ${this.wildMonster.name}...`;
+        this.message = `Bạn ném ${ballName} về phía ${this.wildMonster.name}...`;
 
         setTimeout(() => {
-            // Tỉ lệ bắt: Máu càng thấp tỉ lệ càng cao (tối đa 90%, tối thiểu 30%)
-            const hpPercent = this.wildMonster.hp / this.wildMonster.maxHp;
-            const catchRate = Math.max(0.3, 0.95 - (hpPercent * 0.65));
+            const hpPercent = this.wildMonster.hp / (this.wildMonster.maxHp || 1);
+            const baseCatchRate = Math.max(0.3, 0.95 - (hpPercent * 0.65));
+            const finalCatchRate = Math.min(1.0, baseCatchRate * multiplier);
 
-            if (Math.random() < catchRate) {
+            if (multiplier >= 100 || Math.random() < finalCatchRate) {
                 window.soundEngine?.playCatchSuccess();
                 this.message = `Tuyệt vời! Bạn đã bắt thành công ${this.wildMonster.name}!`;
 
-                // Thêm vào đội hình người chơi
+                // Thêm vào đội hình người chơi (tối đa 6 sủng vật)
                 if (this.playerTeam.length < 6) {
                     this.playerTeam.push({ ...this.wildMonster });
                 }
@@ -265,21 +357,88 @@ class BattleSystem {
         }, 1200);
     }
 
-    // Dùng bình máu
+    // Dùng dược phẩm hồi máu (HP)
     usePotion() {
-        if (this.inventory.potions <= 0) {
-            this.message = 'Bạn đã hết Bình Hồi Máu (Potion)!';
+        let itemKey = null;
+        let healPercent = 35;
+        let itemName = 'Đồ Uống';
+
+        if ((this.inventory.potion || 0) > 0) {
+            itemKey = 'potion';
+            healPercent = 35;
+            itemName = 'Đồ Uống (+35% HP)';
+        } else if ((this.inventory.potions || 0) > 0) {
+            itemKey = 'potions';
+            healPercent = 35;
+            itemName = 'Bình Máu (+35% HP)';
+        } else if ((this.inventory.superPotion || 0) > 0) {
+            itemKey = 'superPotion';
+            healPercent = 65;
+            itemName = 'Bánh Bích Quy (+65% HP)';
+        } else if ((this.inventory.chocolate || 0) > 0) {
+            itemKey = 'chocolate';
+            healPercent = 100;
+            itemName = 'Sô-cô-la (100% HP)';
+        }
+
+        if (!itemKey) {
+            this.message = 'Bạn đã hết Dược Phẩm hồi HP!';
             return;
         }
 
-        this.inventory.potions--;
-        const heal = 30;
+        if (this.playerMonster.hp >= this.playerMonster.maxHp) {
+            this.message = `${this.playerMonster.name} đã đầy máu, không cần dùng thuốc!`;
+            return;
+        }
+
+        this.inventory[itemKey]--;
+        const heal = Math.max(15, Math.floor((this.playerMonster.maxHp * healPercent) / 100));
         this.playerMonster.hp = Math.min(this.playerMonster.maxHp, this.playerMonster.hp + heal);
-        this.message = `Đã hồi phục ${heal} HP cho ${this.playerMonster.name}!`;
+        this.triggerVfx('Hồi Phục', this.lastPlayerX || 220, this.lastPlayerY || 350);
+        this.message = `Dùng [${itemName}], hồi phục ${heal} HP cho ${this.playerMonster.name}!`;
 
         setTimeout(() => {
             this.enemyTurn();
-        }, 1000);
+        }, 1200);
+    }
+
+    // Dùng dược phẩm hồi năng lượng (MP)
+    useEther() {
+        let itemKey = null;
+        let restoreMp = 30;
+        let itemName = 'Năng Lượng Thạch';
+
+        const curMp = this.playerMonster.mp !== undefined ? this.playerMonster.mp : (this.playerMonster.maxMp || 50);
+        const maxMp = this.playerMonster.maxMp || 50;
+
+        if (curMp >= maxMp) {
+            this.message = `${this.playerMonster.name} đã đầy năng lượng MP!`;
+            return;
+        }
+
+        if ((this.inventory.ether || 0) > 0) {
+            itemKey = 'ether';
+            restoreMp = Math.max(15, Math.floor(maxMp * 0.5));
+            itemName = 'Năng Lượng Thạch (+50% MP)';
+        } else if ((this.inventory.elixir || 0) > 0) {
+            itemKey = 'elixir';
+            restoreMp = maxMp;
+            itemName = 'Hoàng Kim Đường (100% MP)';
+        }
+
+        if (!itemKey) {
+            this.message = 'Bạn đã hết Dược Phẩm hồi MP!';
+            return;
+        }
+
+        this.inventory[itemKey]--;
+        this.playerMonster.mp = Math.min(maxMp, curMp + restoreMp);
+        this.triggerVfx('Đặc Biệt', this.lastPlayerX || 220, this.lastPlayerY || 350);
+        this.message = `Dùng [${itemName}], hồi phục ${restoreMp} MP cho ${this.playerMonster.name}!`;
+
+        setTimeout(() => {
+            this.enemyTurn();
+        }, 1200);
     }
 
     // Chạy trốn
@@ -321,6 +480,84 @@ class BattleSystem {
         }
     }
 
+    // Hiệu ứng hạt chiêu thức theo Hệ (Skill Visual Effects)
+    triggerVfx(type, targetX, targetY) {
+        if (!this.vfxParticles) this.vfxParticles = [];
+        const count = 22;
+        const emojis = {
+            'Thực Vật': ['🍃', '🌿', '🌱', '✨'],
+            'Kim Loại': ['⚡', '⚔️', '✨', '🔶'],
+            'Phi Hành': ['🌪️', '🪶', '💨', '✨'],
+            'Mãnh Thú': ['🔥', '💥', '🐾', '💢'],
+            'Hải Dương': ['💧', '🌊', '❄️', '🫧'],
+            'Hồi Phục': ['💚', '✨', '🍀', '💖'],
+            'Phòng Ngự': ['🛡️', '🔷', '✨', '💠'],
+            'Đặc Biệt': ['⭐', '✨', '⚡', '💥']
+        };
+        const colors = {
+            'Thực Vật': ['#2ecc71', '#27ae60', '#a8e6cf', '#dcedc1'],
+            'Kim Loại': ['#f1c40f', '#f39c12', '#ffeaa7', '#dfe6e9'],
+            'Phi Hành': ['#9b59b6', '#8e44ad', '#a29bfe', '#dfe6e9'],
+            'Mãnh Thú': ['#e74c3c', '#c0392b', '#ff7675', '#d63031'],
+            'Hải Dương': ['#3498db', '#2980b9', '#74b9ff', '#0984e3'],
+            'Hồi Phục': ['#2ecc71', '#00b894', '#55efc4', '#ffffff'],
+            'Phòng Ngự': ['#0984e3', '#74b9ff', '#a29bfe', '#dfe6e9'],
+            'Đặc Biệt': ['#e056fd', '#f0932b', '#ffbe76', '#ffffff']
+        };
+
+        const charList = emojis[type] || emojis['Đặc Biệt'];
+        const colorList = colors[type] || colors['Đặc Biệt'];
+
+        for (let i = 0; i < count; i++) {
+            const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
+            const speed = 2.5 + Math.random() * 5.5;
+            this.vfxParticles.push({
+                x: targetX,
+                y: targetY,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed - 1.5,
+                color: colorList[Math.floor(Math.random() * colorList.length)],
+                char: (Math.random() < 0.45) ? charList[Math.floor(Math.random() * charList.length)] : null,
+                size: 14 + Math.random() * 12,
+                life: 35,
+                maxLife: 35,
+                gravity: 0.18
+            });
+        }
+    }
+
+    drawVfx(ctx) {
+        if (!this.vfxParticles || this.vfxParticles.length === 0) return;
+        ctx.save();
+        for (let i = this.vfxParticles.length - 1; i >= 0; i--) {
+            const p = this.vfxParticles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += p.gravity;
+            p.life--;
+
+            const alpha = Math.max(0, p.life / p.maxLife);
+            ctx.globalAlpha = alpha;
+
+            if (p.char) {
+                ctx.font = `${Math.round(p.size)}px sans-serif`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(p.char, p.x, p.y);
+            } else {
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, Math.max(2, p.size / 3.5), 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            if (p.life <= 0) {
+                this.vfxParticles.splice(i, 1);
+            }
+        }
+        ctx.restore();
+    }
+
     // Vẽ giao diện Trận đấu trên Canvas
     draw(ctx, width, height) {
         if (!this.active) return;
@@ -339,31 +576,73 @@ class BattleSystem {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
         ctx.fillRect(0, 0, width, height);
 
-        // 2. Vẽ Quái vật đối thủ (Phía trên bên phải)
-        const enemyX = width - 360;
-        const enemyY = 80;
-        this.drawMonsterCard(ctx, enemyX, enemyY, this.wildMonster, false);
+        // 2. Tính toán hiệu ứng trượt vào trận đấu (Intro Slide-In Animation)
+        this.introTimer = (this.introTimer !== undefined ? this.introTimer : 650) + 16;
+        const introP = Math.min(1, this.introTimer / (this.introDuration || 650));
+        const easeOut = 1 - Math.pow(1 - introP, 3); // Cubic ease out chuẩn Pokemon
 
-        if (this.wildJ2MESprite) {
+        // ========================================================
+        // GIAO DIỆN CHIẾN ĐẤU POKÉMON GBA (ĐỐI XỨNG GÓC - KHÔNG BAO GIỜ BỊ CHE KHUẤT)
+        // - Thẻ Đối thủ: Góc TRÊN BÊN TRÁI (Top-Left)
+        // - Sủng vật Đối thủ: Góc TRÊN BÊN PHẢI (Top-Right)
+        // - Thẻ Người chơi: Góc DƯỚI BÊN PHẢI (Bottom-Right)
+        // - Sủng vật Người chơi: Góc DƯỚI BÊN TRÁI (Bottom-Left)
+        // ========================================================
+
+        // A. Thẻ Đối thủ ở GÓC TRÊN BÊN TRÁI (trượt từ -350 sang 50)
+        const enemyCardTargetX = 50;
+        const enemyCardCurrentX = Math.round(-350 + (enemyCardTargetX - (-350)) * easeOut);
+        const enemyCardY = 45;
+        this.drawMonsterCard(ctx, enemyCardCurrentX, enemyCardY, this.wildMonster, false);
+
+        // B. Sủng vật Đối thủ ở GÓC TRÊN BÊN PHẢI (trượt từ width + 200 sang width - 210)
+        const enemyTargetX = width - 210;
+        const enemyCurrentX = Math.round((width + 200) - ((width + 200) - enemyTargetX) * easeOut);
+        const enemyGroundY = 240;
+
+        let wildDrawn = false;
+        if (this.wildJ2MESprite && this.wildJ2MESprite.getData()) {
             this.wildJ2MESprite.update(16);
-            this.wildJ2MESprite.draw(ctx, width - 200, 260);
-        } else if (this.wildSprite && this.wildSprite.complete && this.wildSprite.naturalWidth > 0) {
-            const sprSize = 140;
-            ctx.drawImage(this.wildSprite, width - 260, 160, sprSize, sprSize);
+            // Chuẩn hóa kích thước sủng vật (targetHeight = 140) để mọi loài cân đối
+            this.wildJ2MESprite.draw(ctx, enemyCurrentX, enemyGroundY, 140);
+            wildDrawn = true;
+        }
+        if (!wildDrawn && this.wildSprite && this.wildSprite.complete && this.wildSprite.naturalWidth > 0) {
+            const sprSize = 135;
+            ctx.drawImage(this.wildSprite, enemyCurrentX - 60, enemyGroundY - 100, sprSize, sprSize);
         }
 
-        // 3. Vẽ Quái vật người chơi (Phía dưới bên trái)
-        const playerX = 60;
-        const playerY = height - 290;
-        this.drawMonsterCard(ctx, playerX, playerY, this.playerMonster, true);
+        // C. Sủng vật Người chơi ở GÓC DƯỚI BÊN TRÁI (trượt từ -180 sang 220)
+        const playerTargetX = 220;
+        const playerCurrentX = Math.round(-180 + (playerTargetX - (-180)) * easeOut);
+        const playerGroundY = height - 130;
 
-        if (this.playerJ2MESprite) {
+        let playerDrawn = false;
+        if (this.playerJ2MESprite && this.playerJ2MESprite.getData()) {
             this.playerJ2MESprite.update(16);
-            this.playerJ2MESprite.draw(ctx, playerX + 220, height - 150);
-        } else if (this.playerSprite && this.playerSprite.complete && this.playerSprite.naturalWidth > 0) {
-            const sprSize = 140;
-            ctx.drawImage(this.playerSprite, playerX + 160, height - 250, sprSize, sprSize);
+            // Chuẩn hóa kích thước sủng vật (targetHeight = 140) để mọi loài cân đối
+            this.playerJ2MESprite.draw(ctx, playerCurrentX, playerGroundY, 140);
+            playerDrawn = true;
         }
+        if (!playerDrawn && this.playerSprite && this.playerSprite.complete && this.playerSprite.naturalWidth > 0) {
+            const sprSize = 135;
+            ctx.drawImage(this.playerSprite, playerCurrentX - 60, playerGroundY - 100, sprSize, sprSize);
+        }
+
+        // D. Thẻ Người chơi ở GÓC DƯỚI BÊN PHẢI (trượt từ width + 350 sang width - 330)
+        const playerCardTargetX = width - 330;
+        const playerCardCurrentX = Math.round((width + 350) - ((width + 350) - playerCardTargetX) * easeOut);
+        const playerCardY = height - 225;
+        this.drawMonsterCard(ctx, playerCardCurrentX, playerCardY, this.playerMonster, true);
+
+        // Lưu tọa độ thực tế phục vụ hiệu ứng VFX
+        this.lastEnemyX = enemyCurrentX;
+        this.lastEnemyY = enemyGroundY - 60;
+        this.lastPlayerX = playerCurrentX;
+        this.lastPlayerY = playerGroundY - 60;
+
+        // E. Vẽ hiệu ứng kỹ năng (Skill Visual Particles) nếu đang thi triển
+        this.drawVfx(ctx);
 
         // 4. Khung điều khiển & Hộp thoại bên dưới
         const boxX = 30;
@@ -372,6 +651,7 @@ class BattleSystem {
         const boxH = 100;
 
         // Viền retro
+        ctx.beginPath();
         ctx.fillStyle = '#2c3e50';
         ctx.strokeStyle = '#f1c40f';
         ctx.lineWidth = 4;
@@ -386,6 +666,8 @@ class BattleSystem {
         // Thông điệp chính
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 18px "Segoe UI", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'alphabetic';
         ctx.fillText(this.message, boxX + 24, boxY + 38);
 
         // Các nút bấm tương tác
@@ -410,6 +692,7 @@ class BattleSystem {
         const cardW = 270;
         const cardH = 88;
 
+        ctx.beginPath();
         ctx.fillStyle = 'rgba(255, 255, 255, 0.94)';
         ctx.strokeStyle = '#34495e';
         ctx.lineWidth = 3;
@@ -424,37 +707,43 @@ class BattleSystem {
         // Tên sủng vật
         ctx.fillStyle = '#2c3e50';
         ctx.font = 'bold 15px "Segoe UI", sans-serif';
-        ctx.fillText(monster.name, x + 12, y + 24);
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillText(monster.name || 'Sủng Vật', x + 12, y + 24);
 
-        // Huy hiệu Hệ Ngũ Hành (Kim, Mộc, Thủy, Hỏa, Thổ)
-        const elem = monster.type || 'Hỏa';
+        // Huy hiệu Hệ Ngũ Hành (Thực Vật, Kim Loại, Phi Hành, Mãnh Thú, Hải Dương)
+        const elem = monster.type || 'Thực Vật';
         const elemColors = {
-            'Kim': '#f39c12',
-            'Mộc': '#27ae60',
-            'Thủy': '#2980b9',
-            'Hỏa': '#c0392b',
-            'Thổ': '#d35400'
+            'Thực Vật': '#27ae60',
+            'Kim Loại': '#f39c12',
+            'Phi Hành': '#8e44ad',
+            'Mãnh Thú': '#c0392b',
+            'Hải Dương': '#2980b9'
         };
         const badgeColor = elemColors[elem] || '#7f8c8d';
 
         ctx.save();
+        ctx.beginPath();
         ctx.fillStyle = badgeColor;
         if (ctx.roundRect) {
-            ctx.roundRect(x + cardW - 110, y + 10, 42, 18, 4);
+            ctx.roundRect(x + cardW - 120, y + 10, 56, 18, 4);
         } else {
-            ctx.fillRect(x + cardW - 110, y + 10, 42, 18);
+            ctx.fillRect(x + cardW - 120, y + 10, 56, 18);
         }
         ctx.fill();
         ctx.fillStyle = '#ffffff';
         ctx.font = 'bold 11px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(elem, x + cardW - 89, y + 23);
+        ctx.textBaseline = 'middle';
+        ctx.fillText(elem, x + cardW - 92, y + 19);
         ctx.restore();
 
         // Cấp độ
         ctx.font = 'bold 13px "Segoe UI", sans-serif';
         ctx.fillStyle = '#d35400';
-        ctx.fillText(`Lv.${monster.level || 5}`, x + cardW - 60, y + 24);
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillText(`Lv.${monster.level || 5}`, x + cardW - 55, y + 24);
 
         // Thanh HP (Máu)
         const barX = x + 12;
@@ -507,36 +796,102 @@ class BattleSystem {
         this.drawBtn(ctx, startX + (btnW + 10) * 3, btnY, btnW, btnH, '🏃 Bỏ Chạy (4)', '#3498db');
     }
 
-    // Nút kỹ năng
+    // Nút kỹ năng (Hiển thị trọn vẹn 4 kỹ năng của sủng vật kèm thanh công cụ Túi/Bắt/Chạy)
     drawSkillButtons(ctx, bx, by, bw, bh) {
-        const skills = this.playerMonster.skills || [{ name: 'Đánh Thường', power: 15 }];
-        const btnW = 160;
-        const btnH = 34;
-        const startX = bx + 24;
-        const btnY = by + bh - 48;
+        const skills = (this.playerMonster.skills && this.playerMonster.skills.length > 0)
+            ? this.playerMonster.skills.slice(0, 4)
+            : [{ name: 'Đánh Thường', power: 15, type: 'Đặc Biệt', mpCost: 0 }];
 
-        skills.slice(0, 3).forEach((sk, idx) => {
-            this.drawBtn(ctx, startX + idx * (btnW + 12), btnY, btnW, btnH, `⚡ ${sk.name} (${sk.power} dmg)`, '#e67e22');
+        const elemColors = {
+            'Thực Vật': '#27ae60',
+            'Kim Loại': '#d35400',
+            'Phi Hành': '#8e44ad',
+            'Mãnh Thú': '#c0392b',
+            'Hải Dương': '#2980b9',
+            'Hồi Phục': '#16a085',
+            'Phòng Ngự': '#2c3e50',
+            'Đặc Biệt': '#7f8c8d'
+        };
+
+        const actionW = 74;
+        const actionGap = 8;
+        const actionTotalW = actionW * 3 + actionGap * 2;
+        const skillAreaW = bw - actionTotalW - 32;
+        const btnW = Math.max(140, Math.floor((skillAreaW - 24) / 4));
+        const btnH = 38;
+        const startX = bx + 12;
+        const btnY = by + bh - 50;
+        const curMp = this.playerMonster.mp !== undefined ? this.playerMonster.mp : (this.playerMonster.maxMp || 50);
+
+        // Vẽ 4 nút chiêu thức
+        skills.forEach((sk, idx) => {
+            const skX = startX + idx * (btnW + 8);
+            const skType = sk.type || 'Thực Vật';
+            const cost = sk.mpCost || 0;
+            const canAfford = curMp >= cost;
+            const baseColor = canAfford ? (elemColors[skType] || '#e67e22') : '#3d3d3d';
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.fillStyle = baseColor;
+            ctx.strokeStyle = canAfford ? '#f1c40f' : '#555555';
+            ctx.lineWidth = 1.5;
+            if (ctx.roundRect) {
+                ctx.roundRect(skX, btnY, btnW, btnH, 6);
+            } else {
+                ctx.fillRect(skX, btnY, btnW, btnH);
+            }
+            ctx.fill();
+            ctx.stroke();
+
+            // Tên kỹ năng & Phím tắt
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 12px "Segoe UI", sans-serif';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'top';
+            ctx.fillText(`[${idx + 1}] ${sk.name}`, skX + 6, btnY + 5);
+
+            // Chỉ số: Dmg / Hồi máu / MP
+            ctx.font = '10px "Segoe UI", sans-serif';
+            ctx.fillStyle = canAfford ? '#ffeaa7' : '#e74c3c';
+            const infoText = sk.heal ? `+${sk.heal}% HP • MP:${cost}` : (sk.buffDef ? `+${sk.buffDef}% Giáp • MP:${cost}` : `${sk.power || 15} dmg • MP:${cost}`);
+            ctx.fillText(infoText, skX + 6, btnY + 22);
+
+            // Badge hệ
+            ctx.textAlign = 'right';
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 9.5px sans-serif';
+            ctx.fillText(skType, skX + btnW - 6, btnY + 6);
+            ctx.restore();
         });
 
-        // Nút quay lại
-        this.drawBtn(ctx, bx + bw - 110, btnY, 90, btnH, '↩ Quay lại', '#7f8c8d');
+        // 3 nút công cụ nhanh bên phải (Túi, Bắt, Chạy)
+        const actBaseX = bx + bw - actionTotalW - 12;
+        this.drawBtn(ctx, actBaseX, btnY, actionW, btnH, '🎒 Túi (5)', '#f39c12');
+        this.drawBtn(ctx, actBaseX + actionW + actionGap, btnY, actionW, btnH, '🔴 Bắt (6)', '#9b59b6');
+        this.drawBtn(ctx, actBaseX + (actionW + actionGap) * 2, btnY, actionW, btnH, '🏃 Chạy (7)', '#3498db');
     }
 
     // Nút túi đồ
     drawBagButtons(ctx, bx, by, bw, bh) {
-        const btnW = 200;
-        const btnH = 34;
-        const startX = bx + 24;
-        const btnY = by + bh - 48;
+        const totalBalls = (this.inventory.pokeballs || 0) + (this.inventory.greatBalls || 0) + (this.inventory.masterBalls || 0);
+        const totalPotions = (this.inventory.potion || 0) + (this.inventory.potions || 0) + (this.inventory.superPotion || 0) + (this.inventory.chocolate || 0);
+        const totalEthers = (this.inventory.ether || 0) + (this.inventory.elixir || 0);
 
-        this.drawBtn(ctx, startX, btnY, btnW, btnH, `🔴 Animon Ball (Còn: ${this.inventory.pokeballs})`, '#9b59b6');
-        this.drawBtn(ctx, startX + btnW + 16, btnY, btnW, btnH, `🧪 Bình Máu (Còn: ${this.inventory.potions})`, '#2ecc71');
-        this.drawBtn(ctx, bx + bw - 110, btnY, 90, btnH, '↩ Quay lại', '#7f8c8d');
+        const btnW = 160;
+        const btnH = 38;
+        const startX = bx + 16;
+        const btnY = by + bh - 50;
+
+        this.drawBtn(ctx, startX, btnY, btnW, btnH, `🔴 Cầu Bắt [${totalBalls}] (1)`, '#9b59b6');
+        this.drawBtn(ctx, startX + btnW + 12, btnY, btnW, btnH, `🧪 Hồi HP [${totalPotions}] (2)`, '#2ecc71');
+        this.drawBtn(ctx, startX + (btnW + 12) * 2, btnY, btnW, btnH, `⚡ Hồi MP [${totalEthers}] (3)`, '#3498db');
+        this.drawBtn(ctx, bx + bw - 130, btnY, 115, btnH, '↩ Trở Về (4)', '#7f8c8d');
     }
 
     drawBtn(ctx, x, y, w, h, text, color) {
         ctx.save();
+        ctx.beginPath();
         ctx.fillStyle = color;
         if (ctx.roundRect) {
             ctx.roundRect(x, y, w, h, 6);
@@ -546,81 +901,101 @@ class BattleSystem {
         ctx.fill();
 
         ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 13px "Segoe UI", sans-serif';
+        ctx.font = 'bold 12.5px "Segoe UI", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(text, x + w / 2, y + h / 2);
         ctx.restore();
     }
 
-    // Xử lý click phím số hoặc chuột
+    // Xử lý phím tắt
     handleInput(key) {
-        if (!this.active || this.state !== 'player_turn') return;
+        if (!this.active) return;
 
-        if (this.subState === 'main_menu') {
-            if (key === '1') {
-                this.subState = 'skills';
-            } else if (key === '2') {
-                this.subState = 'bag';
-            } else if (key === '3') {
-                this.usePokeball();
-            } else if (key === '4' || key === 'Escape') {
-                this.flee();
-            }
-        } else if (this.subState === 'skills') {
+        // Bấm phím bất kỳ trong intro sẽ tua nhanh qua intro
+        if (this.state === 'intro') {
+            this.nextDialog();
+            return;
+        }
+
+        if (this.state !== 'player_turn') return;
+
+        if (this.subState === 'skills' || this.subState === 'main_menu') {
             const skills = this.playerMonster.skills || [{ name: 'Đánh Thường', power: 15 }];
             if (key === '1' && skills[0]) this.playerAttack(skills[0]);
             else if (key === '2' && skills[1]) this.playerAttack(skills[1]);
             else if (key === '3' && skills[2]) this.playerAttack(skills[2]);
-            else if (key === 'Escape' || key === '4' || key === 'Backspace') this.subState = 'main_menu';
+            else if (key === '4' && skills[3]) this.playerAttack(skills[3]);
+            else if (key === '5') this.subState = 'bag';
+            else if (key === '6') this.usePokeball();
+            else if (key === '7' || key === 'Escape') this.flee();
         } else if (this.subState === 'bag') {
             if (key === '1') this.usePokeball();
             else if (key === '2') this.usePotion();
-            else if (key === 'Escape' || key === 'Backspace') this.subState = 'main_menu';
+            else if (key === '3') this.useEther();
+            else if (key === '4' || key === 'Escape' || key === 'Backspace' || key === '5') this.subState = 'skills';
         }
     }
 
+    // Xử lý click chuột
     handleClick(x, y, width, height) {
-        if (!this.active || this.state !== 'player_turn') return;
+        if (!this.active) return;
+
+        // Click trong intro sẽ lập tức bỏ qua hội thoại
+        if (this.state === 'intro') {
+            this.nextDialog();
+            return;
+        }
+
+        if (this.state !== 'player_turn') return;
+
         const boxX = 30;
         const boxY = height - 120;
         const boxW = width - 60;
         const boxH = 100;
-        const btnY = boxY + boxH - 48;
+        const btnY = boxY + boxH - 50;
+        const btnH = 38;
 
-        if (this.subState === 'main_menu') {
-            const btnW = 120;
-            const startX = boxX + boxW - (btnW * 4 + 40);
+        if (this.subState === 'skills' || this.subState === 'main_menu') {
+            const skills = (this.playerMonster.skills && this.playerMonster.skills.length > 0)
+                ? this.playerMonster.skills.slice(0, 4)
+                : [{ name: 'Đánh Thường', power: 15, type: 'Đặc Biệt', mpCost: 0 }];
 
-            if (y >= btnY && y <= btnY + 34) {
-                if (x >= startX && x <= startX + btnW) this.subState = 'skills';
-                else if (x >= startX + btnW + 10 && x <= startX + btnW * 2 + 10) this.subState = 'bag';
-                else if (x >= startX + (btnW + 10) * 2 && x <= startX + (btnW + 10) * 2 + btnW) this.usePokeball();
-                else if (x >= startX + (btnW + 10) * 3 && x <= startX + (btnW + 10) * 3 + btnW) this.flee();
-            }
-        } else if (this.subState === 'skills') {
-            const skills = this.playerMonster.skills || [{ name: 'Đánh Thường', power: 15 }];
-            const btnW = 160;
-            const startX = boxX + 24;
+            const actionW = 74;
+            const actionGap = 8;
+            const actionTotalW = actionW * 3 + actionGap * 2;
+            const skillAreaW = boxW - actionTotalW - 32;
+            const btnW = Math.max(140, Math.floor((skillAreaW - 24) / 4));
+            const startX = boxX + 12;
 
-            if (y >= btnY && y <= btnY + 34) {
-                skills.slice(0, 3).forEach((sk, idx) => {
-                    if (x >= startX + idx * (btnW + 12) && x <= startX + idx * (btnW + 12) + btnW) {
+            if (y >= btnY && y <= btnY + btnH) {
+                // Click vào 1 trong 4 kỹ năng
+                skills.forEach((sk, idx) => {
+                    const skX = startX + idx * (btnW + 8);
+                    if (x >= skX && x <= skX + btnW) {
                         this.playerAttack(sk);
                     }
                 });
-                if (x >= boxX + boxW - 110 && x <= boxX + boxW - 20) {
-                    this.subState = 'main_menu';
+
+                // Click các nút công cụ bên phải: Túi (5), Bắt (6), Chạy (7)
+                const actBaseX = boxX + boxW - actionTotalW - 12;
+                if (x >= actBaseX && x <= actBaseX + actionW) {
+                    this.subState = 'bag';
+                } else if (x >= actBaseX + actionW + actionGap && x <= actBaseX + actionW * 2 + actionGap) {
+                    this.usePokeball();
+                } else if (x >= actBaseX + (actionW + actionGap) * 2 && x <= actBaseX + (actionW + actionGap) * 2 + actionW) {
+                    this.flee();
                 }
             }
         } else if (this.subState === 'bag') {
-            const btnW = 200;
-            const startX = boxX + 24;
+            const btnW = 160;
+            const startX = boxX + 16;
 
-            if (y >= btnY && y <= btnY + 34) {
+            if (y >= btnY && y <= btnY + btnH) {
                 if (x >= startX && x <= startX + btnW) this.usePokeball();
-                else if (x >= startX + btnW + 16 && x <= startX + (btnW * 2) + 16) this.usePotion();
-                else if (x >= boxX + boxW - 110 && x <= boxX + boxW - 20) this.subState = 'main_menu';
+                else if (x >= startX + btnW + 12 && x <= startX + (btnW * 2) + 12) this.usePotion();
+                else if (x >= startX + (btnW + 12) * 2 && x <= startX + (btnW + 12) * 2 + btnW) this.useEther();
+                else if (x >= boxX + boxW - 130 && x <= boxX + boxW - 10) this.subState = 'skills';
             }
         }
     }

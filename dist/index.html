@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Animon - Pokemon HTML5 Canvas & Sequelize</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔴</text></svg>">
-    <link rel="stylesheet" href="./client/css/style.css">
-    <link rel="stylesheet" href="./client/css/menu.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/menu.css">
 </head>
 <body>
     <div class="game-wrapper">
@@ -19,6 +19,12 @@
             <div class="game-actions">
                 <button class="btn-pill" id="btn-in-game-menu" title="Mở Menu chính (Phím ESC)">
                     <span>📋</span> <span>Menu Chính</span>
+                </button>
+                <button class="btn-pill" id="btn-pet-team" title="Đội hình Sủng Vật (Phím P)">
+                    <span>🐾</span> <span>Sủng Vật (P)</span>
+                </button>
+                <button class="btn-pill" id="btn-inventory" title="Túi đồ & Đạo cụ (Phím I)">
+                    <span>🎒</span> <span>Túi Đồ (I)</span>
                 </button>
                 <button class="btn-pill" id="btn-sound" title="Bật/Tắt âm thanh (Phím M)">
                     <span id="sound-icon">🔊</span> <span id="sound-text">Âm thanh</span>
@@ -45,8 +51,17 @@
                     </div>
 
                     <div class="menu-buttons">
-                        <button class="btn-menu primary" id="btn-menu-play">
-                            <span>🎮</span> <span>Chơi Ngay</span>
+                        <button class="btn-menu primary" id="btn-menu-newgame">
+                            <span>⚔️</span> <span>Chơi Mới (Tạo Nhân Vật)</span>
+                        </button>
+                        <button class="btn-menu" id="btn-menu-play">
+                            <span>▶️</span> <span>Tiếp Tục Hành Trình</span>
+                        </button>
+                        <button class="btn-menu" id="btn-menu-pets">
+                            <span>🐾</span> <span>Đội Hình Sủng Vật (P)</span>
+                        </button>
+                        <button class="btn-menu" id="btn-menu-bag">
+                            <span>🎒</span> <span>Túi Đồ & Đạo Cụ (I)</span>
                         </button>
                         <button class="btn-menu" id="btn-menu-save">
                             <span>💾</span> <span>Lưu & Tải Game</span>
@@ -63,7 +78,107 @@
                     </div>
 
                     <div class="menu-footer-hint">
-                        Nhấn [Chơi Ngay] hoặc phím ESC để tiếp tục hành trình
+                        Nhấn [Chơi Mới] để tạo nhân vật mới hoặc [Tiếp Tục] / phím ESC
+                    </div>
+                </div>
+            </div>
+
+            <!-- MÀN HÌNH TẠO NHÂN VẬT (CHARACTER CREATION) -->
+            <div class="char-creation-overlay" id="char-creation-overlay" style="display: none;">
+                <div class="char-creation-box">
+                    <div class="char-creation-header">
+                        <h2>✨ KHỞI TẠO HUẤN LUYỆN SƯ ✨</h2>
+                        <p>Chọn giới tính, đặt tên và chọn Sủng vật đầu tiên đồng hành cùng bạn</p>
+                    </div>
+
+                    <div class="char-creation-content">
+                        <!-- 1. CHỌN GIỚI TÍNH -->
+                        <div class="creation-section">
+                            <label class="section-label">1. Giới Tính Huấn Luyện Sư</label>
+                            <div class="gender-selection">
+                                <div class="gender-card active" data-gender="male" id="gender-male">
+                                    <div class="gender-avatar-wrap">
+                                        <img src="./img/ui/face_boy.png" alt="Nam" class="gender-avatar">
+                                    </div>
+                                    <div class="gender-info">
+                                        <span class="gender-name">Hoàng Tử Cầu Vồng</span>
+                                        <span class="gender-badge male">♂ Nam</span>
+                                    </div>
+                                    <div class="gender-check">✓</div>
+                                </div>
+
+                                <div class="gender-card" data-gender="female" id="gender-female">
+                                    <div class="gender-avatar-wrap">
+                                        <img src="./img/ui/face_girl.png" alt="Nữ" class="gender-avatar">
+                                    </div>
+                                    <div class="gender-info">
+                                        <span class="gender-name">Công Chúa Thần Bí</span>
+                                        <span class="gender-badge female">♀ Nữ</span>
+                                    </div>
+                                    <div class="gender-check">✓</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. ĐẶT TÊN -->
+                        <div class="creation-section">
+                            <label class="section-label" for="input-player-name">2. Tên Nhân Vật</label>
+                            <div class="name-input-group">
+                                <input type="text" id="input-player-name" class="name-input" maxlength="14" placeholder="Nhập tên của bạn..." value="Red">
+                                <button type="button" class="btn-random-name" id="btn-random-name" title="Ngẫu nhiên tên">🎲</button>
+                            </div>
+                        </div>
+
+                        <!-- 3. CHỌN SỦNG VẬT KHỞI ĐẦU -->
+                        <div class="creation-section">
+                            <label class="section-label">3. Sủng Vật Đồng Hành Khởi Đầu (Ngũ Hành)</label>
+                            <div class="starter-selection">
+                                <div class="starter-card active" data-starter="cauvong_pet_1">
+                                    <span class="starter-element grass">🌿 Thực Vật</span>
+                                    <div class="starter-icon-wrap">
+                                        <img src="./img/monsters/npc2_1.png" alt="Thụ quái" class="starter-img">
+                                    </div>
+                                    <span class="starter-name">Thụ Quái</span>
+                                </div>
+
+                                <div class="starter-card" data-starter="cauvong_pet_69">
+                                    <span class="starter-element water">💧 Hải Dương</span>
+                                    <div class="starter-icon-wrap">
+                                        <img src="./img/monsters/s1.png" alt="Tiểu Lam Kình" class="starter-img">
+                                    </div>
+                                    <span class="starter-name">Lam Kình</span>
+                                </div>
+
+                                <div class="starter-card" data-starter="cauvong_pet_37">
+                                    <span class="starter-element flying">🌪️ Phi Hành</span>
+                                    <div class="starter-icon-wrap">
+                                        <img src="./img/monsters/s2.png" alt="Ấu Long" class="starter-img">
+                                    </div>
+                                    <span class="starter-name">Ấu Long</span>
+                                </div>
+
+                                <div class="starter-card" data-starter="cauvong_pet_18">
+                                    <span class="starter-element metal">⚡ Kim Loại</span>
+                                    <div class="starter-icon-wrap">
+                                        <img src="./img/monsters/s3.png" alt="Bạch Liệt Sư" class="starter-img">
+                                    </div>
+                                    <span class="starter-name">Bạch Liệt Sư</span>
+                                </div>
+
+                                <div class="starter-card" data-starter="cauvong_pet_53">
+                                    <span class="starter-element beast">🔥 Mãnh Thú</span>
+                                    <div class="starter-icon-wrap">
+                                        <img src="./img/monsters/s0.png" alt="Hổ Thú" class="starter-img">
+                                    </div>
+                                    <span class="starter-name">Hổ Thú</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="char-creation-actions">
+                        <button class="btn-creation-back" id="btn-creation-cancel">✕ Quay Lại</button>
+                        <button class="btn-creation-confirm" id="btn-creation-confirm">🚀 BẮT ĐẦU HÀNH TRÌNH</button>
                     </div>
                 </div>
             </div>
@@ -88,7 +203,7 @@
         </footer>
     </div>
 
-    <!-- CỬA SỔ MODAL TIỆN ÍCH -->
+    <!-- CỬA SỔ MODAL TIỆN ÍCH (LƯU/TẢI GAME, CÀI ĐẶT, GIỚI THIỆU) -->
     <div class="modal-overlay" id="app-modal" style="display: none;">
         <div class="modal-window">
             <div class="modal-header">
@@ -102,21 +217,22 @@
     </div>
 
     <!-- NẠP THƯ VIỆN & ENGINE SCRIPTS -->
-    <script src="./client/js/data/collisions.js"></script>
-    <script src="./client/js/data/battleZones.js"></script>
-    <script src="./client/js/data/monsters.js"></script>
-    <script src="./client/js/data/extracted_maps.js"></script>
-    <script src="./client/js/data/sprites_data.js"></script>
-    <script src="./client/js/data/maps.js"></script>
-    <script src="./client/js/engine/audio.js"></script>
-    <script src="./client/js/engine/sprite.js"></script>
-    <script src="./client/js/engine/j2meSprite.js"></script>
-    <script src="./client/js/engine/boundary.js"></script>
-    <script src="./client/js/engine/portal.js"></script>
-    <script src="./client/js/api/gameApi.js"></script>
-    <script src="./client/js/ui/battleSystem.js"></script>
-    <script src="./client/js/ui/menuManager.js"></script>
-    <script src="./client/js/main.js"></script>
+    <script src="./js/data/collisions.js"></script>
+    <script src="./js/data/battleZones.js"></script>
+    <script src="./js/data/items.js"></script>
+    <script src="./js/data/monsters.js"></script>
+    <script src="./js/data/extracted_maps.js"></script>
+    <script src="./js/data/sprites_data.js"></script>
+    <script src="./js/data/maps.js"></script>
+    <script src="./js/engine/audio.js"></script>
+    <script src="./js/engine/sprite.js"></script>
+    <script src="./js/engine/j2meSprite.js"></script>
+    <script src="./js/engine/boundary.js"></script>
+    <script src="./js/engine/portal.js"></script>
+    <script src="./js/api/gameApi.js"></script>
+    <script src="./js/ui/battleSystem.js"></script>
+    <script src="./js/ui/menuManager.js"></script>
+    <script src="./js/main.js"></script>
 
     <!-- Script tương tác giao diện phụ -->
     <script>
@@ -181,3 +297,4 @@
     </script>
 </body>
 </html>
+

@@ -23,7 +23,10 @@ function loadSmartImage(primaryPath, fallbackPath) {
 
 // 1. Trạng thái Trò chơi
 const gameState = {
-    currentMapId: 'pelletTown',
+    playerName: 'Red',
+    playerGender: 'male', // 'male' hoặc 'female'
+    playerAvatar: './img/ui/face_boy.png',
+    currentMapId: 'map_0',
     isDebug: false,
     isTransitioning: false,
     transitionAlpha: 0,
@@ -34,39 +37,62 @@ const gameState = {
     playerTeam: [
         {
             id: 1,
-            code: 'animon_01',
-            name: 'Viêm Hỏa Khuyển',
-            type: 'Hỏa',
+            code: 'cauvong_pet_1',
+            name: 'Thụ quái',
+            type: 'Thực Vật',
             level: 5,
-            hp: 65,
-            maxHp: 65,
-            attack: 32,
-            defense: 18,
-            speed: 25,
-            sprite: './img/monsters/s0.png',
+            hp: 49,
+            maxHp: 49,
+            mp: 87,
+            maxMp: 87,
+            attack: 16,
+            defense: 13,
+            speed: 16,
+            spriteKey: 'npc2_1',
+            sprite: './img/monsters/npc2_1.png',
             skills: [
-                { name: 'Phun Lửa', power: 25, type: 'Hỏa' },
-                { name: 'Cắn Xé', power: 15, type: 'Thường' }
+                { name: 'Triền Nhiễu', power: 16, mpCost: 10, type: 'Thực Vật' },
+                { name: 'Phong Lợi Tiêm Thứ', power: 22, mpCost: 14, type: 'Thực Vật' },
+                { name: 'Phi Diệp Đao Phong', power: 28, mpCost: 18, type: 'Thực Vật' },
+                { name: 'Sâm Lâm Bạo Phát', power: 36, mpCost: 26, type: 'Thực Vật' }
             ]
         }
     ],
 
     inventory: {
-        pokeballs: 5,
-        potions: 3,
-        gold: 500
+        gold: 1500,
+        potion: 5,
+        superPotion: 3,
+        chocolate: 1,
+        ether: 3,
+        elixir: 1,
+        revive: 2,
+        pokeballs: 10,
+        greatBalls: 3,
+        masterBalls: 1,
+        fireStone: 1,
+        leafStone: 1,
+        waterStone: 1,
+        thunderStone: 1,
+        repel: 2
     }
 };
 
-// 2. Tải Spritesheets của Người chơi
+// 2. Tải Spritesheets của Người chơi từ J2ME Cầu Vồng (player_male & player_female)
+const playerMaleImg = loadSmartImage('./img/monsters/player_male.png', './client/img/monsters/player_male.png');
+const playerFemaleImg = loadSmartImage('./img/monsters/player_female.png', './client/img/monsters/player_female.png');
+
+// Spritesheet dự phòng chuẩn
 const playerDownImg = loadSmartImage('./img/playerDown.png', './client/img/playerDown.png');
 const playerUpImg = loadSmartImage('./img/playerUp.png', './client/img/playerUp.png');
 const playerLeftImg = loadSmartImage('./img/playerLeft.png', './client/img/playerLeft.png');
 const playerRightImg = loadSmartImage('./img/playerRight.png', './client/img/playerRight.png');
 
 const player = new Sprite({
-    position: { x: 488, y: 254 },
+    position: { x: 448, y: 224 },
     image: playerDownImg,
+    width: 128,
+    height: 128,
     frames: { max: 4, hold: 10 },
     sprites: {
         up: playerUpImg,
@@ -77,8 +103,101 @@ const player = new Sprite({
     fallbackColor: '#e74c3c'
 });
 
+// Hàm dựng dải Spritesheet 4 bước chạy từ khung ghép J2ME nguyên bản (chuẩn độ phân giải 128x128 HD)
+function buildPlayerDirectionSheet(spriteKey, frameIds, flipX = false) {
+    const frameW = 128;
+    const frameH = 128;
+    const count = frameIds.length;
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = frameW * count;
+    offCanvas.height = frameH;
+    const octx = offCanvas.getContext('2d');
+    octx.imageSmoothingEnabled = false; // Giữ pixel art sắc nét, chi tiết cao
+
+    const img = (spriteKey === 'player_female') ? playerFemaleImg : playerMaleImg;
+    if (!img) return null;
+    if (!img.complete || img.naturalWidth === 0) {
+        img.addEventListener('load', () => {
+            if (gameState.playerGender === (spriteKey === 'player_female' ? 'female' : 'male')) {
+                applyPlayerGender(gameState.playerGender);
+            }
+        }, { once: true });
+        return null;
+    }
+
+    let renderedAny = false;
+    for (let i = 0; i < count; i++) {
+        const fId = frameIds[i];
+        const cx = i * frameW + (frameW / 2); // 64 (tâm ngang)
+        const cy = 126; // Căn chỉnh đế giày nhân vật chạm chính xác tại y = 115px
+
+        // 1. Vẽ bóng tiếp đất trực tiếp dưới đế giày nhân vật (bóng đen đậm nét, bám chặt đế giày tiếp đất)
+        octx.save();
+        octx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+        octx.beginPath();
+        octx.ellipse(cx, 115, 24, 7, 0, 0, Math.PI * 2);
+        octx.fill();
+        octx.restore();
+
+        // 2. Vẽ thân và chân nhân vật J2ME đứng vững chắc trên bóng đất
+        if (window.J2MESprite?.renderFrameToContext(octx, spriteKey, fId, cx, cy, 2.7, flipX, img)) {
+            renderedAny = true;
+        }
+    }
+
+    if (!renderedAny) return null;
+
+    // Trả về trực tiếp canvas 128x128 để vẽ ngay lập tức không bị lag do nạp DataURL bất đồng bộ
+    return offCanvas;
+}
+
+// Chuyển đổi ngoại hình nhân vật theo giới tính (Hoàng tử tóc vàng áo đỏ / Công chúa tóc lam váy hồng)
+function applyPlayerGender(gender) {
+    gameState.playerGender = gender;
+    gameState.playerAvatar = (gender === 'female') ? './img/ui/face_girl.png' : './img/ui/face_boy.png';
+
+    const spriteKey = (gender === 'female') ? 'player_female' : 'player_male';
+
+    // Dựng 4 hướng di chuyển từ khung J2ME nguyên bản:
+    // Down: frames [3, 4, 5, 6] (mặt hướng trước)
+    // Up: frames [11, 12, 13, 14] (lưng hướng sau)
+    // Left: frames [7, 8, 9, 10] (mặc định trong atlas quay mặt sang TRÁI -> flipX = false)
+    // Right: frames [7, 8, 9, 10] (lật ngang sang PHẢI -> flipX = true)
+    const downSheet = buildPlayerDirectionSheet(spriteKey, [3, 4, 5, 6], false);
+    const upSheet = buildPlayerDirectionSheet(spriteKey, [11, 12, 13, 14], false);
+    const leftSheet = buildPlayerDirectionSheet(spriteKey, [7, 8, 9, 10], false);
+    const rightSheet = buildPlayerDirectionSheet(spriteKey, [7, 8, 9, 10], true);
+
+    if (downSheet && upSheet && leftSheet && rightSheet) {
+        player.sprites = { up: upSheet, down: downSheet, left: leftSheet, right: rightSheet };
+        player.image = downSheet;
+        player.width = 128;
+        player.height = 128;
+    } else {
+        // Dự phòng nếu ảnh gốc chưa hoàn tất nạp
+        player.sprites = { up: playerUpImg, down: playerDownImg, left: playerLeftImg, right: playerRightImg };
+        player.image = playerDownImg;
+        player.width = 128;
+        player.height = 128;
+    }
+}
+
+// Tự động kích hoạt dựng lại sprite ngay khi ảnh J2ME nạp xong hoặc nếu đã có sẵn trong cache
+playerMaleImg.onload = () => {
+    if (gameState.playerGender === 'male') applyPlayerGender('male');
+};
+playerFemaleImg.onload = () => {
+    if (gameState.playerGender === 'female') applyPlayerGender('female');
+};
+if (playerMaleImg.complete && playerMaleImg.naturalWidth > 0 && gameState.playerGender === 'male') {
+    applyPlayerGender('male');
+}
+if (playerFemaleImg.complete && playerFemaleImg.naturalWidth > 0 && gameState.playerGender === 'female') {
+    applyPlayerGender('female');
+}
+
 // 3. Biến quản lý Thực thể Bản đồ & NPC
-let currentOffset = { x: -735, y: -650 };
+let currentOffset = { x: 16, y: -448 };
 let backgroundSprite = null;
 let foregroundSprite = null;
 let boundaries = [];
@@ -100,15 +219,15 @@ const keys = {
 
 let lastKey = '';
 
-// Hitbox chuẩn ở phần chân
+// Hitbox chuẩn ở phần chân tiếp đất (128x128 sprite: thân giữa tại x+64, đế giày tại y+115)
 function getPlayerHitbox() {
     return {
         position: {
-            x: player.position.x + 8,
-            y: player.position.y + 40
+            x: player.position.x + 48,
+            y: player.position.y + 100
         },
         width: 32,
-        height: 24
+        height: 20
     };
 }
 
@@ -222,6 +341,26 @@ function loadMap(mapId, targetPlayerPos, targetOffset) {
                 }
             });
         }
+
+        // Thêm NPC thân thiện tại Thị Trấn Cầu Vồng (Người dân J2ME nguyên bản)
+        currentNpcs = [
+            {
+                name: 'Trưởng Làng Cầu Vồng',
+                dialogue: 'Chào mừng Huấn Luyện Sư đã đến với Thị Trấn Cầu Vồng! Hãy khám phá bãi cỏ phía Bắc để thu phục các Sủng Vật quý hiếm!',
+                worldX: 1180,
+                worldY: 830,
+                position: { x: 1180 + currentOffset.x, y: 830 + currentOffset.y },
+                sprite: (window.J2MESprite) ? new window.J2MESprite({ spriteKey: 'npc_elder', scale: 2.2 }) : null
+            },
+            {
+                name: 'Miro Fan Hâm Mộ',
+                dialogue: 'Vương Quốc Cầu Vồng đang tràn ngập các loài sủng vật hoang dã. Hãy rèn luyện đội hình của bạn thật mạnh mẽ nhé!',
+                worldX: 1400,
+                worldY: 820,
+                position: { x: 1400 + currentOffset.x, y: 820 + currentOffset.y },
+                sprite: (window.J2MESprite) ? new window.J2MESprite({ spriteKey: 'npc_trainer', scale: 2.2 }) : null
+            }
+        ];
     } else if (mapId === 'playerHouse') {
         // Bản đồ trong nhà (Nội thất ấm cúng)
         backgroundSprite = createInteriorHouseSprite(currentOffset);
@@ -513,6 +652,104 @@ function processMapTransition() {
 }
 
 // ========================================================
+// HIỆU ỨNG CHUYỂN CẢNH TRẬN ĐẤU POKÉMON GBA (BATTLE TRANSITION)
+// ========================================================
+const battleTransition = {
+    active: false,
+    startTime: 0,
+    duration: 1300,
+    encounterData: null
+};
+
+function triggerBattleTransition(encounterData) {
+    player.moving = false;
+    battleTransition.active = true;
+    battleTransition.startTime = performance.now();
+    battleTransition.encounterData = encounterData;
+    window.soundEngine?.playBattleStart();
+}
+
+function drawBattleTransition(ctx, width, height) {
+    const elapsed = performance.now() - battleTransition.startTime;
+
+    // Giai đoạn 1 (0 - 320ms): Chớp giật màn hình (3-4 flashes chớp sáng/tối chuẩn Pokemon GBA)
+    if (elapsed < 320) {
+        const flashStage = Math.floor(elapsed / 80);
+        if (flashStage === 0 || flashStage === 2) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+            ctx.fillRect(0, 0, width, height);
+        } else {
+            ctx.fillStyle = 'rgba(5, 8, 15, 0.9)';
+            ctx.fillRect(0, 0, width, height);
+        }
+        return;
+    }
+
+    // Giai đoạn 2 (320ms - 1100ms): Rèm kéo răng cưa đan xen Pokémon GBA (Venetian Sawtooth Wipe)
+    if (elapsed < 1100) {
+        const wipeP = (elapsed - 320) / (1100 - 320);
+        const ease = Math.min(1, wipeP * 1.15);
+
+        const NUM_BANDS = 12;
+        const bandH = Math.ceil(height / NUM_BANDS);
+        const toothW = 60;
+
+        ctx.fillStyle = '#05070a';
+
+        for (let i = 0; i < NUM_BANDS; i++) {
+            const y = i * bandH;
+            if (i % 2 === 0) {
+                // Dải chẵn: Kéo từ Trái sang Phải với đầu nhọn răng cưa
+                const frontX = -toothW + ease * (width + toothW * 2);
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(Math.max(0, frontX - toothW), y);
+                ctx.lineTo(frontX, y + bandH / 2);
+                ctx.lineTo(Math.max(0, frontX - toothW), y + bandH);
+                ctx.lineTo(0, y + bandH);
+                ctx.closePath();
+                ctx.fill();
+            } else {
+                // Dải lẻ: Kéo từ Phải sang Trái với đầu nhọn răng cưa
+                const frontX = width + toothW - ease * (width + toothW * 2);
+                ctx.beginPath();
+                ctx.moveTo(width, y);
+                ctx.lineTo(Math.min(width, frontX + toothW), y);
+                ctx.lineTo(frontX, y + bandH / 2);
+                ctx.lineTo(Math.min(width, frontX + toothW), y + bandH);
+                ctx.lineTo(width, y + bandH);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        // Hiệu ứng vòng xoáy tâm Pokeball khi khép màn
+        if (wipeP > 0.4) {
+            const centerP = (wipeP - 0.4) / 0.6;
+            ctx.save();
+            ctx.fillStyle = '#000000';
+            ctx.beginPath();
+            ctx.arc(width / 2, height / 2, centerP * (width * 0.75), 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+        return;
+    }
+
+    // Giai đoạn 3 (1100ms - 1300ms): Màn hình đen tuyền đóng lại hoàn toàn, kích hoạt trận đấu
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, width, height);
+
+    if (elapsed >= battleTransition.duration) {
+        battleTransition.active = false;
+        if (battleTransition.encounterData) {
+            window.battleSystem.startBattle(battleTransition.encounterData);
+            battleTransition.encounterData = null;
+        }
+    }
+}
+
+// ========================================================
 // KÍCH HOẠT TRẬN ĐẤU POKÉMON HOANG DÃ
 // ========================================================
 function checkWildBattleEncounter(playerHitbox) {
@@ -545,7 +782,7 @@ function checkWildBattleEncounter(playerHitbox) {
                     : { ...wildMon, level: wildLevel };
 
                 player.moving = false;
-                window.battleSystem.startBattle({
+                triggerBattleTransition({
                     wildMonster: scaledWild,
                     playerTeam: gameState.playerTeam,
                     inventory: gameState.inventory,
@@ -580,52 +817,63 @@ function animate() {
         portals.forEach(p => p.draw(ctx, true));
     }
 
-    // 4. Vẽ Người chơi
-    player.draw(ctx);
-
-    // 4.5. Vẽ các NPC Thế Giới J2ME Cầu Vồng
+    // 4. Vẽ Người chơi & NPC theo chuẩn Y-Sort (Thực thể đứng trước vẽ đè lên thực thể đứng sau)
     let nearestNpc = null;
     let minNpcDist = Infinity;
 
-    currentNpcs.forEach(npc => {
-        const nx = npc.position.x;
-        const ny = npc.position.y;
+    const renderEntities = [
+        {
+            type: 'player',
+            y: player.position.y + 115,
+            draw: () => player.draw(ctx)
+        },
+        ...currentNpcs.map(npc => {
+            const nx = npc.position.x;
+            const ny = npc.position.y;
+            const dist = Math.hypot((player.position.x + 64) - (nx + 24), (player.position.y + 114) - (ny + 40));
+            if (dist < minNpcDist) {
+                minNpcDist = dist;
+                nearestNpc = npc;
+            }
 
-        // Vẽ Sprite NPC
-        if (npc.sprite) {
-            npc.sprite.update(16);
-            npc.sprite.draw(ctx, nx + 24, ny + 40);
-        } else {
-            ctx.fillStyle = '#f39c12';
-            ctx.beginPath();
-            ctx.arc(nx + 24, ny + 24, 18, 0, Math.PI * 2);
-            ctx.fill();
-        }
+            return {
+                type: 'npc',
+                y: ny + 40,
+                draw: () => {
+                    // Vẽ Sprite NPC
+                    if (npc.sprite) {
+                        npc.sprite.update(16);
+                        npc.sprite.draw(ctx, nx + 24, ny + 40);
+                    } else {
+                        ctx.fillStyle = '#f39c12';
+                        ctx.beginPath();
+                        ctx.arc(nx + 24, ny + 24, 18, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
 
-        // Tên NPC
-        ctx.save();
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-        if (ctx.roundRect) {
-            ctx.roundRect(nx + 24 - 45, ny - 16, 90, 18, 4);
-        } else {
-            ctx.fillRect(nx + 24 - 45, ny - 16, 90, 18);
-        }
-        ctx.fill();
-        ctx.fillStyle = '#f1c40f';
-        ctx.font = 'bold 11px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(npc.name, nx + 24, ny - 3);
-        ctx.restore();
+                    // Tên NPC
+                    ctx.save();
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                    if (ctx.roundRect) {
+                        ctx.roundRect(nx + 24 - 45, ny - 16, 90, 18, 4);
+                    } else {
+                        ctx.fillRect(nx + 24 - 45, ny - 16, 90, 18);
+                    }
+                    ctx.fill();
+                    ctx.fillStyle = '#f1c40f';
+                    ctx.font = 'bold 11px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(npc.name, nx + 24, ny - 3);
+                    ctx.restore();
+                }
+            };
+        })
+    ];
 
-        // Tính khoảng cách tới người chơi
-        const dist = Math.hypot(player.position.x - nx, player.position.y - ny);
-        if (dist < minNpcDist) {
-            minNpcDist = dist;
-            nearestNpc = npc;
-        }
-    });
+    renderEntities.sort((a, b) => a.y - b.y);
+    renderEntities.forEach(e => e.draw());
 
-    currentNearestNpc = (nearestNpc && minNpcDist < 70) ? nearestNpc : null;
+    currentNearestNpc = (nearestNpc && minNpcDist < 85) ? nearestNpc : null;
 
     // Gợi ý tương tác khi đứng gần NPC
     if (currentNearestNpc && !activeDialogue) {
@@ -662,14 +910,20 @@ function animate() {
     // 6. Xử lý hiệu ứng chuyển cảnh bản đồ
     processMapTransition();
 
-    // 7. Vẽ HUD thông tin
-    drawGameHUD();
+    // 6.5. Hiệu ứng chuyển cảnh trận đấu Pokémon GBA
+    if (battleTransition.active) {
+        drawBattleTransition(ctx, canvas.width, canvas.height);
+        return;
+    }
 
-    // 8. Nếu đang trong trận đấu: Vẽ giao diện trận đấu và dừng di chuyển
+    // 7. Nếu đang trong trận đấu: Vẽ giao diện trận đấu và dừng xử lý ngoài bản đồ
     if (window.battleSystem && window.battleSystem.active) {
         window.battleSystem.draw(ctx, canvas.width, canvas.height);
         return;
     }
+
+    // 8. Vẽ HUD thông tin (khi không trong trận đấu)
+    drawGameHUD();
 
     // 9. Nếu đang ở màn hình Menu chính:
     if (window.menuManager?.isInMainMenu) {
@@ -805,6 +1059,7 @@ function drawDialogueBox(ctx) {
     grad.addColorStop(1, 'rgba(30, 41, 59, 0.98)');
     ctx.fillStyle = grad;
 
+    ctx.beginPath();
     if (ctx.roundRect) ctx.roundRect(boxX, boxY, boxW, boxH, 12);
     else ctx.fillRect(boxX, boxY, boxW, boxH);
     ctx.fill();
@@ -911,36 +1166,113 @@ function drawDialogueBox(ctx) {
     ctx.restore();
 }
 
+let playerAvatarImg = null;
+
 function drawGameHUD() {
     ctx.save();
-    ctx.fillStyle = 'rgba(15, 23, 42, 0.75)';
-    if (ctx.roundRect) ctx.roundRect(14, 14, 300, 54, 8);
-    else ctx.fillRect(14, 14, 300, 54);
+    ctx.beginPath();
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+    const hudW = 340, hudH = 60;
+    if (ctx.roundRect) ctx.roundRect(14, 14, hudW, hudH, 10);
+    else ctx.fillRect(14, 14, hudW, hudH);
     ctx.fill();
 
+    ctx.strokeStyle = '#f59e0b';
+    ctx.lineWidth = 1.5;
+    if (ctx.roundRect) ctx.roundRect(14, 14, hudW, hudH, 10);
+    else ctx.strokeRect(14, 14, hudW, hudH);
+    ctx.stroke();
+
+    // Chân dung nhân vật (Avatar Nam / Nữ)
+    if (!playerAvatarImg) {
+        playerAvatarImg = new Image();
+        playerAvatarImg.src = gameState.playerAvatar || './img/ui/face_boy.png';
+    } else if (playerAvatarImg.src.indexOf(gameState.playerAvatar) === -1) {
+        playerAvatarImg.src = gameState.playerAvatar;
+    }
+
+    if (playerAvatarImg.complete && playerAvatarImg.naturalWidth > 0) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(44, 44, 20, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(playerAvatarImg, 24, 24, 40, 40);
+        ctx.restore();
+
+        ctx.strokeStyle = '#f1c40f';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(44, 44, 20, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+
+    const textX = 76;
     const mapName = window.MAPS_CONFIG[gameState.currentMapId]?.name || 'Thị trấn';
     ctx.fillStyle = '#f1c40f';
     ctx.font = 'bold 13px "Segoe UI", sans-serif';
-    ctx.fillText(`📍 ${mapName}`, 24, 34);
+    ctx.fillText(`👑 ${gameState.playerName || 'Red'} • 📍 ${mapName}`, textX, 36);
 
     ctx.fillStyle = '#ecf0f1';
     ctx.font = '12px "Segoe UI", sans-serif';
-    ctx.fillText(`🐾 Sủng vật: ${gameState.playerTeam.length}/6 | 🔴 Bóng: ${gameState.inventory.pokeballs}`, 24, 54);
+    ctx.fillText(`🐾 Đội hình: ${gameState.playerTeam.length}/6 | 🔴 Bóng: ${gameState.inventory.pokeballs}`, textX, 56);
     ctx.restore();
 }
 
 // ========================================================
 // KẾT NỐI MENU & API LƯU/TẢI GAME (SEQUELIZE)
 // ========================================================
+window.menuManager.onNewGame = ({ gender, name, starterCode }) => {
+    gameState.playerName = name;
+    gameState.playerGender = gender;
+    gameState.playerAvatar = (gender === 'female') ? './img/ui/face_girl.png' : './img/ui/face_boy.png';
+
+    const presetList = window.MONSTERS_PRESET || [];
+    let starter = presetList.find(m => m.code === starterCode);
+    if (!starter) starter = presetList[0];
+
+    const initialPet = (window.calculateMonsterStats)
+        ? window.calculateMonsterStats(starter, 5)
+        : { ...starter, level: 5 };
+
+    gameState.playerTeam = [initialPet];
+    gameState.inventory = {
+        gold: 1500,
+        potion: 5,
+        superPotion: 3,
+        chocolate: 1,
+        ether: 3,
+        elixir: 1,
+        revive: 2,
+        pokeballs: 10,
+        greatBalls: 3,
+        masterBalls: 1,
+        fireStone: 1,
+        leafStone: 1,
+        waterStone: 1,
+        thunderStone: 1,
+        repel: 2
+    };
+    gameState.playtime = 0;
+
+    applyPlayerGender(gender);
+    loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
+
+    const titlePrefix = (gender === 'female') ? 'Công chúa' : 'Hoàng tử';
+    activeDialogue = {
+        name: 'Quản gia Jess',
+        text: `Chào mừng ${titlePrefix} ${name} đã thức tỉnh tại Cung Điện Cầu Vồng! Đại vương đã giao phó ${initialPet.name} đồng hành cùng bạn. Hãy tiến về phía Nam đại điện đến Thành Phố Cầu Vồng!`
+    };
+};
+
 window.menuManager.onStartGame = () => {
     if (!backgroundSprite) {
-        loadMap('pelletTown');
+        loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
     }
 };
 
 window.menuManager.onSaveGame = async (slot) => {
     const payload = {
-        saveName: `Lưu tại ${window.MAPS_CONFIG[gameState.currentMapId]?.name || 'Thị trấn'}`,
+        saveName: `Lưu tại ${window.MAPS_CONFIG[gameState.currentMapId]?.name || 'Cung Điện Cầu Vồng'}`,
         mapId: gameState.currentMapId,
         playerX: player.position.x,
         playerY: player.position.y,
@@ -963,9 +1295,9 @@ window.menuManager.onLoadGame = async (slot) => {
         gameState.playtime = data.playtime || 0;
 
         loadMap(
-            data.mapId || 'pelletTown',
-            { x: data.playerX || 488, y: data.playerY || 254 },
-            { x: data.offsetX || -735, y: data.offsetY || -650 }
+            data.mapId || 'map_0',
+            { x: data.playerX || 448, y: data.playerY || 224 },
+            { x: (data.offsetX !== undefined) ? data.offsetX : 16, y: (data.offsetY !== undefined) ? data.offsetY : -448 }
         );
         alert(`📂 Tải bản lưu Slot ${slot} thành công!`);
         return true;
@@ -1049,9 +1381,31 @@ window.addEventListener('keydown', (e) => {
         case 'M':
             window.soundEngine?.toggleMute();
             break;
+        case 'i':
+        case 'I':
+            if (window.battleSystem && window.battleSystem.active) {
+                window.battleSystem.handleInput('5');
+            } else if (window.menuManager) {
+                if (window.menuManager.currentModal === 'bag') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showBagModal();
+                }
+            }
+            break;
+        case 'p':
+        case 'P':
+            if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'pet_team') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showPetTeamModal();
+                }
+            }
+            break;
         case 'r':
         case 'R':
-            loadMap('pelletTown', { x: 488, y: 254 }, { x: -735, y: -650 });
+            loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
             break;
     }
 });
@@ -1144,8 +1498,8 @@ window.gameEngine = {
     }
 };
 
-// Khởi tạo map đầu tiên
-loadMap('pelletTown');
+// Khởi tạo map đầu tiên (Cung Điện Cầu Vồng Khởi Đầu J2ME)
+loadMap('map_0', { x: 448, y: 224 }, { x: 16, y: -448 });
 
 // Bắt đầu vòng lặp game
 animate();

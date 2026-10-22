@@ -23,16 +23,21 @@ class Sprite {
         this.height = height || 48;
 
         const updateSize = () => {
-            if (this.image && this.image.naturalWidth) {
-                this.width = width || (this.image.naturalWidth / this.frames.max);
-                this.height = height || this.image.naturalHeight;
+            if (this.image) {
+                const w = this.image.naturalWidth || this.image.width;
+                const h = this.image.naturalHeight || this.image.height;
+                if (w > 0) {
+                    this.width = width || (w / this.frames.max);
+                    this.height = height || h;
+                }
             }
         };
 
         if (this.image) {
-            if (this.image.complete && this.image.naturalWidth > 0) {
+            const isCanvas = (typeof HTMLCanvasElement !== 'undefined' && this.image instanceof HTMLCanvasElement);
+            if (isCanvas || (this.image.complete && (this.image.naturalWidth || this.image.width) > 0)) {
                 updateSize();
-            } else {
+            } else if (this.image.addEventListener) {
                 this.image.addEventListener('load', updateSize);
             }
         }
@@ -44,10 +49,15 @@ class Sprite {
         ctx.save();
         ctx.globalAlpha = this.opacity;
 
-        // Nếu ảnh đã tải xong và hợp lệ: vẽ bằng drawImage
-        if (this.image && this.image.complete && this.image.naturalWidth > 0) {
-            const cropWidth = this.image.naturalWidth / this.frames.max;
-            const cropHeight = this.image.naturalHeight;
+        const isCanvas = (typeof HTMLCanvasElement !== 'undefined' && this.image instanceof HTMLCanvasElement);
+        const imgW = this.image ? (this.image.naturalWidth || this.image.width || 0) : 0;
+        const imgH = this.image ? (this.image.naturalHeight || this.image.height || 0) : 0;
+        const isReady = this.image && (isCanvas || (this.image.complete && imgW > 0));
+
+        // Nếu ảnh hoặc canvas đã sẵn sàng: vẽ bằng drawImage
+        if (isReady && imgW > 0) {
+            const cropWidth = imgW / this.frames.max;
+            const cropHeight = imgH;
             const renderWidth = this.width || cropWidth;
             const renderHeight = this.height || cropHeight;
 
