@@ -5,35 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Animon - Pokemon HTML5 Canvas & Sequelize</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔴</text></svg>">
+    <!-- Google Fonts Pixel Art & Retro Gaming (Hỗ trợ 100% tiếng Việt chuẩn) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu.css">
 </head>
 <body>
     <div class="game-wrapper">
-        <!-- Header Game -->
+        <!-- Header Game (Tối giản: Chỉ giữ lại Âm thanh và Phóng to) -->
         <header class="game-header">
             <div class="game-title">
-                <span>🔴</span>
-                <span>Animon: Vương Quốc Sủng Vật</span>
+                <span class="title-icon">🔴</span>
+                <span class="title-text">ANIMON: VƯƠNG QUỐC SỦNG VẬT</span>
             </div>
             <div class="game-actions">
-                <button class="btn-pill" id="btn-in-game-menu" title="Mở Menu chính (Phím ESC)">
-                    <span>📋</span> <span>Menu Chính</span>
+                <button class="btn-pill pixel-header-btn" id="btn-sound" title="Bật/Tắt âm thanh (Phím M)">
+                    <span id="sound-icon">🔊</span> <span id="sound-text">Âm Thanh</span>
                 </button>
-                <button class="btn-pill" id="btn-pet-team" title="Đội hình Sủng Vật (Phím P)">
-                    <span>🐾</span> <span>Sủng Vật (P)</span>
-                </button>
-                <button class="btn-pill" id="btn-inventory" title="Túi đồ & Đạo cụ (Phím I)">
-                    <span>🎒</span> <span>Túi Đồ (I)</span>
-                </button>
-                <button class="btn-pill" id="btn-sound" title="Bật/Tắt âm thanh (Phím M)">
-                    <span id="sound-icon">🔊</span> <span id="sound-text">Âm thanh</span>
-                </button>
-                <button class="btn-pill" id="btn-debug" title="Xem hộp va chạm & vùng cỏ (Phím B)">
-                    <span>🛠️</span> <span>Xem Va Chạm</span>
-                </button>
-                <button class="btn-pill" id="btn-fullscreen" title="Toàn màn hình">
-                    <span>⛶</span>
+                <button class="btn-pill pixel-header-btn" id="btn-fullscreen" title="Toàn màn hình">
+                    <span>⛶</span> <span>Phóng To</span>
                 </button>
             </div>
         </header>
@@ -42,43 +34,133 @@
         <main class="canvas-container" id="canvas-container">
             <canvas width="1024" height="576"></canvas>
 
-            <!-- LỚP PHỦ MÀN HÌNH MENU CHÍNH -->
+            <!-- LỚP PHỦ MÀN HÌNH MENU CHÍNH (TITLE SCREEN: CHỈ 4 MỤC) -->
             <div class="main-menu-overlay" id="main-menu-overlay">
-                <div class="menu-box">
+                <div class="menu-box pixel-box">
                     <div class="menu-logo">
-                        <h1>🔴 ANIMON</h1>
-                        <p>Vương Quốc Sủng Vật • HTML5 Canvas Engine</p>
+                        <div class="pixel-pokeball-icon">🔴</div>
+                        <h1 class="pixel-brand-title">ANIMON</h1>
+                        <p class="pixel-brand-sub">VƯƠNG QUỐC SỦNG VẬT • PIXEL CANVAS ENGINE</p>
                     </div>
 
                     <div class="menu-buttons">
-                        <button class="btn-menu primary" id="btn-menu-newgame">
-                            <span>⚔️</span> <span>Chơi Mới (Tạo Nhân Vật)</span>
+                        <button class="btn-menu pixel-btn primary" id="btn-menu-newgame">
+                            <span class="btn-cursor">▶</span>
+                            <span>⚔️ Chơi Mới (Tạo Nhân Vật)</span>
                         </button>
-                        <button class="btn-menu" id="btn-menu-play">
-                            <span>▶️</span> <span>Tiếp Tục Hành Trình</span>
+                        <button class="btn-menu pixel-btn" id="btn-menu-play">
+                            <span class="btn-cursor">▶</span>
+                            <span>▶️ Tiếp Tục Hành Trình</span>
                         </button>
-                        <button class="btn-menu" id="btn-menu-pets">
-                            <span>🐾</span> <span>Đội Hình Sủng Vật (P)</span>
+                        <button class="btn-menu pixel-btn" id="btn-menu-settings">
+                            <span class="btn-cursor">▶</span>
+                            <span>⚙️ Cài Đặt</span>
                         </button>
-                        <button class="btn-menu" id="btn-menu-bag">
-                            <span>🎒</span> <span>Túi Đồ & Đạo Cụ (I)</span>
-                        </button>
-                        <button class="btn-menu" id="btn-menu-save">
-                            <span>💾</span> <span>Lưu & Tải Game</span>
-                        </button>
-                        <button class="btn-menu" id="btn-menu-settings">
-                            <span>⚙️</span> <span>Cài Đặt</span>
-                        </button>
-                        <button class="btn-menu" id="btn-menu-about">
-                            <span>📜</span> <span>Giới Thiệu</span>
-                        </button>
-                        <button class="btn-menu online" id="btn-menu-online">
-                            <span>🌐</span> <span>Chơi Online (Sắp ra mắt)</span>
+                        <button class="btn-menu pixel-btn" id="btn-menu-about">
+                            <span class="btn-cursor">▶</span>
+                            <span>📜 Giới Thiệu</span>
                         </button>
                     </div>
 
-                    <div class="menu-footer-hint">
-                        Nhấn [Chơi Mới] để tạo nhân vật mới hoặc [Tiếp Tục] / phím ESC
+                    <div class="menu-footer-hint pixel-hint">
+                        Nhấn [Chơi Mới] để tạo nhân vật mới hoặc [Tiếp Tục] để vào game
+                    </div>
+                </div>
+            </div>
+
+            <!-- LỚP PHỦ MENU TRONG GAME (IN-GAME PAUSE MENU KHI BẤM ESC) -->
+            <div class="ingame-menu-overlay" id="ingame-menu-overlay" style="display: none;">
+                <div class="ingame-menu-box pixel-box">
+                    <div class="ingame-menu-header">
+                        <div class="ingame-player-info">
+                            <img src="./img/ui/face_boy.png" alt="Player" class="ingame-player-avatar" id="ingame-player-avatar">
+                            <div class="ingame-player-text">
+                                <span class="ingame-player-name" id="ingame-player-name">Red</span>
+                                <span class="ingame-player-gold" id="ingame-player-gold">💰 1,500 Vàng</span>
+                            </div>
+                        </div>
+                        <button class="btn-close-pixel" id="btn-ingame-close" title="Đóng Menu (Phím ESC)">✕</button>
+                    </div>
+
+                    <div class="ingame-menu-items">
+                        <button class="btn-ingame-btn" id="btn-ingame-pets">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">🐾</span>
+                            <span class="ingame-btn-label">Đội Hình Sủng Vật</span>
+                            <span class="ingame-btn-badge">P</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-bag">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">🎒</span>
+                            <span class="ingame-btn-label">Túi Đồ & Đạo Cụ</span>
+                            <span class="ingame-btn-badge">I</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-shop">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">🏪</span>
+                            <span class="ingame-btn-label">Cửa Hàng Vương Quốc</span>
+                            <span class="ingame-btn-badge">K</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-pokedex">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">📖</span>
+                            <span class="ingame-btn-label">Sủng Vật Đồ Giám</span>
+                            <span class="ingame-btn-badge">D</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-quests">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">📜</span>
+                            <span class="ingame-btn-label">Nhiệm Vụ Cốt Truyện</span>
+                            <span class="ingame-btn-badge">Q</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-incubator">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">🥚</span>
+                            <span class="ingame-btn-label">Lò Ấp Trứng</span>
+                            <span class="ingame-btn-badge">E</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-box">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">📦</span>
+                            <span class="ingame-btn-label">Kho Sủng Vật</span>
+                            <span class="ingame-btn-badge">B</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-arena">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">⚔️</span>
+                            <span class="ingame-btn-label">Đấu Trường Boss</span>
+                            <span class="ingame-btn-badge">T</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-worldmap">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">🗺️</span>
+                            <span class="ingame-btn-label">Bản Đồ Thế Giới</span>
+                            <span class="ingame-btn-badge">M</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-save">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">💾</span>
+                            <span class="ingame-btn-label">Lưu & Tải Game</span>
+                            <span class="ingame-btn-badge">Save</span>
+                        </button>
+                        <button class="btn-ingame-btn" id="btn-ingame-settings">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">⚙️</span>
+                            <span class="ingame-btn-label">Cài Đặt Trò Chơi</span>
+                            <span class="ingame-btn-badge">Set</span>
+                        </button>
+                        <button class="btn-ingame-btn danger" id="btn-ingame-title">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">🏠</span>
+                            <span class="ingame-btn-label">Về Màn Hình Chính</span>
+                            <span class="ingame-btn-badge">Title</span>
+                        </button>
+                        <button class="btn-ingame-btn resume" id="btn-ingame-resume">
+                            <span class="btn-cursor">▶</span>
+                            <span class="ingame-btn-icon">▶️</span>
+                            <span class="ingame-btn-label">Tiếp Tục Chơi</span>
+                            <span class="ingame-btn-badge">ESC</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -136,7 +218,7 @@
                                 <div class="starter-card active" data-starter="cauvong_pet_1">
                                     <span class="starter-element grass">🌿 Thực Vật</span>
                                     <div class="starter-icon-wrap">
-                                        <img src="./img/monsters/npc2_1.png" alt="Thụ quái" class="starter-img">
+                                        <canvas class="starter-avatar-canvas" data-sprite="npc2_1" width="56" height="56"></canvas>
                                     </div>
                                     <span class="starter-name">Thụ Quái</span>
                                 </div>
@@ -144,7 +226,7 @@
                                 <div class="starter-card" data-starter="cauvong_pet_69">
                                     <span class="starter-element water">💧 Hải Dương</span>
                                     <div class="starter-icon-wrap">
-                                        <img src="./img/monsters/s1.png" alt="Tiểu Lam Kình" class="starter-img">
+                                        <canvas class="starter-avatar-canvas" data-sprite="npc2_32" width="56" height="56"></canvas>
                                     </div>
                                     <span class="starter-name">Lam Kình</span>
                                 </div>
@@ -152,7 +234,7 @@
                                 <div class="starter-card" data-starter="cauvong_pet_37">
                                     <span class="starter-element flying">🌪️ Phi Hành</span>
                                     <div class="starter-icon-wrap">
-                                        <img src="./img/monsters/s2.png" alt="Ấu Long" class="starter-img">
+                                        <canvas class="starter-avatar-canvas" data-sprite="npc2_17" width="56" height="56"></canvas>
                                     </div>
                                     <span class="starter-name">Ấu Long</span>
                                 </div>
@@ -160,7 +242,7 @@
                                 <div class="starter-card" data-starter="cauvong_pet_18">
                                     <span class="starter-element metal">⚡ Kim Loại</span>
                                     <div class="starter-icon-wrap">
-                                        <img src="./img/monsters/s3.png" alt="Bạch Liệt Sư" class="starter-img">
+                                        <canvas class="starter-avatar-canvas" data-sprite="npc2_7" width="56" height="56"></canvas>
                                     </div>
                                     <span class="starter-name">Bạch Liệt Sư</span>
                                 </div>
@@ -168,7 +250,7 @@
                                 <div class="starter-card" data-starter="cauvong_pet_53">
                                     <span class="starter-element beast">🔥 Mãnh Thú</span>
                                     <div class="starter-icon-wrap">
-                                        <img src="./img/monsters/s0.png" alt="Hổ Thú" class="starter-img">
+                                        <canvas class="starter-avatar-canvas" data-sprite="npc2_25" width="56" height="56"></canvas>
                                     </div>
                                     <span class="starter-name">Hổ Thú</span>
                                 </div>
@@ -184,21 +266,72 @@
             </div>
         </main>
 
-        <!-- BẢNG ĐIỀU KHIỂN & D-PAD -->
-        <footer class="controls-panel">
-            <div class="key-guide">
-                <div>Di chuyển: <span class="key-badge">W</span> <span class="key-badge">A</span> <span class="key-badge">S</span> <span class="key-badge">D</span> hoặc <span class="key-badge">▲</span> <span class="key-badge">◄</span> <span class="key-badge">▼</span> <span class="key-badge">►</span></div>
-                <div>Chạy nhanh: <span class="key-badge">Shift</span></div>
-                <div>Menu chính: <span class="key-badge">ESC</span></div>
-                <div>Dịch chuyển bản đồ: <span class="key-badge">Đi vào cửa / Cổng xanh</span></div>
+        <!-- BẢNG ĐIỀU KHIỂN & TAY CẦM PIXEL CONSOLE DECK -->
+        <footer class="controls-panel pixel-console-deck">
+            <!-- 1. CỤM D-PAD THẬP TỰ BÊN TRÁI -->
+            <div class="console-section dpad-section">
+                <div class="section-title-pixel">◀ D - P A D ▶</div>
+                <div class="virtual-dpad pixel-dpad">
+                    <button class="dpad-btn dpad-up" data-dir="up" title="Lên (W / ▲)">▲</button>
+                    <button class="dpad-btn dpad-left" data-dir="left" title="Trái (A / ◄)">◄</button>
+                    <div class="dpad-center"></div>
+                    <button class="dpad-btn dpad-right" data-dir="right" title="Phải (D / ►)">►</button>
+                    <button class="dpad-btn dpad-down" data-dir="down" title="Xuống (S / ▼)">▼</button>
+                </div>
+                <div class="dpad-subtext">DI CHUYỂN</div>
             </div>
 
-            <div class="virtual-dpad">
-                <button class="dpad-btn dpad-up" data-dir="up">▲</button>
-                <button class="dpad-btn dpad-left" data-dir="left">◄</button>
-                <div class="dpad-center"></div>
-                <button class="dpad-btn dpad-right" data-dir="right">►</button>
-                <button class="dpad-btn dpad-down" data-dir="down">▼</button>
+            <!-- 2. MÀN HÌNH LCD HƯỚNG DẪN BÀN PHÍM Ở GIỮA -->
+            <div class="console-section guide-section">
+                <div class="pixel-lcd-screen">
+                    <div class="lcd-header">
+                        <span class="lcd-dot"></span>
+                        <span class="lcd-title">🎮 HỆ THỐNG ĐIỀU KHIỂN PHÍM (CONTROLS)</span>
+                        <span class="lcd-dot"></span>
+                    </div>
+                    <div class="lcd-grid">
+                        <div class="lcd-col">
+                            <div class="lcd-row"><span class="pixel-key">W A S D</span> <span class="lcd-action">Di chuyển</span></div>
+                            <div class="lcd-row"><span class="pixel-key">Shift</span> <span class="lcd-action">Chạy nhanh</span></div>
+                            <div class="lcd-row"><span class="pixel-key">E / Space</span> <span class="lcd-action">Nói chuyện / Chọn</span></div>
+                        </div>
+                        <div class="lcd-col">
+                            <div class="lcd-row"><span class="pixel-key">P</span> <span class="lcd-action">Đội hình Sủng vật</span></div>
+                            <div class="lcd-row"><span class="pixel-key">I</span> <span class="lcd-action">Túi đồ & Đạo cụ</span></div>
+                            <div class="lcd-row"><span class="pixel-key">ESC</span> <span class="lcd-action">Menu Trong Game</span></div>
+                        </div>
+                    </div>
+                    <div class="lcd-footer">
+                        <span>🚪 Cổng xanh: Dịch chuyển • 🌿 Cỏ hoang: Chiến đấu • 💬 [E] Đối thoại</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. CỤM NÚT THAO TÁC ARCADE BÊN PHẢI -->
+            <div class="console-section action-section">
+                <div class="section-title-pixel">◀ A C T I O N ▶</div>
+                <div class="action-buttons-cluster">
+                    <button class="btn-console-action btn-act-p" id="btn-quick-pets" title="Mở Sủng vật (Phím P)">
+                        <span class="act-key">P</span>
+                        <span class="act-label">Sủng Vật</span>
+                    </button>
+                    <button class="btn-console-action btn-act-i" id="btn-quick-bag" title="Mở Túi đồ (Phím I)">
+                        <span class="act-key">I</span>
+                        <span class="act-label">Túi Đồ</span>
+                    </button>
+                    <button class="btn-console-action btn-act-b" id="btn-quick-b" title="Hủy / Đóng / Chạy">
+                        <span class="act-key">B</span>
+                        <span class="act-label">Hủy</span>
+                    </button>
+                    <button class="btn-console-action btn-act-a" id="btn-quick-a" title="Tương tác / Chọn (E/Space)">
+                        <span class="act-key">A</span>
+                        <span class="act-label">Chọn</span>
+                    </button>
+                </div>
+                <div class="console-system-pills">
+                    <button class="btn-pill-system" id="btn-quick-select" title="Cài đặt trò chơi">SELECT</button>
+                    <button class="btn-pill-system primary" id="btn-quick-start" title="Menu Trong Game (Phím ESC)">START (MENU)</button>
+                </div>
             </div>
         </footer>
     </div>
@@ -221,6 +354,9 @@
     <script src="./js/data/battleZones.js"></script>
     <script src="./js/data/items.js"></script>
     <script src="./js/data/monsters.js"></script>
+    <script src="./js/data/pokedex.js"></script>
+    <script src="./js/data/quests.js"></script>
+    <script src="./js/data/incubator.js"></script>
     <script src="./js/data/extracted_maps.js"></script>
     <script src="./js/data/sprites_data.js"></script>
     <script src="./js/data/maps.js"></script>
@@ -236,20 +372,10 @@
 
     <!-- Script tương tác giao diện phụ -->
     <script>
-        const btnDebug = document.getElementById('btn-debug');
         const btnSound = document.getElementById('btn-sound');
         const soundIcon = document.getElementById('sound-icon');
         const btnFullscreen = document.getElementById('btn-fullscreen');
         const container = document.getElementById('canvas-container');
-
-        if (btnDebug) {
-            btnDebug.addEventListener('click', () => {
-                if (window.gameEngine) {
-                    const active = window.gameEngine.toggleDebug();
-                    btnDebug.classList.toggle('active', active);
-                }
-            });
-        }
 
         if (btnSound) {
             btnSound.addEventListener('click', () => {
@@ -293,6 +419,50 @@
             btn.addEventListener('touchstart', startPress, { passive: false });
             btn.addEventListener('touchend', stopPress, { passive: false });
             btn.addEventListener('touchcancel', stopPress, { passive: false });
+        });
+
+        // Hỗ trợ các nút thao tác Arcade trên Console Deck
+        document.getElementById('btn-quick-a')?.addEventListener('click', () => {
+            window.dispatchEvent(new KeyboardEvent('keydown', { key: 'e' }));
+        });
+
+        document.getElementById('btn-quick-b')?.addEventListener('click', () => {
+            if (window.menuManager?.currentModal) {
+                window.menuManager.closeModal();
+            } else if (window.menuManager?.isInGameMenu) {
+                window.menuManager.hideInGameMenu();
+            } else {
+                window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift' }));
+                setTimeout(() => window.dispatchEvent(new KeyboardEvent('keyup', { key: 'Shift' })), 400);
+            }
+        });
+
+        document.getElementById('btn-quick-pets')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            if (window.menuManager?.currentModal === 'pet_team') {
+                window.menuManager.closeModal();
+            } else {
+                window.menuManager?.showPetTeamModal();
+            }
+        });
+
+        document.getElementById('btn-quick-bag')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            if (window.menuManager?.currentModal === 'bag') {
+                window.menuManager.closeModal();
+            } else {
+                window.menuManager?.showBagModal();
+            }
+        });
+
+        document.getElementById('btn-quick-start')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            window.menuManager?.toggleInGameMenu();
+        });
+
+        document.getElementById('btn-quick-select')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            window.menuManager?.showSettingsModal();
         });
     </script>
 </body>

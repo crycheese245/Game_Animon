@@ -104,6 +104,13 @@ class MenuManager {
             this.showBossArenaModal();
         });
 
+        // Bản đồ thế giới trong game
+        document.getElementById('btn-ingame-worldmap')?.addEventListener('click', () => {
+            window.soundEngine?.playMenuClick();
+            this.hideInGameMenu();
+            this.showWorldMapModal();
+        });
+
         // Lưu & Tải trong game
         document.getElementById('btn-ingame-save')?.addEventListener('click', () => {
             window.soundEngine?.playMenuClick();
@@ -1845,6 +1852,156 @@ class MenuManager {
         if (window.battleSystem) {
             window.soundEngine?.playBattleStart();
             window.battleSystem.startBattle(alivePet, bossMonster, { isWild: false, isBoss: true });
+        }
+    }
+
+    // Modal Bản Đồ Thế Giới (Pokémon Town Map / Poké-Gear Style)
+    showWorldMapModal(selectedRegionId = null) {
+        this.currentModal = 'world_map';
+        const regions = window.WORLD_MAP_REGIONS || [];
+        const currentMapId = window.gameState?.currentMapId || 'map_0';
+
+        // Mặc định chọn khu vực mà người chơi đang đứng hoặc khu vực đầu tiên
+        let activeReg = regions.find(r => r.id === selectedRegionId);
+        if (!activeReg) {
+            activeReg = regions.find(r => r.mapId === currentMapId) || regions[0];
+        }
+
+        const currentReg = regions.find(r => r.mapId === currentMapId);
+
+        let html = `
+            <div class="worldmap-container">
+                <!-- CỘT TRÁI: LƯỚI ĐẠI LỤC (CONTINENT GRID) -->
+                <div class="worldmap-continent-view">
+                    <div class="worldmap-header-status">
+                        <div class="worldmap-status-current">
+                            <span>Vị trí hiện tại:</span>
+                            <strong style="color: #facc15;">${currentReg ? currentReg.name : 'Vương Quốc Cầu Vồng'}</strong>
+                            <span class="worldmap-pin-badge">🔴 BẠN ĐANG Ở ĐÂY</span>
+                        </div>
+                        <div class="worldmap-hint">
+                            Bấm vào từng khu vực để xem thông tin & di chuyển nhanh
+                        </div>
+                    </div>
+
+                    <div class="worldmap-grid-wrapper">
+                        <div class="worldmap-grid">
+                            ${regions.map(r => {
+                                const isCurrent = (r.mapId === currentMapId);
+                                const isSelected = (r.id === activeReg.id);
+                                return `
+                                    <div class="worldmap-node ${isCurrent ? 'current-player-node' : ''} ${isSelected ? 'selected-node' : ''}" 
+                                         style="grid-column: ${r.gridX + 1}; grid-row: ${r.gridY + 1};"
+                                         onclick="window.menuManager.showWorldMapModal('${r.id}')"
+                                         title="${r.name} (${r.subName})">
+                                        <div class="node-icon">${r.icon}</div>
+                                        <div class="node-name">${r.name}</div>
+                                        ${isCurrent ? '<span class="node-badge-here">VỊ TRÍ BẠN</span>' : ''}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Chú thích bản đồ -->
+                    <div class="worldmap-legend">
+                        <span>🏛️ Đô Thị</span>
+                        <span>🎓 Học Viện</span>
+                        <span>⚔️ Đấu Trường</span>
+                        <span>🌾 Thảo Nguyên</span>
+                        <span>🌲 Rừng Rậm</span>
+                        <span>⛰️ Cao Nguyên</span>
+                        <span>⚙️ Phế Tích Cổ</span>
+                        <span>⚓ Bắc Hải</span>
+                        <span>☁️ Thiên Không</span>
+                    </div>
+                </div>
+
+                <!-- CỘT PHẢI: CHI TIẾT KHU VỰC ĐÃ CHỌN (INSPECTOR) -->
+                <div class="worldmap-inspector">
+                    <div class="inspector-header">
+                        <div class="inspector-icon">${activeReg.icon}</div>
+                        <div class="inspector-title-wrap">
+                            <h3 class="inspector-name">${activeReg.name}</h3>
+                            <span class="inspector-sub">${activeReg.subName}</span>
+                        </div>
+                    </div>
+
+                    <div class="inspector-stat-row">
+                        <span class="inspector-badge-level">${activeReg.levelRec}</span>
+                        <span class="inspector-badge-mapid">Mã: ${activeReg.mapId}</span>
+                    </div>
+
+                    <div class="inspector-desc">
+                        ${activeReg.description}
+                    </div>
+
+                    <!-- Danh sách Sủng Vật Hoang Dã -->
+                    <div class="inspector-wild-section">
+                        <div class="section-title">🐾 SỦNG VẬT HOANG DÃ:</div>
+                        <div class="wild-pets-list">
+                            ${(!activeReg.wildPool || activeReg.wildPool.length === 0) 
+                                ? '<div class="no-wild">Khu vực an toàn, không có quái hoang dã.</div>'
+                                : activeReg.wildPool.map(code => {
+                                    const preset = (window.MONSTERS_PRESET || []).find(m => m.code === code) || { name: code, type: 'Bình thường' };
+                                    return `
+                                        <div class="wild-pet-chip">
+                                            <span class="wild-pet-name">${preset.name}</span>
+                                            <span class="wild-pet-type">${preset.type || 'Sủng Thú'}</span>
+                                        </div>
+                                    `;
+                                }).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Lối đi liên kết tiếp theo -->
+                    <div class="inspector-connections">
+                        <div class="section-title">🚪 LỐI THÔNG LIÊN KẾT:</div>
+                        <div class="conn-chips">
+                            ${activeReg.connectedTo.map(cid => {
+                                const cr = regions.find(r => r.id === cid);
+                                if (!cr) return '';
+                                return `
+                                    <button class="conn-chip" onclick="window.menuManager.showWorldMapModal('${cr.id}')">
+                                        <span>${cr.icon} ${cr.name}</span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Nút Dịch Chuyển Nhanh -->
+                    <div class="inspector-action-wrap">
+                        ${(activeReg.mapId === currentMapId)
+                            ? '<div class="already-here-badge">📍 Bạn đang ở khu vực này</div>'
+                            : `
+                                <button class="btn-fast-travel" onclick="window.menuManager.fastTravelTo('${activeReg.mapId}')">
+                                    🚀 DỊCH CHUYỂN ĐẾN ĐÂY
+                                </button>
+                            `}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        this.showModal('🗺️ BẢN ĐỒ THẾ GIỚI - VƯƠNG QUỐC CẦU VỒNG (POKÉ-GEAR MAP)', html, 'worldmap-modal');
+    }
+
+    fastTravelTo(mapId) {
+        const config = window.MAPS_CONFIG?.[mapId];
+        if (!config) {
+            alert('Không tìm thấy thông tin bản đồ!');
+            return;
+        }
+
+        window.soundEngine?.playSelect?.();
+        this.closeModal();
+
+        const targetPos = config.initialPlayerPos || { x: 448, y: 224 };
+        const targetOffset = config.initialOffset || { x: 0, y: 0 };
+
+        if (typeof window.loadMap === 'function') {
+            window.loadMap(mapId, targetPos, targetOffset);
         }
     }
 }

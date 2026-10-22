@@ -922,19 +922,38 @@ function animate() {
                         ctx.fill();
                     }
 
-                    // Tên NPC
+                    // Tên NPC (Hiển thị phía trên đỉnh đầu, không che người)
                     ctx.save();
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                    ctx.font = 'bold 11px "Segoe UI", sans-serif';
+                    const textW = ctx.measureText(npc.name).width;
+                    const tagW = Math.max(72, textW + 16);
+                    const tagH = 18;
+                    const tagX = nx + 24;
+                    const tagY = ny - 56; // Đặt ngay trên đỉnh đầu sprite
+
+                    ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+                    ctx.strokeStyle = '#f59e0b';
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
                     if (ctx.roundRect) {
-                        ctx.roundRect(nx + 24 - 45, ny - 16, 90, 18, 4);
+                        ctx.roundRect(tagX - tagW / 2, tagY, tagW, tagH, 4);
                     } else {
-                        ctx.fillRect(nx + 24 - 45, ny - 16, 90, 18);
+                        ctx.fillRect(tagX - tagW / 2, tagY, tagW, tagH);
                     }
                     ctx.fill();
-                    ctx.fillStyle = '#f1c40f';
-                    ctx.font = 'bold 11px sans-serif';
+                    ctx.stroke();
+
+                    // Mũi tên nhỏ chỉ xuống đầu NPC
+                    ctx.fillStyle = '#f59e0b';
+                    ctx.beginPath();
+                    ctx.moveTo(tagX - 4, tagY + tagH);
+                    ctx.lineTo(tagX + 4, tagY + tagH);
+                    ctx.lineTo(tagX, tagY + tagH + 3);
+                    ctx.fill();
+
+                    ctx.fillStyle = '#fef08a';
                     ctx.textAlign = 'center';
-                    ctx.fillText(npc.name, nx + 24, ny - 3);
+                    ctx.fillText(npc.name, tagX, tagY + 13);
                     ctx.restore();
                 }
             };
@@ -946,12 +965,12 @@ function animate() {
 
     currentNearestNpc = (nearestNpc && minNpcDist < 85) ? nearestNpc : null;
 
-    // Gợi ý tương tác khi đứng gần NPC
+    // Gợi ý tương tác khi đứng gần NPC (Nằm phía trên thẻ tên)
     if (currentNearestNpc && !activeDialogue) {
         ctx.save();
         const nx = currentNearestNpc.position.x + 24;
-        const ny = currentNearestNpc.position.y - 28;
-        ctx.fillStyle = '#e74c3c';
+        const ny = currentNearestNpc.position.y - 88;
+        ctx.fillStyle = '#ef4444';
         if (ctx.roundRect) {
             ctx.roundRect(nx - 55, ny - 12, 110, 22, 5);
         } else {
@@ -1294,6 +1313,157 @@ function drawGameHUD() {
     ctx.fillStyle = '#ecf0f1';
     ctx.font = '12px "Segoe UI", sans-serif';
     ctx.fillText(`🐾 Đội hình: ${gameState.playerTeam.length}/6 | 🔴 Bóng: ${gameState.inventory.pokeballs}`, textX, 56);
+
+    // Vẽ Radar Minimap ở góc trên bên phải màn hình
+    drawRadarMinimap(ctx);
+
+    ctx.restore();
+}
+
+// ========================================================
+// HỆ THỐNG RADAR MINIMAP GÓC TRÊN BÊN PHẢI (J2ME HUD)
+// ========================================================
+function drawRadarMinimap(ctx) {
+    const mapConfig = window.MAPS_CONFIG[gameState.currentMapId];
+    if (!mapConfig) return;
+
+    const j2meMap = (window.J2ME_MAPS_DATA && window.J2ME_MAPS_DATA[gameState.currentMapId])
+        ? window.J2ME_MAPS_DATA[gameState.currentMapId]
+        : null;
+
+    const cols = j2meMap ? j2meMap.cols : Math.round((mapConfig.width || 1056) / 48);
+    const rows = j2meMap ? j2meMap.rows : Math.round((mapConfig.height || 1536) / 48);
+    const mapW = cols * 48;
+    const mapH = rows * 48;
+
+    const boxW = 160;
+    const boxH = 120;
+    const boxX = canvas.width - boxW - 14;
+    const boxY = 14;
+
+    ctx.save();
+
+    // 1. Khung nền Radar Minimap
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.90)';
+    ctx.strokeStyle = '#f59e0b';
+    ctx.lineWidth = 1.8;
+    if (ctx.roundRect) {
+        ctx.roundRect(boxX, boxY, boxW, boxH, 8);
+    } else {
+        ctx.fillRect(boxX, boxY, boxW, boxH);
+    }
+    ctx.fill();
+    ctx.stroke();
+
+    // Góc điểm xuyết pixel vàng hoàng gia
+    ctx.fillStyle = '#fbbf24';
+    ctx.fillRect(boxX, boxY, 4, 4);
+    ctx.fillRect(boxX + boxW - 4, boxY, 4, 4);
+    ctx.fillRect(boxX, boxY + boxH - 4, 4, 4);
+    ctx.fillRect(boxX + boxW - 4, boxY + boxH - 4, 4, 4);
+
+    // 2. Tiêu đề Radar & Tọa độ ô
+    ctx.font = 'bold 10px "Segoe UI", sans-serif';
+    ctx.fillStyle = '#fbbf24';
+    ctx.textAlign = 'left';
+    ctx.fillText('🗺️ RADAR [M]', boxX + 8, boxY + 14);
+
+    const playerWorldX = player.position.x - currentOffset.x + 32;
+    const playerWorldY = player.position.y - currentOffset.y + 64;
+    const tileX = Math.max(0, Math.min(cols - 1, Math.floor(playerWorldX / 48)));
+    const tileY = Math.max(0, Math.min(rows - 1, Math.floor(playerWorldY / 48)));
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText(`${tileX},${tileY}`, boxX + boxW - 8, boxY + 14);
+
+    // 3. Vùng chiếu Minimap bên trong
+    const padX = 8;
+    const padTop = 18;
+    const padBottom = 16;
+    const innerW = boxW - padX * 2;
+    const innerH = boxH - padTop - padBottom;
+    const innerX = boxX + padX;
+    const innerY = boxY + padTop;
+
+    const scale = Math.min(innerW / mapW, innerH / mapH);
+    const renderW = mapW * scale;
+    const renderH = mapH * scale;
+    const offMapX = innerX + (innerW - renderW) / 2;
+    const offMapY = innerY + (innerH - renderH) / 2;
+
+    // Nền bản đồ
+    ctx.fillStyle = mapConfig.baseColor || '#1e293b';
+    ctx.fillRect(offMapX, offMapY, renderW, renderH);
+    ctx.strokeStyle = '#334155';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(offMapX, offMapY, renderW, renderH);
+
+    // Vẽ bụi cỏ gặp quái
+    if (battleZones.length > 0) {
+        ctx.fillStyle = 'rgba(34, 197, 94, 0.45)';
+        battleZones.forEach(bz => {
+            const bx = (bz.position.x - currentOffset.x) * scale;
+            const by = (bz.position.y - currentOffset.y) * scale;
+            ctx.fillRect(offMapX + bx, offMapY + by, Math.max(2, bz.width * scale), Math.max(2, bz.height * scale));
+        });
+    }
+
+    // Vẽ Cổng dịch chuyển (Portals)
+    const blinkPortal = Math.floor(Date.now() / 300) % 2 === 0;
+    portals.forEach(p => {
+        const px = (p.position.x - currentOffset.x) * scale;
+        const py = (p.position.y - currentOffset.y) * scale;
+        ctx.fillStyle = blinkPortal ? '#38bdf8' : '#0284c7';
+        ctx.fillRect(offMapX + px, offMapY + py, Math.max(3, p.width * scale), Math.max(3, p.height * scale));
+    });
+
+    // Vẽ NPCs
+    currentNpcs.forEach(n => {
+        const nx = (n.position.x - currentOffset.x + 24) * scale;
+        const ny = (n.position.y - currentOffset.y + 40) * scale;
+        ctx.fillStyle = '#facc15';
+        ctx.beginPath();
+        ctx.arc(offMapX + nx, offMapY + ny, 2.2, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    // Vẽ Người chơi (Chấm đỏ phát sóng sonar)
+    const pX = offMapX + playerWorldX * scale;
+    const pY = offMapY + playerWorldY * scale;
+
+    const sonarRad = 3 + (Math.floor(Date.now() / 90) % 6);
+    ctx.strokeStyle = 'rgba(239, 68, 68, 0.5)';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.arc(pX, pY, sonarRad, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.fillStyle = '#ef4444';
+    ctx.beginPath();
+    ctx.arc(pX, pY, 3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Hướng nhìn của người chơi
+    let headingDx = 0, headingDy = 0;
+    if (player.lastDirection === 'up' || keys.w.pressed) headingDy = -5;
+    else if (player.lastDirection === 'down' || keys.s.pressed) headingDy = 5;
+    else if (player.lastDirection === 'left' || keys.a.pressed) headingDx = -5;
+    else headingDx = 5;
+
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(pX, pY);
+    ctx.lineTo(pX + headingDx, pY + headingDy);
+    ctx.stroke();
+
+    // 4. Nhãn tên bản đồ phía chân radar
+    ctx.fillStyle = '#fef08a';
+    ctx.font = 'bold 9px "Segoe UI", sans-serif';
+    ctx.textAlign = 'center';
+    const shortName = (mapConfig.name || 'Bản đồ').split('(')[0].trim();
+    ctx.fillText(shortName, boxX + boxW / 2, boxY + boxH - 4);
+
     ctx.restore();
 }
 
@@ -1513,7 +1683,15 @@ window.addEventListener('keydown', (e) => {
             break;
         case 'm':
         case 'M':
-            window.soundEngine?.toggleMute();
+            if (keys.shift.pressed) {
+                window.soundEngine?.toggleMute();
+            } else if (window.menuManager && (!window.battleSystem || !window.battleSystem.active)) {
+                if (window.menuManager.currentModal === 'world_map') {
+                    window.menuManager.closeModal();
+                } else {
+                    window.menuManager.showWorldMapModal();
+                }
+            }
             break;
         case 'i':
         case 'I':
@@ -1624,6 +1802,20 @@ canvas.addEventListener('click', (e) => {
         const clickX = (e.clientX - rect.left) * scaleX;
         const clickY = (e.clientY - rect.top) * scaleY;
         window.battleSystem.handleClick(clickX, clickY, canvas.width, canvas.height);
+        return;
+    }
+
+    // Kiểm tra click vào Minimap (Góc trên bên phải: 160x120px)
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const clickX = (e.clientX - rect.left) * scaleX;
+    const clickY = (e.clientY - rect.top) * scaleY;
+    const mmX = canvas.width - 174;
+    const mmY = 14;
+    if (clickX >= mmX && clickX <= mmX + 160 && clickY >= mmY && clickY <= mmY + 120) {
+        window.soundEngine?.playMenuClick?.();
+        window.menuManager?.showWorldMapModal?.();
         return;
     }
 
