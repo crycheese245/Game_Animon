@@ -386,9 +386,179 @@ class J2MESprite {
         }
         return true;
     }
+
+    // Bộ đệm ảnh quái vật dùng chung
+    static imageCache = {};
+
+    static getImage(spriteKey) {
+        if (!this.imageCache) this.imageCache = {};
+        if (this.imageCache[spriteKey]) return this.imageCache[spriteKey];
+
+        const img = new Image();
+        img.src = `./img/monsters/${spriteKey}.png`;
+        img.onerror = () => {
+            if (img.src.indexOf('client/') === -1) {
+                img.src = `./client/img/monsters/${spriteKey}.png`;
+            }
+        };
+        this.imageCache[spriteKey] = img;
+        return img;
+    }
+
+    // Dựng hoàn chỉnh sủng vật J2ME lên Canvas kích thước bất kỳ (cho Avatar, Đội hình, v.v.)
+    static renderMonsterAvatar(canvas, spriteKey, options = {}) {
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const cw = canvas.width || 64;
+        const ch = canvas.height || 64;
+
+        ctx.imageSmoothingEnabled = false;
+
+        const spriteData = (typeof window !== 'undefined' && window.J2ME_SPRITES_DATA)
+            ? window.J2ME_SPRITES_DATA[spriteKey]
+            : null;
+
+        const img = this.getImage(spriteKey);
+
+        const render = () => {
+            ctx.clearRect(0, 0, cw, ch);
+
+            if (!spriteData) {
+                // Nếu chưa có dữ liệu ghép mảnh thì vẽ ảnh nguyên bản ở giữa
+                if (img.complete && img.naturalWidth > 0) {
+                    const fallbackSize = Math.min(cw * 0.8, ch * 0.8);
+                    ctx.drawImage(img, (cw - fallbackSize) / 2, (ch - fallbackSize) / 2, fallbackSize, fallbackSize);
+                }
+                return;
+            }
+
+            const anim = (spriteData.anims && spriteData.anims[0]) || [];
+            const stepIdx = options.stepIndex || 0;
+            const step = (anim.length > 0 && anim[stepIdx % anim.length]) ? anim[stepIdx % anim.length] : [1, 2];
+            const frameId = step[0];
+            const frame = spriteData.frames[frameId] || spriteData.frames[0];
+            if (!frame || !frame.parts) return;
+
+            const bbox = frame.bbox || { minX: -20, minY: -40, maxX: 20, maxY: 0, w: 40, h: 40 };
+            const monW = Math.max(16, bbox.w || (bbox.maxX - bbox.minX) || 40);
+            const monH = Math.max(16, bbox.h || (bbox.maxY - bbox.minY) || 40);
+
+            const padW = cw * (options.padRatio || 0.82);
+            const padH = ch * (options.padRatio || 0.82);
+            const scale = Math.min(padW / monW, padH / monH) * (options.scaleMultiplier || 1.0);
+
+            const midX = (bbox.minX + bbox.maxX) / 2;
+            const midY = (bbox.minY + bbox.maxY) / 2;
+
+            const groundX = Math.round(cw / 2 - midX * scale);
+            const groundY = Math.round((ch / 2 - 2) - midY * scale);
+
+            // 1. Bóng đổ dưới chân sủng vật
+            if (options.drawShadow !== false) {
+                ctx.save();
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+                ctx.beginPath();
+                const shadowW = Math.max(18, monW * scale * 0.72);
+                const shadowH = Math.max(5, shadowW * 0.32);
+                ctx.ellipse(cw / 2, groundY + 1, shadowW / 2, shadowH / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            // 2. Ghép các mảnh linh kiện thân hình
+            const parts = frame.parts || [];
+            const modules = spriteData.modules || [];
+            for (let i = 0; i < parts.length; i++) {
+                const part = parts[i];
+                const modId = part[0];
+                const ox = part[1];
+                const oy = part[2];
+                const flags = part[3];
+
+                const mod = modules[modId];
+                if (!mod) continue;
+
+                const [srcX, srcY, w, h] = mod;
+                const internalTransform = J2MESprite.B_MAP[0][flags & 7];
+                const midp = J2MESprite.B_STATIC[internalTransform];
+
+                const isSwapped = (midp === 5 || midp === 6 || midp === 4 || midp === 7);
+                const rendW = isSwapped ? h : w;
+                const rendH = isSwapped ? w : h;
+
+                const dw = w * scale;
+                const dh = h * scale;
+                const rendDw = rendW * scale;
+                const rendDh = rendH * scale;
+
+                const partX = groundX + ox * scale;
+                const partY = groundY + oy * scale;
+
+                const destX = partX;
+                const destY = partY;
+
+                ctx.save();
+                switch (midp) {
+                    case 0:
+                        ctx.drawImage(img, srcX, srcY, w, h, destX, destY, dw, dh);
+                        break;
+                    case 2:
+                        ctx.translate(destX + dw, destY);
+                        ctx.scale(-1, 1);
+                        ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
+                        break;
+                    case 1:
+                        ctx.translate(destX, destY + dh);
+                        ctx.scale(1, -1);
+                        ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
+                        break;
+                    case 3:
+                        ctx.translate(destX + dw, destY + dh);
+                        ctx.scale(-1, -1);
+                        ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
+                        break;
+                    case 5:
+                        ctx.translate(destX + dh, destY);
+                        ctx.rotate(Math.PI / 2);
+                        ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
+                        break;
+                    case 6:
+                        ctx.translate(destX, destY + dw);
+                        ctx.rotate(-Math.PI / 2);
+                        ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
+                        break;
+                    case 7:
+                        ctx.translate(destX + dh, destY + dw);
+                        ctx.rotate(Math.PI / 2);
+                        ctx.scale(-1, 1);
+                        ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
+                        break;
+                    case 4:
+                        ctx.translate(destX, destY);
+                        ctx.rotate(Math.PI / 2);
+                        ctx.scale(1, -1);
+                        ctx.drawImage(img, srcX, srcY, w, h, 0, 0, dw, dh);
+                        break;
+                    default:
+                        ctx.drawImage(img, srcX, srcY, w, h, destX, destY, dw, dh);
+                        break;
+                }
+                ctx.restore();
+            }
+        };
+
+        if (img.complete && img.naturalWidth > 0) {
+            render();
+        } else {
+            img.addEventListener('load', render, { once: true });
+        }
+    }
 }
 
 if (typeof window !== 'undefined') {
     window.J2MESprite = J2MESprite;
 }
+
 
